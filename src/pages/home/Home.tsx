@@ -43,7 +43,7 @@ const Home: React.FC = () => {
                     >
                         <Avatar
                             alt="Luca"
-                            src="../src/assets/images/profile.jpeg"
+                            src={`../src/assets/images/profile.jpeg`}
                             sx={{ 
                                 width: {xs: 260, md: 300, lg: 330}, 
                                 height: {xs: 260, md: 300, lg: 330}, 
