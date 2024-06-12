@@ -32,7 +32,7 @@ const Router = createBrowserRouter([
       ],
     }
 ], {
-    basename: "/personal",
+    basename: "/personal/",
 });
 
 export default Router
