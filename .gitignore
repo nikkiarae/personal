@@ -24,4 +24,4 @@ dist-ssr
 *.sw?
 
 /src/services/data.ts
-*.env
+.env
