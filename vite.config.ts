@@ -6,7 +6,7 @@ export default defineConfig({
   base: process.env.VITE_PUBLIC_URL || '/',
   define: {
     VITE_MAPBOX_TOKEN: process.env.VITE_MAPBOX_TOKEN,
-    VITE_MPUBLIC_URL: process.env.VITE_PUBLIC_URL,
+    VITE_PUBLIC_URL: process.env.VITE_PUBLIC_URL,
   },
   build: {
       outDir: 'dist',

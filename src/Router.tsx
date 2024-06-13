@@ -32,7 +32,7 @@ const Router = createBrowserRouter([
       ],
     }
 ], {
-    basename: "/personal/",
+    basename: `${import.meta.env.VITE_PUBLIC_URL}`,
 });
 
 export default Router
