@@ -18,3 +18,11 @@ export interface Skill {
     name: string
     icon: string 
 }
+
+export interface Job {
+    company: string
+    title: string
+    location: string
+    date: string
+    responsibilities: string[]
+}

@@ -26,19 +26,6 @@ const Education: React.FC = () => {
                     />
                     <Typography variant="body1">{ `Provo, UT, USA` }</Typography>
                 </Box>
-                {/* {jobs[selectedJob].responsibilities.map((task: any, index: React.Key) => (
-                    <Box key={index} display="flex" mb={1}>
-                        <ListItemIcon sx={{ mt: 1 }}>
-                            <DoneIcon 
-                                sx={{ 
-                                    color: theme.palette.primary.main,
-                                    fontSize: '1.7rem',
-                                }} 
-                            />
-                        </ListItemIcon>
-                        <Typography variant="body1">{task}</Typography>
-                    </Box>
-                ))} */}
             </Box>
         </Box>
     );

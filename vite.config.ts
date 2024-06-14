@@ -3,11 +3,12 @@ import react from '@vitejs/plugin-react'
 import tsconfigPaths from 'vite-tsconfig-paths';
 
 export default defineConfig({
-  base: process.env.VITE_PUBLIC_URL || '/',
+  base: '/personal/',
   define: {
     VITE_MAPBOX_TOKEN: process.env.VITE_MAPBOX_TOKEN,
     VITE_PUBLIC_URL: process.env.VITE_PUBLIC_URL,
   },
+  publicDir: 'public',
   build: {
       outDir: 'dist',
       assetsDir: 'assets',
