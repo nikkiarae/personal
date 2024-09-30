@@ -18,12 +18,12 @@ const Skills: React.FC = () => {
                     </Stack>
                 </Grid>
                 <Grid item xs={12} md={3}>
-                    <ListHeading text={'Frontend'} />
+                    <ListHeading text={'Client'} />
                     <Stack spacing={1}>
                         <ListItem text={'Javascript'} />
                         <ListItem text={'ReactJS'} />
-                        <ListItem text={'NextJS'} />
-                        <ListItem text={'CSS3'} />
+                        <ListItem text={'TypeScript'} />
+                        <ListItem text={'SwiftUI'} />
                     </Stack>
                 </Grid>
                 <Grid item xs={12} md={3}>
@@ -32,7 +32,7 @@ const Skills: React.FC = () => {
                         <ListItem text={'NodeJS'} />
                         <ListItem text={'MongoDB'} />
                         <ListItem text={'ExpressJS'} />
-                        <ListItem text={'Vercel'} />
+                        <ListItem text={'GraphQL'} />
                     </Stack>
                 </Grid>
                 <Grid item xs={12} md={3}>
