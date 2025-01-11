@@ -7,6 +7,7 @@ import { ProjectsData } from '@services/data';
 import { Project as ProjectType } from '@services/types';
 import { LearningOutcomes, Skills, What } from './sections';
 import { Carousel } from '@components/carousel';
+import Links from './sections/Links';
 
 const Project: React.FC = () => {
     const { id } = useParams<{ id: string }>();
@@ -36,6 +37,7 @@ const Project: React.FC = () => {
                 subHeading={project.briefDescription}
             />
             <Stack spacing={6}>
+                <Links live={project.liveLink} repo={project.repositoryLink} />
                 <Carousel images={project.images} />
                 <Divider />
                 <What content={project.detailedDescription} />

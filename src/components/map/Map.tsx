@@ -2,6 +2,7 @@ import React from 'react';
 import Map, { MapProvider, MapRef, Marker } from 'react-map-gl';
 import PlaceIcon from '@mui/icons-material/Place';
 import 'mapbox-gl/dist/mapbox-gl.css';
+import { useTheme } from '@mui/material';
 
 interface MapProps {
     longitude: number;
@@ -9,6 +10,7 @@ interface MapProps {
 }
 
 const MapComponent: React.FC<MapProps> = ({ longitude, latitude }) => {
+    const theme = useTheme()
     const [viewport, setViewport] = React.useState({
         latitude: 37.7751,
         longitude: -122.4193,
@@ -42,7 +44,7 @@ const MapComponent: React.FC<MapProps> = ({ longitude, latitude }) => {
                     height: '400px',
                     borderRadius: '20px',
                 }}
-                mapStyle="mapbox://styles/mapbox/light-v9"
+                mapStyle={`mapbox://styles/mapbox/${theme.palette.mode === 'dark' ? 'dark' : 'light'}-v9`}
                 dragPan={false}
                 dragRotate={false}
                 scrollZoom={false}

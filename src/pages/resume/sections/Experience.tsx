@@ -23,13 +23,13 @@ const Experience: React.FC = () => {
                                     borderRadius: 3,
                                     backgroundColor: selectedJob === idx ? theme.palette.action.selected : 'inherit',
                                     '&:hover': {
-                                        backgroundColor: '#f5f5f5',
+                                        backgroundColor: theme.palette.action.hover,
                                     },
                                 }}
                             >
                                 <ListItemText
                                 primary={company.company}
-                                primaryTypographyProps={{ style: { color: selectedJob === idx ? '#6A0DAD' : 'inherit' } }}
+                                primaryTypographyProps={{ style: { color: selectedJob === idx ? theme.palette.secondary.main : 'inherit' } }}
                                 />
                             </ListItem>
                         ))}

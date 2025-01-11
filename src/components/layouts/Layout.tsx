@@ -16,16 +16,19 @@ import {
   Link as MuiLink,
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
-import { useTheme } from '@mui/material/styles';
 import { Link, Outlet } from 'react-router-dom';
 import { NAV_ITEMS } from '@services/constants';
-import { Facebook, Twitter, Instagram, LinkedIn } from '@mui/icons-material';
+import { Facebook, Twitter, Instagram, LinkedIn, LightMode, DarkMode } from '@mui/icons-material';
+import { useTheme } from "../../hooks/useTheme";
+
 
 const Layout: React.FC = () => {
-  const theme = useTheme();
+
+  const { toggleTheme, mode, theme } = useTheme()
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+  
 
   const handleDrawerToggle = () => {
     setDrawerOpen(!drawerOpen);
@@ -67,11 +70,12 @@ const Layout: React.FC = () => {
       sx={{
         p: 2,
         mt: 'auto',
-        backgroundColor: theme.palette.grey[200],
+        backgroundColor: theme.palette.background.paper,
         textAlign: 'center',
         width: '100%'
       }}
     >
+      <CssBaseline />
       <Box sx={{ mt: 2, display: 'flex', justifyContent: 'center', gap: 2 }}>
         <MuiLink href="https://facebook.com" target="_blank" rel="noopener">
           <Facebook />
@@ -124,6 +128,13 @@ const Layout: React.FC = () => {
           ) : (
             <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
               {menu}
+              <IconButton
+                color="inherit"
+                onClick={toggleTheme}
+                aria-label="toggle dark mode"
+              >
+                {mode === 'light' ? <LightMode /> : <DarkMode />}
+              </IconButton>
             </Box>
           )}
         </Toolbar>
@@ -148,7 +159,7 @@ const Layout: React.FC = () => {
         component="main"
       >
         <Toolbar />
-        <Container sx={{ mt: 4 }}>
+        <Container sx={{ mt: 4, height: '100%' }}>
           <Outlet />
         </Container>
         

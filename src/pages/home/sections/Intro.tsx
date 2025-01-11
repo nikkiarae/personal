@@ -1,10 +1,11 @@
 import React from 'react';
-import { Box, Typography, Button, Avatar, Grid, Stack } from '@mui/material';
+import { Box, Typography, Button, Avatar, Grid, Stack, useTheme } from '@mui/material';
 import ProfilePic from '@assets/images/profile.jpeg'
 import { NavLink } from 'react-router-dom';
-import { CONTACT, PROJECTS } from '@services/constants';
+import { PROJECTS, RESUME } from '@services/constants';
 
 const Intro: React.FC = () => {
+    const theme = useTheme()
     return (
         <Stack 
             spacing={{ xs: 6, md: 10 }} 
@@ -17,18 +18,18 @@ const Intro: React.FC = () => {
                 </Typography>
                 <Box>
                     <Typography variant="h1" color="primary">
-                        Software
+                        Full Stack
                     </Typography>
                     <Typography variant="h1" sx={{  }}>
                         Developer
                     </Typography>
                 </Box>
                 <Typography variant="h5" color="textSecondary" gutterBottom>
-                    I'm a software developer based in England. I can help you build beautiful websites your users will love.
+                    Specializing in full-stack development, with a focus on building robust, scalable, and user-friendly applications.
                 </Typography>
                 <Stack direction={'row'} spacing={2} display={'flex'} justifyContent={{ xs: 'center', md: 'start' }}>
-                    <Button component={NavLink} to={`${CONTACT.toLowerCase()}`} variant="contained" color="primary" size='large'>
-                        Get In Touch
+                    <Button component={NavLink} to={`${RESUME.toLowerCase()}`} variant="contained" color="primary" size='large'>
+                        View Resume
                     </Button>
                     <Button component={NavLink} to={`${PROJECTS.toLowerCase()}`}variant="outlined" color="primary" size='large'>
                         Browse Projects
@@ -44,17 +45,17 @@ const Intro: React.FC = () => {
             >
                 <Box
                     sx={{ 
-                        p: 5,
+                        p: 3,
                         borderRadius: '50%',
-                        border: '1px solid #6b21a8',
+                        border: `4px solid ${theme.palette.primary.main}`,
                     }}
                 >
                     <Avatar
                         alt="Nikki Rae"
                         src={`${ProfilePic}`}
                         sx={{ 
-                            width: {xs: 260, md: 300, lg: 330}, 
-                            height: {xs: 260, md: 300, lg: 330}, 
+                            width: {xs: 280, md: 320, lg: 350}, 
+                            height: {xs: 280, md: 320, lg: 350}, 
                             '.MuiAvatar-img': {
                                 objectFit: 'cover',
                                 objectPosition: 'top'

@@ -22,8 +22,8 @@ const Router = createBrowserRouter([
           element: <Pages.Project />
         },
         {
-          path: k.ABOUT,
-          element: <Pages.About />,
+          path: k.RESUME,
+          element: <Pages.Resume />,
         },
         {
           path: k.CONTACT,

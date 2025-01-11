@@ -1,13 +1,13 @@
 import Home from './home/Home'
 import Projects from './projects/Projects'
 import Project from './project/Project'
-import About from './about/About'
+import Resume from './resume/Resume'
 import Contact from './Contact'
 
 export {
     Home,
     Projects,
     Project,
-    About,
+    Resume,
     Contact
 }

@@ -1,19 +1,23 @@
 import { Suspense } from 'react'
-import ReactDOM from 'react-dom/client'
 import { RouterProvider } from 'react-router-dom';
-import { ThemeProvider } from '@mui/material/styles';
 import Router from './Router'
 import CircularProgress from '@mui/material/CircularProgress';
-import theme from '@styles/theme'
 import '@styles/index.css'
+import ThemeProvider from './hooks/useTheme';
+import { theme } from '@styles/theme';
 
-ReactDOM.createRoot(document.getElementById('root')!).render(
+const App = () => {
+
+  return (
   <Suspense fallback={<div>Loading...</div>}>
-    <ThemeProvider theme={theme}>
+    <ThemeProvider palette={theme}>
       <RouterProvider
         router={Router}
         fallbackElement={<CircularProgress />}
       />
     </ThemeProvider>
   </Suspense>
-)
+  )
+}
+
+export default App
