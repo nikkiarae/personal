@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, ListItemIcon, Typography, useTheme } from '@mui/material';
+import { Box, Typography, useTheme } from '@mui/material';
 import { SectionHeading } from '@components/typography';
 import PlaceIcon from '@mui/icons-material/Place';
 

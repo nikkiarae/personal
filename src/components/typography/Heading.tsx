@@ -1,5 +1,5 @@
 import React from 'react';
-import { Typography, Box, useTheme } from '@mui/material';
+import { Typography, useTheme } from '@mui/material';
 
 interface HeadingProps {
     text: string

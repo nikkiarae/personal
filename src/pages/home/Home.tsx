@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Typography, Button, Avatar, Grid, Stack } from '@mui/material';
+import { Stack } from '@mui/material';
 import { Intro, Skills } from './sections';
 import { Page } from '@components/layouts';
 

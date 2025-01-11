@@ -1,11 +1,10 @@
 import React, { PropsWithChildren } from 'react';
-import { Card, CardProps, useTheme } from '@mui/material';
+import { Card, CardProps } from '@mui/material';
 import { borderRadius, boxShadow } from '@styles/globalStyle';
 
 interface CardWrapperProps extends CardProps {}
 
 const CardWrapper: React.FC<PropsWithChildren<CardWrapperProps>> = ({ children }) => {
-    const theme = useTheme()
     return (
         <Card
             elevation={10}

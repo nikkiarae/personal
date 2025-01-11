@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Typography, Button, Avatar, Grid, Stack, useTheme } from '@mui/material';
+import { Box, Typography, Button, Avatar, Stack, useTheme } from '@mui/material';
 import ProfilePic from '@assets/images/profile.jpeg'
 import { NavLink } from 'react-router-dom';
 import { PROJECTS, RESUME } from '@services/constants';

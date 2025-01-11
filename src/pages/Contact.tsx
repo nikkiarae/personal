@@ -5,7 +5,6 @@ import {
   Button,
   TextField,
   Stack,
-  Typography,
   Container,
   Alert,
   AlertTitle,
@@ -21,7 +20,7 @@ const ContactSchema = Yup.object().shape({
 });
 
 const Contact: React.FC = () => {
-  const [state, handleSubmit] = useForm("mzzzyjry");
+  const [_, handleSubmit] = useForm("mzzzyjry");
   const [formStatus, setFormStatus] = useState<"success" | "error" | null>(null);
 
   const onSubmit = async (values: { name: string; email: string; message: string }, { resetForm }: any) => {

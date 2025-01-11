@@ -1,13 +1,8 @@
 import React from "react";
 import {
-  Card,
-  CardContent,
   CardMedia,
   Typography,
-  Button,
   Box,
-  useTheme,
-  CardActionArea,
   Stack,
   IconButton,
 } from "@mui/material";
@@ -24,7 +19,6 @@ interface ProjectCardProps {
 }
 
 const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
-  const theme = useTheme();
   return (
     <CardWrapper>
       <CardMedia

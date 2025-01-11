@@ -1,5 +1,5 @@
 import React from 'react';
-import { CardContent, Typography, Box, useTheme, Stack } from '@mui/material';
+import { CardContent, Typography, Box, Stack } from '@mui/material';
 import { Skill } from '@services/types';
 import CardWrapper from './CardWrapper';
 
@@ -8,7 +8,6 @@ interface SkillCardProps {
 }
 
 const SkillCard: React.FC<SkillCardProps> = ({ skill }) => {
-    const theme = useTheme()
     return (
         <Box>
             <CardWrapper>

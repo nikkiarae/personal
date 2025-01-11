@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, Box, Stack, Typography } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 import { SectionHeading } from '@components/typography';
 
 

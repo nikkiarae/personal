@@ -1,5 +1,5 @@
 import React from 'react';
-import { Divider, Grid, Stack } from '@mui/material';
+import { Divider, Stack } from '@mui/material';
 import { Education, Experience, Introduction, Skills, Download } from './sections';
 import { PageHeader } from '@components/sections';
 import { Page } from '@components/layouts';
