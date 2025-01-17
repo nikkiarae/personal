@@ -5,6 +5,7 @@ import {
   Box,
   Stack,
   IconButton,
+  Chip,
 } from "@mui/material";
 import { NavLink } from "react-router-dom";
 import LaunchIcon from "@mui/icons-material/Launch"; // Icon for live link
@@ -39,14 +40,35 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
           flexDirection: "column",
           flexGrow: 1, // Allows content to grow and fill the space
           justifyContent: "space-between", // Pushes buttons to the bottom
+          p: 2
         }}
       >
-        <Box sx={{ p: 2 }}>
+       <Stack spacing={2} sx={{ p: 2 }}>
           <Typography variant="h5">{project.title}</Typography>
+          {/* Technologies Used */}
+          <Stack
+            direction="row"
+            flexWrap="wrap"
+            sx={{
+              gap: 1
+            }}
+          >
+            {project.technologiesUsed?.map((tech, index) => (
+              <Chip
+                key={index}
+                label={tech}
+                variant="outlined"
+                color="secondary"
+                size="small"
+              />
+            ))}
+          </Stack>
           <Typography variant="body2" color="text.secondary">
             {project.briefDescription}
-          </Typography>
-        </Box>
+          </Typography> 
+          
+          
+        </Stack>
 
         {/* Buttons */}
         <Stack
