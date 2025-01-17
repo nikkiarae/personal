@@ -17,7 +17,7 @@ const CardWrapper: React.FC<PropsWithChildren<CardWrapperProps>> = ({ children }
                 flexDirection: 'column',
                 transition: 'transform 0.1s ease-in-out',
                 ':hover': { 
-                    transform: 'scale3d(1.03, 1.03, 1)',
+                    transform: 'scale3d(1.01, 1.01, 1)',
                     // boxShadow: `0px 0px 15px ${theme.palette.primary.main}`,
                 },
             }}

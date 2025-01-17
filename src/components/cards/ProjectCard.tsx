@@ -24,13 +24,14 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
     <CardWrapper>
       <CardMedia
         component="img"
-        height="300"
+        
         image={project.images[0]}
         alt={project.title}
         sx={{
           borderBottom: "5px solid #6A0DAD",
           objectFit: "cover",
           objectPosition: "top",
+          height:{ xs: 230, sm: 300 }
         }}
       />
       {/* Content */}
