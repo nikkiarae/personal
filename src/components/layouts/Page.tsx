@@ -5,7 +5,7 @@ interface PageProps {}
 
 const Page: React.FC<PropsWithChildren<PageProps>> = ({ children }) => {
     return (
-        <Container disableGutters sx={{ mt: {xs: 4, md: 6}, mb: {xs: 8, md: 14} }}>
+        <Container disableGutters sx={{ mt: {xs: 2, md: 4}, mb: {xs: 8, md: 14} }}>
             { children }  
         </Container>
     )

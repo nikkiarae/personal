@@ -46,8 +46,8 @@ const Layout: React.FC = () => {
     <Box onClick={handleDrawerToggle} sx={{ width: 250 }}>
       <List>
         {NAV_ITEMS.map((text) => (
-          <ListItem key={text} component={Link} to={`/${text.toLowerCase()}`}>
-            <ListItemText primary={text} />
+          <ListItem key={text} component={Link} to={`/${text.toLowerCase()}`} sx={{ textDecoration: 'none', color: theme.palette.text.primary }}>
+            <ListItemText primary={text}  />
           </ListItem>
         ))}
       </List>
@@ -159,7 +159,7 @@ const Layout: React.FC = () => {
         component="main"
       >
         <Toolbar />
-        <Container sx={{ mt: 4, height: '100%' }}>
+        <Container sx={{ height: '100%' }}>
           <Outlet />
         </Container>
         

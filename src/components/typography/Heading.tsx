@@ -8,7 +8,7 @@ interface HeadingProps {
 const Heading: React.FC<HeadingProps> = ({ text }) => {
     const theme = useTheme()
     return (
-        <Typography variant="h1">
+        <Typography variant="h2">
             { text }
             <span style={{ color: theme.palette.primary.main }}>.</span>
         </Typography>

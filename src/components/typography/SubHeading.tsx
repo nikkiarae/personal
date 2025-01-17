@@ -19,7 +19,7 @@ const SubHeading: React.FC<SubHeadingProps> = ({ text }) => {
                     my: 1
                 }} 
             />
-            <Typography variant="h4">
+            <Typography variant="h5">
                 { text }
             </Typography>
         </Box>
