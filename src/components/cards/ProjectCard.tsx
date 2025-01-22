@@ -1,4 +1,6 @@
-import React from "react";
+"use client";
+
+import React, { FC } from "react";
 import {
   CardMedia,
   Typography,
@@ -7,31 +9,30 @@ import {
   IconButton,
   Chip,
 } from "@mui/material";
-import { NavLink } from "react-router-dom";
+import Link from "next/link"; // Importing Next.js Link
 import LaunchIcon from "@mui/icons-material/Launch"; // Icon for live link
 import GitHubIcon from "@mui/icons-material/GitHub"; // Icon for GitHub repo
 import InfoIcon from "@mui/icons-material/Info"; // Icon for project details
-import { Project } from "@services/types";
+import { Project } from "@/types/types";
 import CardWrapper from "./CardWrapper";
-import { PROJECTS } from "@services/constants";
+import { PROJECTS } from "@/lib/constants/navigation";
 
 interface ProjectCardProps {
   project: Project;
 }
 
-const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
+const ProjectCard: FC<ProjectCardProps> = ({ project }) => {
   return (
     <CardWrapper>
       <CardMedia
         component="img"
-        
         image={project.images[0]}
         alt={project.title}
         sx={{
           borderBottom: "5px solid #6A0DAD",
           objectFit: "cover",
           objectPosition: "top",
-          height:{ xs: 230, sm: 300 }
+          height: { xs: 230, sm: 300 },
         }}
       />
       {/* Content */}
@@ -41,17 +42,17 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
           flexDirection: "column",
           flexGrow: 1, // Allows content to grow and fill the space
           justifyContent: "space-between", // Pushes buttons to the bottom
-          p: 1
+          p: 1,
         }}
       >
-       <Stack spacing={2}>
+        <Stack spacing={2}>
           <Typography variant="h5">{project.title}</Typography>
           {/* Technologies Used */}
           <Stack
             direction="row"
             flexWrap="wrap"
             sx={{
-              gap: 1
+              gap: 1,
             }}
           >
             {project.technologiesUsed?.map((tech, index) => (
@@ -66,9 +67,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
           </Stack>
           <Typography variant="body2" color="text.secondary">
             {project.briefDescription}
-          </Typography> 
-          
-          
+          </Typography>
         </Stack>
 
         {/* Buttons */}
@@ -77,7 +76,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
           spacing={2}
           alignItems="center"
           justifyContent="space-between"
-          mt={{ xs: 1, sm: 2}}
+          mt={{ xs: 1, sm: 2 }}
         >
           {/* Demo Button */}
           {project.liveLink && (
@@ -104,17 +103,17 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
           )}
 
           {/* Info Button */}
-          <IconButton
-            color="secondary"
-            component={NavLink}
-            to={`/${PROJECTS.toLowerCase()}/${project.id}`}
-            sx={{
-              textTransform: "none",
-              textDecoration: "none",
-            }}
-          >
-            <InfoIcon />
-          </IconButton>
+          <Link href={`/${PROJECTS.toLowerCase()}/${project._id}`} passHref>
+            <IconButton
+              color="secondary"
+              sx={{
+                textTransform: "none",
+                textDecoration: "none",
+              }}
+            >
+              <InfoIcon />
+            </IconButton>
+          </Link>
         </Stack>
       </Box>
     </CardWrapper>

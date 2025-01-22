@@ -1,8 +1,11 @@
+"use client";
+
 import React from 'react';
 import { Box, useTheme } from '@mui/material';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from 'react-responsive-carousel';
-import { borderRadius } from '@styles/globalStyle';
+import { borderRadius } from '@/styles/globalStyle';
+import Image from 'next/image';
 
 interface CarouselProps {
     images: string[]
@@ -42,7 +45,7 @@ const CarouselComponent: React.FC<CarouselProps> = ({ images }) => {
             >
                 { images.map((image: string, idx: React.Key) => (
                     <div key={idx}>
-                        <img src={image} alt={`Slide ${idx}`} />
+                        <Image src={image} alt={`Slide ${idx}`} />
                     </div>
                 ))}
             </Carousel>

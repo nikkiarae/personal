@@ -1,11 +1,13 @@
-import React from 'react';
+"use client";
+
+import React, { FC } from 'react';
 import { Typography, Box } from '@mui/material';
 
 interface SectionHeadingProps {
     text: string
 }
 
-const SectionHeading: React.FC<SectionHeadingProps> = ({ text }) => {
+const SectionHeading: FC<SectionHeadingProps> = ({ text }) => {
     return (
         <Box sx={{ marginBottom: 2 }}>
             <Typography variant="h3">

@@ -1,11 +1,13 @@
-import React from 'react';
+"use client";
+
+import React, { FC } from 'react';
 import { Typography, useTheme } from '@mui/material';
 
 interface HeadingProps {
     text: string
 }
 
-const Heading: React.FC<HeadingProps> = ({ text }) => {
+const Heading: FC<HeadingProps> = ({ text }) => {
     const theme = useTheme()
     return (
         <Typography variant="h2">

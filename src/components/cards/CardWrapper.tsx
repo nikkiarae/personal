@@ -1,10 +1,10 @@
+"use client";
+
 import React, { PropsWithChildren } from 'react';
-import { Card, CardProps } from '@mui/material';
-import { borderRadius, boxShadow } from '@styles/globalStyle';
+import { Card } from '@mui/material';
+import { borderRadius, boxShadow } from '@/styles/globalStyle';
 
-interface CardWrapperProps extends CardProps {}
-
-const CardWrapper: React.FC<PropsWithChildren<CardWrapperProps>> = ({ children }) => {
+const CardWrapper: React.FC<PropsWithChildren> = ({ children }) => {
     return (
         <Card
             elevation={10}

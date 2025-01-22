@@ -1,3 +1,5 @@
+"use client";
+
 import {
     FC,
     ReactNode,
@@ -6,6 +8,7 @@ import {
     createContext,
     useContext,
     useMemo,
+    useCallback,
   } from "react";
   import {
     ThemeProvider as MuiThemeProvider,
@@ -14,13 +17,14 @@ import {
     PaletteMode,
     createTheme,
     responsiveFontSizes,
+    PaletteOptions,
   } from "@mui/material";
-  import { baseThemeOptions, lightPalette, darkPalette } from "../styles/theme";
+  import { baseThemeOptions } from "../styles/theme";
   
   interface ThemeContextProps {
     mode: PaletteMode;
     toggleTheme: () => void;
-    theme: any
+    theme: Theme
   }
   
   const ThemeContext = createContext<ThemeContextProps | undefined>(undefined);
@@ -35,27 +39,35 @@ import {
   
   interface ThemeProviderProps {
     children: ReactNode;
-    palette: any;
+    palette: {
+      dark: PaletteOptions
+      light: PaletteOptions
+    };
   }
   
   const ThemeProvider: FC<ThemeProviderProps> = ({ children, palette }) => {
     const [mode, setMode] = useState<PaletteMode>("light");
   
-    const createThemeWithMode = (mode: PaletteMode): Theme => {
+    
+  const createThemeWithMode = useCallback(
+    (mode: PaletteMode): Theme => {
       return createTheme({
         palette: {
-          ...(mode === "dark" ? darkPalette : lightPalette),
+          ...(mode === "dark" ? palette.dark : palette.light),
           mode,
         },
         ...baseThemeOptions.components,
-        ...baseThemeOptions.typography
+        ...baseThemeOptions.typography,
       });
-    };
-  
-    // Use `useMemo` to optimize theme creation
-    const theme = useMemo(() => {
-      return responsiveFontSizes(createThemeWithMode(mode));
-    }, [mode, palette]);
+    },
+    [palette] // Ensure the function updates when the palette changes
+  );
+
+  // Use `useMemo` to optimize theme creation
+  const theme = useMemo(() => {
+    return responsiveFontSizes(createThemeWithMode(mode));
+  }, [mode, createThemeWithMode]);
+
   
     const toggleTheme = () => {
       const newMode = mode === "light" ? "dark" : "light";

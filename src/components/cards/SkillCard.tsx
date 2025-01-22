@@ -1,13 +1,15 @@
-import React from 'react';
+"use client";
+
+import React, { FC } from 'react';
 import { CardContent, Typography, Box, Stack } from '@mui/material';
-import { Skill } from '@services/types';
+import { Skill } from '@/types/types';
 import CardWrapper from './CardWrapper';
 
 interface SkillCardProps {
   skill: Skill
 }
 
-const SkillCard: React.FC<SkillCardProps> = ({ skill }) => {
+const SkillCard: FC<SkillCardProps> = ({ skill }) => {
     return (
         <Box>
             <CardWrapper>

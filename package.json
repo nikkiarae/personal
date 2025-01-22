@@ -1,23 +1,16 @@
 {
   "name": "personal",
-  "homepage": "https://github.com/nikkiarae/personal/",
   "private": true,
   "version": "0.1.0",
-  "type": "module",
   "scripts": {
-    "dev": "vite",
-    "test": "vitest",
-    "build": "tsc && vite build",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist",
-    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "dev": "next dev --turbopack",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
   },
   "dependencies": {
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.5",
-    "@fontsource/open-sans": "^5.0.28",
-    "@fontsource/roboto": "^5.0.13",
     "@formspree/react": "^2.5.1",
     "@mui/icons-material": "^5.15.19",
     "@mui/material": "^5.15.19",
@@ -25,30 +18,19 @@
     "mapbox-gl": "^3.4.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-gallery-carousel": "^0.4.0",
     "react-map-gl": "^7.1.7",
     "react-responsive-carousel": "^3.2.23",
-    "react-router-dom": "^6.23.1",
-    "vite-tsconfig-paths": "^4.2.1",
-    "yup": "^1.6.1"
+    "yup": "^1.6.1",
+    "mongoose": "^8.9.5",
+    "next": "15.1.4"
   },
   "devDependencies": {
+    "@eslint/eslintrc": "^3",
     "@types/node": "^20.14.2",
     "@types/react": "^18.2.66",
     "@types/react-dom": "^18.2.22",
-    "@types/react-gallery-carousel": "^0.2.6",
-    "@typescript-eslint/eslint-plugin": "^7.2.0",
-    "@typescript-eslint/parser": "^7.2.0",
-    "@vitejs/plugin-react": "^4.2.1",
-    "@vitest/ui": "^0.34.6",
-    "eslint": "^8.57.0",
-    "eslint-plugin-react-hooks": "^4.6.0",
-    "eslint-plugin-react-refresh": "^0.4.6",
-    "gh-pages": "^6.1.1",
-    "happy-dom": "^12.9.1",
-    "prettier": "3.0.3",
-    "typescript": "^5.2.2",
-    "vite": "^5.2.0",
-    "vitest": "^0.34.6"
+    "eslint": "^9",
+    "eslint-config-next": "15.1.4",
+    "typescript": "^5"
   }
 }

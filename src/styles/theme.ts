@@ -1,6 +1,4 @@
 import { PaletteOptions } from '@mui/material/styles';
-import OpenSansVF from '@assets/fonts/OpenSans-VariableFont.ttf';
-import RobotoFlexVF from '@assets/fonts/RobotoFlex-VariableFont.ttf';
 import { purple } from '@mui/material/colors';
 
 export const baseThemeOptions = {
@@ -82,12 +80,12 @@ export const baseThemeOptions = {
         @font-face {
           font-family: 'Open Sans';
           font-display: swap;
-          src: url(${OpenSansVF}) format('truetype');
+          src: url('/assets/fonts/OpenSans-VariableFont.ttf) format('truetype');
         }
         @font-face {
           font-family: 'Roboto Flex';
           font-display: swap;
-          src: url(${RobotoFlexVF}) format('truetype');
+          src: url('/assets/fonts/RobotoFlex-VariableFont.ttf') format('truetype');
         }
       `,
     },

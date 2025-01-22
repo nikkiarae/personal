@@ -1,25 +1,28 @@
-import React from 'react';
+"use client";
+
+import React, { FC, useEffect, useRef } from 'react';
 import Map, { MapProvider, MapRef, Marker } from 'react-map-gl';
 import PlaceIcon from '@mui/icons-material/Place';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import { useTheme } from '@mui/material';
+import { MAPBOX_TOKEN } from '@/lib/constants/config';
 
 interface MapProps {
     longitude: number;
     latitude: number;
 }
 
-const MapComponent: React.FC<MapProps> = ({ longitude, latitude }) => {
+const MapComponent: FC<MapProps> = ({ longitude, latitude }) => {
     const theme = useTheme()
-    const [viewport, setViewport] = React.useState({
+    const viewport = {
         latitude: 37.7751,
         longitude: -122.4193,
         zoom: 4,
-    });
+    };
 
-    const mapRef = React.useRef<MapRef>(null);
+    const mapRef = useRef<MapRef>(null);
 
-    React.useEffect(() => {
+    useEffect(() => {
         const timer = setTimeout(() => {
             if (mapRef.current) {
                 mapRef.current.flyTo({
@@ -37,7 +40,7 @@ const MapComponent: React.FC<MapProps> = ({ longitude, latitude }) => {
         <MapProvider>
             <Map
                 ref={mapRef}
-                mapboxAccessToken={import.meta.env.VITE_MAPBOX_TOKEN}
+                mapboxAccessToken={MAPBOX_TOKEN}
                 initialViewState={viewport}
                 style={{
                     width: '100%',

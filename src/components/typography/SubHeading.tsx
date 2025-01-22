@@ -1,11 +1,13 @@
-import React from 'react';
+"use client";
+
+import React, { FC } from 'react';
 import { Typography, Box, useTheme } from '@mui/material';
 
 interface SubHeadingProps {
     text: string
 }
 
-const SubHeading: React.FC<SubHeadingProps> = ({ text }) => {
+const SubHeading: FC<SubHeadingProps> = ({ text }) => {
     const theme = useTheme()
 
     return (
