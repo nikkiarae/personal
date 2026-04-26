@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import React, { FC, useState } from "react";
-import { Formik, Form, Field, FormikHelpers } from "formik";
-import * as Yup from "yup";
+import React, { FC, useState } from 'react';
+import { Formik, Form, Field, FormikHelpers } from 'formik';
+import * as Yup from 'yup';
 import {
   Button,
   TextField,
@@ -10,15 +10,15 @@ import {
   Container,
   Alert,
   AlertTitle,
-} from "@mui/material";
-import { useForm } from "@formspree/react";
-import { Page } from "@/components/layout";
-import { PageHeader } from "@/components/sections";
+} from '@mui/material';
+import { useForm } from '@formspree/react';
+import { Page } from '@/components/layout';
+import { PageHeader } from '@/components/sections';
 
 const ContactSchema = Yup.object().shape({
-  name: Yup.string().required("Name is required"),
-  email: Yup.string().email("Invalid email").required("Email is required"),
-  message: Yup.string().required("Message is required"),
+  name: Yup.string().required('Name is required'),
+  email: Yup.string().email('Invalid email').required('Email is required'),
+  message: Yup.string().required('Message is required'),
 });
 
 interface ContactFormValues {
@@ -28,19 +28,21 @@ interface ContactFormValues {
 }
 
 const Contact: FC = () => {
-  const [, handleSubmit] = useForm("mzzzyjry");
-  const [formStatus, setFormStatus] = useState<"success" | "error" | null>(null);
+  const [, handleSubmit] = useForm('mzzzyjry');
+  const [formStatus, setFormStatus] = useState<'success' | 'error' | null>(
+    null,
+  );
 
   const onSubmit = async (
     values: { name: string; email: string; message: string },
-    { resetForm }: FormikHelpers<ContactFormValues>
+    { resetForm }: FormikHelpers<ContactFormValues>,
   ) => {
     try {
       await handleSubmit(values);
-      setFormStatus("success");
+      setFormStatus('success');
       resetForm(); // Reset the form on successful submission
     } catch (error) {
-      setFormStatus("error");
+      setFormStatus('error');
       console.error(error);
     }
   };
@@ -48,15 +50,15 @@ const Contact: FC = () => {
   return (
     <Page>
       <PageHeader
-        heading={"Contact Me"}
-        subHeading={"Looking to partner or work together? Reach out"}
+        heading={'Contact Me'}
+        subHeading={'Looking to partner or work together? Reach out'}
       />
-      <Container maxWidth={"md"} sx={{ pt: 6 }}>
+      <Container maxWidth={'md'} sx={{ pt: 6 }}>
         <Formik
           initialValues={{
-            name: "",
-            email: "",
-            message: "",
+            name: '',
+            email: '',
+            message: '',
           }}
           validationSchema={ContactSchema}
           onSubmit={onSubmit}
@@ -98,13 +100,13 @@ const Contact: FC = () => {
                 </Button>
 
                 {/* Alert Section */}
-                {formStatus === "success" && (
+                {formStatus === 'success' && (
                   <Alert severity="success">
                     <AlertTitle>Success</AlertTitle>
                     Your message has been sent successfully!
                   </Alert>
                 )}
-                {formStatus === "error" && (
+                {formStatus === 'error' && (
                   <Alert severity="error">
                     <AlertTitle>Error</AlertTitle>
                     Something went wrong. Please try again later.

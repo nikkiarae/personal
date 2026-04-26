@@ -1,13 +1,7 @@
-import Heading from './Heading'
-import SubHeading from './SubHeading'
-import SectionHeading from './SectionHeading'
-import ListHeading from './ListHeading'
-import ListItem from './ListItem'
+import Heading from './Heading';
+import SubHeading from './SubHeading';
+import SectionHeading from './SectionHeading';
+import ListHeading from './ListHeading';
+import ListItem from './ListItem';
 
-export {
-    Heading,
-    SubHeading,
-    SectionHeading,
-    ListHeading,
-    ListItem
-}
+export { Heading, SubHeading, SectionHeading, ListHeading, ListItem };

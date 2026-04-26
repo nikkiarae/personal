@@ -1,10 +1,10 @@
-import React, { FC } from "react";
-import { Page } from "@/components/layout";
-import { PageHeader } from "@/components/sections";
-import { Grid } from "@mui/material";
-import { Project } from "@/types/types";
-import { ProjectCard } from "@/components/cards";
-import { fetchProjects } from "@/lib/api/projects";
+import React, { FC } from 'react';
+import { Page } from '@/components/layout';
+import { PageHeader } from '@/components/sections';
+import { Grid } from '@mui/material';
+import { Project } from '@/types/types';
+import { ProjectCard } from '@/components/cards';
+import { fetchProjects } from '@/lib/api/projects';
 
 const Projects: FC = async () => {
   const projects = await fetchProjects();
@@ -12,9 +12,9 @@ const Projects: FC = async () => {
   return (
     <Page>
       <PageHeader
-        heading={"Projects"}
+        heading={'Projects'}
         subHeading={
-          "Youll find a selection of my work below that has allowed me to develop my skills"
+          'Youll find a selection of my work below that has allowed me to develop my skills'
         }
       />
       <Grid container spacing={{ xs: 1.5, sm: 3 }}>

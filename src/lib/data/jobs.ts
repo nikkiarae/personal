@@ -1,0 +1,96 @@
+import type { Job } from '@/types/types';
+
+export const jobs: Job[] = [
+  {
+    id: 'powdr',
+    show: true,
+    order: 0,
+    company: 'Powdr',
+    title: 'Full Stack Engineer',
+    location: 'Manchester, UK - Hybrid',
+    startDate: '2025-04-01T00:00:00.000Z',
+    endDate: null,
+    responsibilities: [
+      'Contributed to a full-stack modernisation, transitioning a Java monolith to a NestJS API layer and modernising the frontend architecture to a component-driven, reactive state model, improving scalability, developer velocity, and long-term maintainability.',
+      'Architected AI-powered insights pipelines, implemented automated UI and calculation testing, and established nightly build workflows, cutting QA overhead and regression risk significantly.',
+      "Embedded AI-assisted development practices across the team, including review workflows for LLM-generated code covering logic validation, API hallucination detection, security constraints, and prompt-engineering standards, directly contributing to onboarding the company's first enterprise client.",
+    ],
+  },
+  {
+    id: '67900068501fb5d5e777b945',
+    show: true,
+    order: 1,
+    company: 'SRC UK',
+    title: 'Full Stack Developer',
+    location: 'Lincoln, UK - Hybrid',
+    dateLabel: 'Oct 2023 - Apr 2025',
+    startDate: '2023-10-01T00:00:00.000Z',
+    endDate: '2025-04-01T00:00:00.000Z',
+    responsibilities: [
+      'Engineered two production applications leveraging GCP Gemini, delivering end-to-end full-stack solutions with optimised frontend performance and scalable backend architecture.',
+      'Drove migration of legacy micro-frontend services to a TypeScript/Vite microservice architecture, reducing build times and improving developer experience, maintainability, and pipeline scalability.',
+      'Evaluated and benchmarked LLM capabilities for project integration, producing technical recommendations adopted cross-functionally, and mentored junior developers through code reviews and agile task prioritisation.',
+    ],
+  },
+  {
+    id: '67900081501fb5d5e777b946',
+    show: true,
+    order: 2,
+    company: 'PassiveLogic',
+    title: 'Software Developer',
+    location: 'UT, USA - Remote',
+    dateLabel: '2018 - 2019, 2021 - 2023',
+    startDate: '2018-05-01T00:00:00.000Z',
+    endDate: '2023-09-01T00:00:00.000Z',
+    responsibilities: [
+      'Architected an interactive application for real-time exploration and analysis of the Quantum Standard Ontology, highlighting foundational elements and interdependencies.',
+      'Developed a GraphQL-powered Boolean Builder for dynamic, scalable data queries, enhancing data retrieval efficiency.',
+      'Implemented a universal drag-and-drop protocol using standard DOM events, ensuring intuitive user interactions.',
+      'Designed a custom EnyoJS component library to improve reusability across applications.',
+    ],
+  },
+  {
+    id: '67900091501fb5d5e777b947',
+    show: true,
+    order: 3,
+    company: 'Travis Perkins Group',
+    title: 'Web Developer',
+    location: 'UK',
+    startDate: '2022-01-01T00:00:00.000Z',
+    endDate: '2022-06-01T00:00:00.000Z',
+    responsibilities: [
+      'Played a role in designing, developing, and maintaining responsive and user-friendly websites for Travis Perkins, ensuring optimal functionality across various devices and browsers using React.',
+      "Collaborated closely with cross-functional teams, including UI/UX designers and backend developers, to deliver seamless and visually appealing user interfaces that aligned with the company's branding and user experience standards.",
+    ],
+  },
+  {
+    id: '679000a0501fb5d5e777b948',
+    show: true,
+    order: 4,
+    company: 'Travis Perkins Group',
+    title: 'IT Analyst',
+    location: 'UK',
+    startDate: '2021-06-01T00:00:00.000Z',
+    endDate: '2021-12-01T00:00:00.000Z',
+    responsibilities: [
+      'Manipulated data from various databases within Google Sheets to help enrich and complete data to import into LeanIX (Data Modeling Tool).',
+      'Maintained LeanIX by keeping data current within the application using their API and maintaining any external integrations.',
+    ],
+  },
+  {
+    id: '679000b9501fb5d5e777b949',
+    show: false,
+    order: 5,
+    company: 'PassiveLogic',
+    title: 'Junior Software Engineer',
+    location: 'UT, USA',
+    startDate: '2018-05-01T00:00:00.000Z',
+    endDate: '2019-05-01T00:00:00.000Z',
+    responsibilities: [
+      'Implemented a universal drag and drop protocol to be implemented within the application using standard DOM event.',
+      'Assisted in the creation of a custom Enyo.js component library to use within all the applications.',
+    ],
+  },
+];
+
+export default jobs;

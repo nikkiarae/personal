@@ -1,27 +1,18 @@
-import { NEXT_PUBLIC_API_URL } from "@/lib/constants/config";
-import { Project } from "@/types/types";
+import { Project } from '@/types/types';
+import { projects } from '@/lib/data/projects';
 
-export const fetchProjects = async (): Promise<Project[]> => {
-  console.log(`${NEXT_PUBLIC_API_URL}/api/projects`)
-  const response = await fetch(`${NEXT_PUBLIC_API_URL}/api/projects`, {
-    cache: "no-store",
-  });
-
-  if (!response.ok) {
-    throw new Error("Failed to fetch projects");
-  }
-
-  return response.json();
+const getVisibleProjects = (): Project[] => {
+  return projects
+    .filter((project) => project.show)
+    .sort(
+      (firstProject, secondProject) => firstProject.order - secondProject.order,
+    );
 };
 
-export const fetchProject = async (id: string): Promise<Project> => {
-  const response = await fetch(`${NEXT_PUBLIC_API_URL}/api/projects/${id}`, {
-    cache: "no-store",
-  });
+export const fetchProjects = async (): Promise<Project[]> => {
+  return getVisibleProjects();
+};
 
-  if (!response.ok) {
-    throw new Error(`Failed to fetch project with ID: ${id}`);
-  }
-
-  return response.json();
+export const fetchProject = async (id: string): Promise<Project | null> => {
+  return getVisibleProjects().find((entry) => entry.id === id) ?? null;
 };

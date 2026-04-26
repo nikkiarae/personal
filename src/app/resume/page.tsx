@@ -1,18 +1,26 @@
 import React, { FC } from 'react';
 import { Divider, Stack } from '@mui/material';
-import { Education, Experience, Introduction, MySkills, Download, PageHeader } from '@/components/sections';
+import {
+  Education,
+  Experience,
+  Introduction,
+  MySkills,
+  Download,
+  PageHeader,
+} from '@/components/sections';
 import { Page } from '@/components/layout';
-import { Map } from '@/components/map'
+import { Map } from '@/components/map';
 import { fetchJobs } from '@/lib/api/jobs';
 
-
 const About: FC = async () => {
-    const jobs = await fetchJobs()
+  const jobs = await fetchJobs();
   return (
     <Page>
-      <PageHeader 
+      <PageHeader
         heading={'About Me'}
-        subHeading={'Passionate about designing and building seamless, efficient, and visually compelling web applications.'}
+        subHeading={
+          'Passionate about designing and building seamless, efficient, and visually compelling web applications.'
+        }
       />
       <Stack spacing={6}>
         <Download />
@@ -26,9 +34,8 @@ const About: FC = async () => {
         <Divider />
         <Education />
       </Stack>
-      
     </Page>
-  )
+  );
 };
 
 export default About;

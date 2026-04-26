@@ -1,13 +1,13 @@
-"use client";
+'use client';
 
-import React, { FC } from "react";
-import { Stack, Button } from "@mui/material";
-import LaunchIcon from "@mui/icons-material/Launch"; // Icon for live link
-import GitHubIcon from "@mui/icons-material/GitHub"; // Icon for GitHub repo
+import React, { FC } from 'react';
+import { Stack, Button } from '@mui/material';
+import LaunchIcon from '@mui/icons-material/Launch'; // Icon for live link
+import GitHubIcon from '@mui/icons-material/GitHub'; // Icon for GitHub repo
 
 interface LinksProps {
-  live?: string;
-  repo?: string;
+  live?: string | null;
+  repo?: string | null;
 }
 
 const Links: FC<LinksProps> = ({ live, repo }) => {

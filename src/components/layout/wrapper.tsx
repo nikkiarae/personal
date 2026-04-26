@@ -1,9 +1,9 @@
-"use client";
+'use client';
 
-import React, { FC, ReactNode } from "react";
-import { Box } from "@mui/material";
-import ThemeProvider from "@/hooks/useTheme";
-import { theme } from "@/styles/theme";
+import React, { FC, ReactNode } from 'react';
+import { Box } from '@mui/material';
+import ThemeProvider from '@/hooks/useTheme';
+import { theme } from '@/styles/theme';
 
 interface WrapperProps {
   children: ReactNode;

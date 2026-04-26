@@ -1,30 +1,35 @@
-"use client";
+'use client';
 
-import React, { FC } from "react";
-import { Button, Typography } from "@mui/material";
-import DownloadIcon from "@mui/icons-material/Download";
+import React, { FC } from 'react';
+import { Button, Stack } from '@mui/material';
+import DownloadIcon from '@mui/icons-material/Download';
 
 const ResumeButton: FC = () => {
-  const handleDownload = () => {
-    const link = document.createElement("a");
-    link.href = '/assets/Resume_Nikki_Rae_2025.pdf';
-    link.download = "Nikki_Rae_Resume_2025.pdf";
-    link.click();
-  };
-
   return (
-    <Button
-      variant="contained"
-      color="primary"
-      size="large"
-      startIcon={<DownloadIcon />}
-      onClick={handleDownload}
-    >
-        <Typography variant={'body1'}>
-            Download Resume
-        </Typography>
-      
-    </Button>
+    <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2}>
+      <Button
+        component="a"
+        href="/assets/Resume_Nikki_Rae_2026.pdf"
+        download="Nikki_Rae_US_Resume_2026.pdf"
+        variant="contained"
+        color="primary"
+        size="large"
+        startIcon={<DownloadIcon />}
+      >
+        Download US Resume
+      </Button>
+      <Button
+        component="a"
+        href="/assets/CV_Nikki_Rae_2026.pdf"
+        download="Nikki_Rae_UK_CV_2026.pdf"
+        variant="outlined"
+        color="secondary"
+        size="large"
+        startIcon={<DownloadIcon />}
+      >
+        Download UK CV
+      </Button>
+    </Stack>
   );
 };
 

@@ -1,6 +1,6 @@
-"use client";
+'use client';
 
-import React, { FC, useState } from "react";
+import React, { FC, useState } from 'react';
 import {
   AppBar,
   Toolbar,
@@ -12,12 +12,12 @@ import {
   ListItem,
   ListItemText,
   MenuItem,
-} from "@mui/material";
-import MenuIcon from "@mui/icons-material/Menu";
-import { LightMode, DarkMode } from "@mui/icons-material";
-import Link from "next/link";
-import { NAV_ITEMS } from "@/lib/constants/navigation";
-import { useTheme } from "@/hooks/useTheme";
+} from '@mui/material';
+import MenuIcon from '@mui/icons-material/Menu';
+import { LightMode, DarkMode } from '@mui/icons-material';
+import Link from 'next/link';
+import { NAV_ITEMS } from '@/lib/constants/navigation';
+import { useTheme } from '@/hooks/useTheme';
 
 const Header: FC = () => {
   const { toggleTheme, mode, theme } = useTheme();
@@ -35,9 +35,9 @@ const Header: FC = () => {
             <Link
               href={`/${text.toLowerCase()}`}
               style={{
-                textDecoration: "none",
+                textDecoration: 'none',
                 color: theme.palette.text.primary,
-                width: "100%",
+                width: '100%',
               }}
             >
               <ListItemText primary={text} />
@@ -54,7 +54,7 @@ const Header: FC = () => {
         <MenuItem key={text}>
           <Link
             href={`/${text.toLowerCase()}`}
-            style={{ textDecoration: "none", color: "inherit" }}
+            style={{ textDecoration: 'none', color: 'inherit' }}
           >
             {text}
           </Link>
@@ -68,21 +68,21 @@ const Header: FC = () => {
       <AppBar position="fixed">
         <Toolbar>
           <Typography
-          component={Link}
-          href="/"
+            component={Link}
+            href="/"
             variant="h6"
-            sx={{ flexGrow: 1, textDecoration: "none", color: '#fff'}}
+            sx={{ flexGrow: 1, textDecoration: 'none', color: '#fff' }}
           >
             Nikki Rae
           </Typography>
-          <Box sx={{ display: { xs: "none", md: "flex" } }}>
+          <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
             {menu}
             <IconButton
               color="inherit"
               onClick={toggleTheme}
               aria-label="toggle dark mode"
             >
-              {mode === "light" ? <LightMode /> : <DarkMode />}
+              {mode === 'light' ? <LightMode /> : <DarkMode />}
             </IconButton>
           </Box>
           <IconButton
@@ -90,7 +90,7 @@ const Header: FC = () => {
             aria-label="open drawer"
             edge="start"
             onClick={handleDrawerToggle}
-            sx={{ display: { md: "none" } }}
+            sx={{ display: { md: 'none' } }}
           >
             <MenuIcon />
           </IconButton>
@@ -104,8 +104,8 @@ const Header: FC = () => {
           keepMounted: true,
         }}
         sx={{
-          display: { xs: "block", md: "none" },
-          "& .MuiDrawer-paper": { boxSizing: "border-box", width: 250 },
+          display: { xs: 'block', md: 'none' },
+          '& .MuiDrawer-paper': { boxSizing: 'border-box', width: 250 },
         }}
       >
         {drawer}

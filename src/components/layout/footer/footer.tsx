@@ -1,10 +1,10 @@
-"use client";
+'use client';
 
-import React, { FC } from "react";
-import { Box, Typography, Link as MuiLink } from "@mui/material";
-import { Facebook, Twitter, Instagram, LinkedIn } from "@mui/icons-material";
-import Link from "next/link";
-import { NAV_ITEMS } from "@/lib/constants/navigation";
+import React, { FC } from 'react';
+import { Box, Typography, Link as MuiLink } from '@mui/material';
+import { Facebook, Twitter, Instagram, LinkedIn } from '@mui/icons-material';
+import Link from 'next/link';
+import { NAV_ITEMS } from '@/lib/constants/navigation';
 
 const Footer: FC = () => {
   return (
@@ -12,13 +12,13 @@ const Footer: FC = () => {
       component="footer"
       sx={{
         p: 2,
-        mt: "auto",
-        backgroundColor: "background.paper",
-        textAlign: "center",
-        width: "100%",
+        mt: 'auto',
+        backgroundColor: 'background.paper',
+        textAlign: 'center',
+        width: '100%',
       }}
     >
-      <Box sx={{ mt: 2, display: "flex", justifyContent: "center", gap: 2 }}>
+      <Box sx={{ mt: 2, display: 'flex', justifyContent: 'center', gap: 2 }}>
         <MuiLink href="https://facebook.com" target="_blank" rel="noopener">
           <Facebook />
         </MuiLink>
@@ -38,9 +38,9 @@ const Footer: FC = () => {
             key={item}
             href={`/${item.toLowerCase()}`}
             style={{
-              marginInline: "8px",
-              textDecoration: "none",
-              color: "inherit",
+              marginInline: '8px',
+              textDecoration: 'none',
+              color: 'inherit',
             }}
           >
             {item}

@@ -93,7 +93,7 @@ export const baseThemeOptions = {
 };
 
 export const lightPalette: PaletteOptions = {
-  mode: "light",
+  mode: 'light',
   primary: {
     main: purple[700], // Default purple shade
   },
@@ -103,7 +103,7 @@ export const lightPalette: PaletteOptions = {
 };
 
 export const darkPalette: PaletteOptions = {
-  mode: "light",
+  mode: 'light',
   primary: {
     main: purple[700], // Default purple shade
   },

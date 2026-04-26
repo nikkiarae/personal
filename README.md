@@ -1,4 +1,3 @@
-
 # My Personal Website
 
 This project is my personal portfolio website, showcasing my professional projects, skills, and experiences in web development. It is built using React, TypeScript, and Vite for fast and efficient development.
@@ -8,6 +7,7 @@ This project is my personal portfolio website, showcasing my professional projec
 ### Installation
 
 1. Clone the repository:
+
    ```sh
    git clone https://github.com/yourusername/personal-website.git
    cd personal-website
@@ -21,6 +21,7 @@ This project is my personal portfolio website, showcasing my professional projec
 ### Development
 
 To start the development server with hot module replacement:
+
 ```sh
 npm run dev
 ```
@@ -28,6 +29,7 @@ npm run dev
 ### Build
 
 To build the project for production:
+
 ```sh
 npm run build
 ```
@@ -35,6 +37,7 @@ npm run build
 ### Preview
 
 To preview the production build:
+
 ```sh
 npm run preview
 ```
@@ -54,7 +57,7 @@ export default {
     project: ['./tsconfig.json', './tsconfig.node.json'],
     tsconfigRootDir: __dirname,
   },
-}
+};
 ```
 
 - Replace `plugin:@typescript-eslint/recommended` with `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
