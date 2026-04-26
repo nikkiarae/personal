@@ -94,21 +94,37 @@ export const baseThemeOptions = {
 
 export const lightPalette: PaletteOptions = {
   mode: 'light',
+  background: {
+    default: '#f8fafc',
+    paper: '#ffffff',
+  },
   primary: {
     main: purple[700], // Default purple shade
   },
   secondary: {
     main: purple[400], // Light purple for secondary
+  },
+  text: {
+    primary: '#0f172a',
+    secondary: '#475569',
   },
 };
 
 export const darkPalette: PaletteOptions = {
-  mode: 'light',
+  mode: 'dark',
+  background: {
+    default: '#0f172a',
+    paper: '#111827',
+  },
   primary: {
     main: purple[700], // Default purple shade
   },
   secondary: {
-    main: purple[400], // Light purple for secondary
+    main: purple[300], // Light purple for secondary
+  },
+  text: {
+    primary: '#f8fafc',
+    secondary: '#cbd5e1',
   },
 };
 

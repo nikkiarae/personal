@@ -21,6 +21,8 @@ import {
 } from '@mui/material';
 import { baseThemeOptions } from '../styles/theme';
 
+const THEME_MODE_STORAGE_KEY = 'portfolio-theme-mode';
+
 interface ThemeContextProps {
   mode: PaletteMode;
   toggleTheme: () => void;
@@ -69,11 +71,19 @@ const ThemeProvider: FC<ThemeProviderProps> = ({ children, palette }) => {
 
   const toggleTheme = () => {
     const newMode = mode === 'light' ? 'dark' : 'light';
+    window.localStorage.setItem(THEME_MODE_STORAGE_KEY, newMode);
     setMode(newMode);
   };
 
   useEffect(() => {
     const matchMedia = window.matchMedia('(prefers-color-scheme: dark)');
+    const storedMode = window.localStorage.getItem(THEME_MODE_STORAGE_KEY);
+
+    if (storedMode === 'light' || storedMode === 'dark') {
+      setMode(storedMode);
+      return;
+    }
+
     setMode(matchMedia.matches ? 'dark' : 'light');
 
     const handleChange = (e: MediaQueryListEvent) => {
@@ -84,6 +94,10 @@ const ThemeProvider: FC<ThemeProviderProps> = ({ children, palette }) => {
     matchMedia.addEventListener('change', handleChange);
     return () => matchMedia.removeEventListener('change', handleChange);
   }, []);
+
+  useEffect(() => {
+    document.documentElement.style.colorScheme = mode;
+  }, [mode]);
 
   return (
     <ThemeContext.Provider value={{ mode, toggleTheme, theme }}>

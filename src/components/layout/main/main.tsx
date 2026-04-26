@@ -9,7 +9,14 @@ interface MainProps {
 
 const Main: FC<MainProps> = ({ children }) => {
   return (
-    <Box component="main">
+    <Box
+      component="main"
+      sx={{
+        flexGrow: 1,
+        backgroundColor: 'background.default',
+        color: 'text.primary',
+      }}
+    >
       <Toolbar />
       <Container sx={{ height: '100%' }}>{children}</Container>
     </Box>

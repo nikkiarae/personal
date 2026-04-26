@@ -12,6 +12,8 @@ const CardWrapper: React.FC<PropsWithChildren> = ({ children }) => {
         textDecoration: 'none',
         borderRadius: borderRadius,
         boxShadow: boxShadow,
+        backgroundColor: 'background.paper',
+        color: 'text.primary',
         height: '100%',
         display: 'flex',
         flexDirection: 'column',

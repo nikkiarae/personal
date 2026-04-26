@@ -13,7 +13,14 @@ export const projects: Project[] = [
       'Wavio is a B2B SaaS platform built to streamline compliance, operational workflows, and regulatory reporting for UK social housing providers. The platform was designed with a modern full-stack architecture and delivered iteratively with a rapid release cadence, supporting growth from a solo engineering effort to early enterprise clients. It combines cloud infrastructure automation, dependable delivery workflows, and product-focused execution to support operationally critical user journeys.',
     liveLink: 'https://wavio.co.uk',
     repositoryLink: null,
-    images: [],
+    images: [
+      '/assets/images/projects/Wavio/home.png',
+      '/assets/images/projects/Wavio/blog.png',
+      '/assets/images/projects/Wavio/contact-us.png',
+      '/assets/images/projects/Wavio/login.png',
+      '/assets/images/projects/Wavio/landing-page.png',
+      '/assets/images/projects/Wavio/dashboard.png'
+    ],
     applications: ['MacOS', 'VSCode', 'AWS Console', 'GitHub'],
     technologiesUsed: ['React', 'Typescript', 'NestJS', 'GrapqhQL', 'PostgreSQL', 'Terraform'],
     librariesAndTools: ['HeroUI', 'Tailwind', 'Zustand', 'Tanstack'],
@@ -383,7 +390,7 @@ export const projects: Project[] = [
       'PlayPickleball UK 2.0 is the next evolution of the original platform, reimagined with cutting-edge technologies to better serve the UK pickleball community. This comprehensive hub connects players by providing resources such as club locations, session registrations, competition details, and an equipment shop. Built with Next.js for server-side rendering and optimal performance, Tailwind CSS and DaisyUI for a sleek and modular UI, and a GraphQL-powered backend with MongoDB, this version offers improved speed, scalability, and user engagement. Features like dynamic maps via MapBox, secure payments with Stripe, and real-time updates continue to foster a vibrant community, now deployed effortlessly on Vercel for seamless hosting and scalability.',
     liveLink: null, //'https://playpickleball.uk',
     repositoryLink: null, //'https://github.com/nikkiarae/playpickleball',
-    images: ['/assets/images/projects/PlayPickleball2/home.png'],
+    images: [],
     applications: [
       'MacOS',
       'VSCode',

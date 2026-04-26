@@ -105,7 +105,12 @@ const Header: FC = () => {
         }}
         sx={{
           display: { xs: 'block', md: 'none' },
-          '& .MuiDrawer-paper': { boxSizing: 'border-box', width: 250 },
+          '& .MuiDrawer-paper': {
+            boxSizing: 'border-box',
+            width: 250,
+            backgroundColor: 'background.paper',
+            color: 'text.primary',
+          },
         }}
       >
         {drawer}

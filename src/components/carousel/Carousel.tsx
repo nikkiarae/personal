@@ -11,6 +11,9 @@ interface CarouselProps {
   images: string[];
 }
 
+const THUMBNAIL_WIDTH = 96;
+const THUMBNAIL_HEIGHT = 72;
+
 const CarouselComponent: React.FC<CarouselProps> = ({ images }) => {
   const theme = useTheme();
 
@@ -40,6 +43,8 @@ const CarouselComponent: React.FC<CarouselProps> = ({ images }) => {
     <Box
       sx={{
         '.thumbs': {
+          display: 'flex',
+          gap: 1,
           m: 0,
           p: 0,
           '.selected': {
@@ -47,6 +52,10 @@ const CarouselComponent: React.FC<CarouselProps> = ({ images }) => {
             border: `solid 3px ${theme.palette.primary.main}`,
           },
           '.thumb': {
+            borderRadius: borderRadius,
+            height: THUMBNAIL_HEIGHT,
+            overflow: 'hidden',
+            p: 0,
             transition: 'none',
             ':hover': {
               borderRadius: borderRadius,
@@ -60,7 +69,34 @@ const CarouselComponent: React.FC<CarouselProps> = ({ images }) => {
         },
       }}
     >
-      <Carousel dynamicHeight={true} showArrows={true} showIndicators={false}>
+      <Carousel
+        dynamicHeight={true}
+        renderThumbs={() =>
+          images.map((image: string, idx: React.Key) => (
+            <Box
+              key={`${image}-${idx}`}
+              sx={{
+                height: THUMBNAIL_HEIGHT,
+                position: 'relative',
+                width: THUMBNAIL_WIDTH,
+              }}
+            >
+              <Image
+                src={image}
+                alt={`Thumbnail ${idx}`}
+                fill
+                sizes={`${THUMBNAIL_WIDTH}px`}
+                style={{ objectFit: 'cover' }}
+              />
+            </Box>
+          ))
+        }
+        showArrows={false}
+        showIndicators={false}
+        showStatus={false}
+        showThumbs={images.length > 1}
+        thumbWidth={THUMBNAIL_WIDTH}
+      >
         {images.map((image: string, idx: React.Key) => (
           <div key={idx}>
             <Image
