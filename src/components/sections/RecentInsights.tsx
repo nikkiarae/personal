@@ -1,13 +1,13 @@
 'use client';
 
-import { BlogCard } from '@/components/cards';
+import { InsightCard } from '@/components/cards';
 import { Heading } from '../typography';
 import { useRouter } from 'next/navigation';
 import { Button } from '@heroui/react';
-import { BlogPostSummary } from '@/types/types';
+import { InsightSummary } from '@/types/types';
 
 interface RecentInsightsProps {
-  insightPosts: BlogPostSummary[];
+  insightPosts: InsightSummary[];
 }
 
 const RecentInsights = ({ insightPosts }: RecentInsightsProps) => {
@@ -32,7 +32,7 @@ const RecentInsights = ({ insightPosts }: RecentInsightsProps) => {
       ) : (
         <div className="grid gap-4 md:grid-cols-2">
           {insightPosts.slice(0, 4).map((post) => (
-            <BlogCard key={post.slug} post={post} maxTags={3} />
+            <InsightCard key={post.slug} post={post} maxTags={3} />
           ))}
         </div>
       )}

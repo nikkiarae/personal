@@ -1,6 +1,6 @@
-import type { BlogPost } from '@/types/types';
+import type { Insight } from '@/types/types';
 
-export const settingUpYourFirstDevEnvironmentWithoutLosingYourMind: BlogPost = {
+export const settingUpYourFirstDevEnvironmentWithoutLosingYourMind: Insight = {
   slug: 'setting-up-your-first-dev-environment-without-losing-your-mind',
   title: 'Setting Up Your First Dev Environment (Without Losing Your Mind)',
   date: '2026-03-07T15:00:00.000Z',
@@ -8,6 +8,7 @@ export const settingUpYourFirstDevEnvironmentWithoutLosingYourMind: BlogPost = {
     'A no-fluff setup guide for VS Code, Node.js, Git, terminal basics, and browser DevTools.',
   tags: ['Dev Tools', 'Beginners', 'Node.js', 'Git', 'VS Code'],
   published: true,
+  views: 0,
   content: `The first hour of coding should not be spent fighting your laptop. But it often is, because nobody gives you a clear, opinionated setup guide.
 
 Here is mine. No options, no "it depends." Just what to install, in what order, and why.

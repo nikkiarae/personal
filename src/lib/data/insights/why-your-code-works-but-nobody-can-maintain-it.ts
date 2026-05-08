@@ -1,6 +1,6 @@
-import type { BlogPost } from '@/types/types';
+import type { Insight } from '@/types/types';
 
-export const whyYourCodeWorksButNobodyCanMaintainIt: BlogPost = {
+export const whyYourCodeWorksButNobodyCanMaintainIt: Insight = {
   slug: 'why-your-code-works-but-nobody-can-maintain-it',
   title: 'Why Your Code Works But Nobody Can Maintain It',
   date: '2026-04-11T23:30:00.000Z',
@@ -14,6 +14,7 @@ export const whyYourCodeWorksButNobodyCanMaintainIt: BlogPost = {
     'Programming',
   ],
   published: true,
+  views: 0,
   content: `Working code and good code are not the same thing.
 
 Working code does the job. Good code does the job, and the person reading it six months later - including future you - can understand it without a decoder ring.

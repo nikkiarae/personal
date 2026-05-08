@@ -1,6 +1,5 @@
 import { Project } from '@/types/types';
 import { projects } from '@/lib/data/projects';
-
 const getVisibleProjects = (): Project[] => {
   return projects
     .filter((project) => project.show)

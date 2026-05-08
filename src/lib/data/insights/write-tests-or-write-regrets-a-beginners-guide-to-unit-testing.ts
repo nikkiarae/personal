@@ -1,6 +1,6 @@
-import type { BlogPost } from '@/types/types';
+import type { Insight } from '@/types/types';
 
-export const writeTestsOrWriteRegretsABeginnersGuideToUnitTesting: BlogPost = {
+export const writeTestsOrWriteRegretsABeginnersGuideToUnitTesting: Insight = {
   slug: 'write-tests-or-write-regrets-a-beginners-guide-to-unit-testing',
   title: "Write Tests or Write Regrets: A Beginner's Guide to Unit Testing",
   date: '2026-04-25T23:55:00.000Z',
@@ -8,6 +8,7 @@ export const writeTestsOrWriteRegretsABeginnersGuideToUnitTesting: BlogPost = {
     'A practical beginner guide to unit testing with Jest, including what to test, what to mock, and how to avoid coverage traps.',
   tags: ['Testing', 'Jest', 'Clean Code', 'TDD', 'Software Engineering'],
   published: true,
+  views: 0,
   content: `Most developers skip testing. Not because they do not know it matters - but because it feels like extra work on top of already tight deadlines.
 
 Here is the reframe that changed how I think about it: tests are not extra work. They are the thing that lets you change code without fear.

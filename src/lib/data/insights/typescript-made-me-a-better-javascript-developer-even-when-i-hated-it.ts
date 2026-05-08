@@ -1,6 +1,6 @@
-import type { BlogPost } from '@/types/types';
+import type { Insight } from '@/types/types';
 
-export const typescriptMadeMeABetterJavaScriptDeveloperEvenWhenIHatedIt: BlogPost =
+export const typescriptMadeMeABetterJavaScriptDeveloperEvenWhenIHatedIt: Insight =
   {
     slug: 'typescript-made-me-a-better-javascript-developer-even-when-i-hated-it',
     title:
@@ -16,6 +16,7 @@ export const typescriptMadeMeABetterJavaScriptDeveloperEvenWhenIHatedIt: BlogPos
       'Software Development',
     ],
     published: true,
+    views: 0,
     content: `I resisted TypeScript for two years. Thought it was overhead. Thought it slowed you down. Thought it was enterprise bloat for people who could not trust their own code.
 
 I was wrong on all three counts.

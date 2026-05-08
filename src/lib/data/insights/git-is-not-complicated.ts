@@ -1,6 +1,6 @@
-import type { BlogPost } from '@/types/types';
+import type { Insight } from '@/types/types';
 
-export const gitIsNotComplicated: BlogPost = {
+export const gitIsNotComplicated: Insight = {
   slug: 'git-is-not-complicated',
   title: "Git Is Not Complicated. It's Just Badly Explained.",
   date: '2026-02-14T09:00:00.000Z',
@@ -8,6 +8,7 @@ export const gitIsNotComplicated: BlogPost = {
     'A beginner-friendly way to understand Git with the core commands, branches, and a practical daily workflow.',
   tags: ['Git', 'Version Control', 'Dev Tools', 'Beginners'],
   published: true,
+  views: 0,
   content: `Git is not complicated. It's just badly explained. Let me fix that.
 
 You know that folder called \`final_v2_REAL_FINAL_USE_THIS.docx\`? Git exists because of that folder. It's a system for tracking changes to your code over time - so you never lose work, never overwrite something important, and can always go back.

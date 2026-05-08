@@ -1,6 +1,6 @@
-import type { BlogPost } from '@/types/types';
+import type { Insight } from '@/types/types';
 
-export const apisExplainedWithoutTheBuzzwords: BlogPost = {
+export const apisExplainedWithoutTheBuzzwords: Insight = {
   slug: 'apis-explained-without-the-buzzwords',
   title: 'APIs Explained Without the Buzzwords',
   date: '2026-02-21T11:00:00.000Z',
@@ -8,6 +8,7 @@ export const apisExplainedWithoutTheBuzzwords: BlogPost = {
     'A beginner-friendly explanation of APIs, JSON, and REST without jargon.',
   tags: ['API', 'REST', 'Web Dev', 'Beginners', 'JSON'],
   published: true,
+  views: 0,
   content: `Every app you use today is powered by APIs. Your weather app, your banking app, Instagram - all of them talk to servers via APIs. But most explanations of what an API *is* are unnecessarily confusing.
 
 Here's the clearest one I know.

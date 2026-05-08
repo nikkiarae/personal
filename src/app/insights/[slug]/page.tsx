@@ -2,15 +2,16 @@ import { notFound } from 'next/navigation';
 import { marked } from 'marked';
 import { Page } from '@/components/layout';
 import { PageHeader } from '@/components/sections';
-import { fetchBlogPost } from '@/lib/api/blog';
+import { fetchInsight } from '@/lib/api/insights';
 import { SlugParams } from '@/types/types';
 import { Chip, Surface } from '@/components/third-party';
 import { formatPublishedDate } from '@/lib/date';
 import { formatReadingTime } from '@/lib/utils';
+import InsightViewTracker from './InsightViewTracker';
 
 const InsightPostPage = async ({ params }: SlugParams) => {
   const { slug } = await params;
-  const post = await fetchBlogPost(slug);
+  const post = await fetchInsight(slug);
 
   if (!post) {
     notFound();
@@ -24,6 +25,7 @@ const InsightPostPage = async ({ params }: SlugParams) => {
 
   return (
     <Page>
+      <InsightViewTracker insightSlug={post.slug} />
       <PageHeader heading={post.title} subHeading={post.summary} />
 
       <article className="w-full">
@@ -48,6 +50,7 @@ const InsightPostPage = async ({ params }: SlugParams) => {
               <div className="flex flex-col items-center gap-2 text-md font-semibold text-muted">
                 <span>{formatPublishedDate(post.date)}</span>
                 <span>{readingTime}</span>
+                <span>{post.views.toLocaleString()} views</span>
               </div>
 
               {post.tags.length > 0 && (

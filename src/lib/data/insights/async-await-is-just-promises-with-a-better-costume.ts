@@ -1,6 +1,6 @@
-import type { BlogPost } from '@/types/types';
+import type { Insight } from '@/types/types';
 
-export const asyncAwaitIsJustPromisesWithABetterCostume: BlogPost = {
+export const asyncAwaitIsJustPromisesWithABetterCostume: Insight = {
   slug: 'async-await-is-just-promises-with-a-better-costume',
   title: 'Async/Await Is Just Promises With a Better Costume',
   date: '2026-03-14T17:00:00.000Z',
@@ -8,6 +8,7 @@ export const asyncAwaitIsJustPromisesWithABetterCostume: BlogPost = {
     'A practical explanation of callbacks, promises, async/await, and when to use Promise.all.',
   tags: ['JavaScript', 'Async', 'Web Dev', 'Promises', 'Node.js'],
   published: true,
+  views: 0,
   content: `Async/await trips up almost every intermediate JavaScript developer. Not because it is complicated - but because it gets taught without the foundation it is built on.
 
 Understanding it properly takes three minutes. Here are all three.

@@ -1,6 +1,5 @@
 import { Job } from '@/types/types';
 import { jobs } from '@/lib/data/jobs';
-
 const getVisibleJobs = (): Job[] => {
   return jobs
     .filter((job) => job.show)

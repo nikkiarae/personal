@@ -1,4 +1,4 @@
-import type { BlogPost } from '@/types/types';
+import type { Insight } from '@/types/types';
 import { asyncAwaitIsJustPromisesWithABetterCostume } from './async-await-is-just-promises-with-a-better-costume';
 import { apisExplainedWithoutTheBuzzwords } from './apis-explained-without-the-buzzwords';
 import { codeReviewCultureHowToGiveFeedbackWithoutKillingMorale } from './code-review-culture-how-to-give-feedback-without-killing-morale';
@@ -13,7 +13,7 @@ import { typescriptMadeMeABetterJavaScriptDeveloperEvenWhenIHatedIt } from './ty
 import { whyYourCodeWorksButNobodyCanMaintainIt } from './why-your-code-works-but-nobody-can-maintain-it';
 import { writeTestsOrWriteRegretsABeginnersGuideToUnitTesting } from './write-tests-or-write-regrets-a-beginners-guide-to-unit-testing';
 
-export const blogs: BlogPost[] = [
+export const insights: Insight[] = [
   codeReviewCultureHowToGiveFeedbackWithoutKillingMorale,
   graphQlVsRestWhichOneShouldYouActuallyUse,
   writeTestsOrWriteRegretsABeginnersGuideToUnitTesting,

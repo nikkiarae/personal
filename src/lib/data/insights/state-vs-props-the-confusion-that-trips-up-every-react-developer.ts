@@ -1,15 +1,15 @@
-import type { BlogPost } from '@/types/types';
+import type { Insight } from '@/types/types';
 
-export const stateVsPropsTheConfusionThatTripsUpEveryReactDeveloper: BlogPost =
-  {
-    slug: 'state-vs-props-the-confusion-that-trips-up-every-react-developer',
-    title: 'State vs Props: The Confusion That Trips Up Every React Developer',
-    date: '2026-03-28T21:00:00.000Z',
-    summary:
-      'A practical mental model for understanding props, state, and when to lift state up in React.',
-    tags: ['React', 'Frontend', 'JavaScript', 'ReactJS', 'Web Dev'],
-    published: true,
-    content: `If you've ever stared at a React component wondering why it is not updating - or why it is updating too often - the answer is almost always confusion between props and state.
+export const stateVsPropsTheConfusionThatTripsUpEveryReactDeveloper: Insight = {
+  slug: 'state-vs-props-the-confusion-that-trips-up-every-react-developer',
+  title: 'State vs Props: The Confusion That Trips Up Every React Developer',
+  date: '2026-03-28T21:00:00.000Z',
+  summary:
+    'A practical mental model for understanding props, state, and when to lift state up in React.',
+  tags: ['React', 'Frontend', 'JavaScript', 'ReactJS', 'Web Dev'],
+  published: true,
+  views: 0,
+  content: `If you've ever stared at a React component wondering why it is not updating - or why it is updating too often - the answer is almost always confusion between props and state.
 
 Even experienced developers muddle this sometimes. Here is the mental model that makes it click permanently.
 
@@ -142,4 +142,4 @@ Only lift state as high as it needs to go. If only one component uses a piece of
 4. Is it truly global (auth, theme)? -> Consider context or a state library
 
 ---`,
-  };
+};

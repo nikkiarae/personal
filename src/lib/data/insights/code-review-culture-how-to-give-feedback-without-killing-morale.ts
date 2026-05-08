@@ -1,21 +1,21 @@
-import type { BlogPost } from '@/types/types';
+import type { Insight } from '@/types/types';
 
-export const codeReviewCultureHowToGiveFeedbackWithoutKillingMorale: BlogPost =
-  {
-    slug: 'code-review-culture-how-to-give-feedback-without-killing-morale',
-    title: 'Code Review Culture: How to Give Feedback Without Killing Morale',
-    date: '2026-05-09T00:15:00.000Z',
-    summary:
-      'A practical guide to code reviews that improve quality, spread knowledge, and protect team morale.',
-    tags: [
-      'Code Review',
-      'Teamwork',
-      'Engineering',
-      'Software Engineering',
-      'Leadership',
-    ],
-    published: true,
-    content: `I have seen a developer quit because of a code review. Not because of a disagreement - because of how the feedback was delivered.
+export const codeReviewCultureHowToGiveFeedbackWithoutKillingMorale: Insight = {
+  slug: 'code-review-culture-how-to-give-feedback-without-killing-morale',
+  title: 'Code Review Culture: How to Give Feedback Without Killing Morale',
+  date: '2026-05-09T00:15:00.000Z',
+  summary:
+    'A practical guide to code reviews that improve quality, spread knowledge, and protect team morale.',
+  tags: [
+    'Code Review',
+    'Teamwork',
+    'Engineering',
+    'Software Engineering',
+    'Leadership',
+  ],
+  published: true,
+  views: 0,
+  content: `I have seen a developer quit because of a code review. Not because of a disagreement - because of how the feedback was delivered.
 
 Code review is one of the highest-leverage activities in a development team. Done well, it catches bugs, spreads knowledge, and improves quality. Done badly, it kills morale, slows teams down, and drives out good people.
 
@@ -119,4 +119,4 @@ Code review culture is a lagging indicator of team culture. If reviews are adver
 The best reviews I have been part of felt like a conversation between people who were all trying to make the product better. That is the standard worth aiming for.
 
 ---`,
-  };
+};

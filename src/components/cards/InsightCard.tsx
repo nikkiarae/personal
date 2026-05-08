@@ -3,11 +3,11 @@
 import { FC } from 'react';
 import Link from 'next/link';
 import { Card } from '@heroui/react';
-import { BlogPostSummary } from '@/types/types';
+import { InsightSummary } from '@/types/types';
 import { cn } from '@/lib/utils';
 
-interface BlogCardProps {
-  post: BlogPostSummary;
+interface InsightCardProps {
+  post: InsightSummary;
   className?: string;
   maxTags?: number;
   dateFormat?: Intl.DateTimeFormatOptions;
@@ -26,7 +26,7 @@ const formatPublishedDate = (
   return new Intl.DateTimeFormat('en-US', dateFormat).format(new Date(date));
 };
 
-const BlogCard: FC<BlogCardProps> = ({
+const InsightCard: FC<InsightCardProps> = ({
   post,
   className,
   maxTags,
@@ -48,9 +48,11 @@ const BlogCard: FC<BlogCardProps> = ({
         )}
       >
         <Card.Content className="space-y-3 p-4">
-          <p className="text-xs font-semibold uppercase tracking-wide text-accent">
-            {formatPublishedDate(post.date, dateFormat)}
-          </p>
+          <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wide text-accent">
+            <span>{formatPublishedDate(post.date, dateFormat)}</span>
+            <span aria-hidden>•</span>
+            <span>{post.views.toLocaleString()} views</span>
+          </div>
 
           <Card.Title className="text-xl font-semibold text-foreground transition-colors group-hover:text-accent">
             {post.title}
@@ -82,4 +84,4 @@ const BlogCard: FC<BlogCardProps> = ({
   );
 };
 
-export default BlogCard;
+export default InsightCard;

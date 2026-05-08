@@ -1,6 +1,6 @@
-import type { BlogPost } from '@/types/types';
+import type { Insight } from '@/types/types';
 
-export const sqlVsNoSqlStopPickingTheTrendyOneAndPickTheRightOne: BlogPost = {
+export const sqlVsNoSqlStopPickingTheTrendyOneAndPickTheRightOne: Insight = {
   slug: 'sql-vs-nosql-stop-picking-the-trendy-one-and-pick-the-right-one',
   title: 'SQL vs NoSQL: Stop Picking the Trendy One and Pick the Right One',
   date: '2026-04-04T23:00:00.000Z',
@@ -8,6 +8,7 @@ export const sqlVsNoSqlStopPickingTheTrendyOneAndPickTheRightOne: BlogPost = {
     'A practical framework for choosing SQL or NoSQL based on data relationships, schema changes, and scale.',
   tags: ['Database', 'SQL', 'MongoDB', 'PostgreSQL', 'Backend'],
   published: true,
+  views: 0,
   content: `The SQL vs NoSQL debate generates a lot of heat and very little light. Most of it is marketing. The actual decision is simpler than the noise suggests.
 
 ## What SQL actually is

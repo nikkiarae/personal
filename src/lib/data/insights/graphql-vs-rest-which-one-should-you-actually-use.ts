@@ -1,6 +1,6 @@
-import type { BlogPost } from '@/types/types';
+import type { Insight } from '@/types/types';
 
-export const graphQlVsRestWhichOneShouldYouActuallyUse: BlogPost = {
+export const graphQlVsRestWhichOneShouldYouActuallyUse: Insight = {
   slug: 'graphql-vs-rest-which-one-should-you-actually-use',
   title: 'GraphQL vs REST: Which One Should You Actually Use?',
   date: '2026-05-02T00:05:00.000Z',
@@ -8,6 +8,7 @@ export const graphQlVsRestWhichOneShouldYouActuallyUse: BlogPost = {
     'A practical decision guide for choosing REST or GraphQL based on API complexity, client needs, and operational tradeoffs.',
   tags: ['GraphQL', 'REST', 'API', 'Backend', 'Web Dev'],
   published: true,
+  views: 0,
   content: `GraphQL is not REST's replacement. It is a different tool designed for a different problem. Picking the wrong one means either overengineering a simple API or under-serving a complex frontend.
 
 Here is how to make the right call.

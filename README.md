@@ -26,6 +26,46 @@ To start the development server with hot module replacement:
 npm run dev
 ```
 
+## Neon Database (Primary Data Source)
+
+The app now reads `insights` from Neon PostgreSQL.
+
+- If `PGHOST`, `PGDATABASE`, `PGUSER`, and `PGPASSWORD` are set and queries succeed, DB data is used.
+- If the database is unavailable (or schema is missing), insights fall back to static files in `src/lib/data/insights/**`.
+- Projects and jobs are static-only and are always read from `src/lib/data/projects.ts` and `src/lib/data/jobs.ts`.
+
+### 1. Configure environment
+
+Create `.env.local` from `.env.example` and set your Neon connection string:
+
+```sh
+cp .env.example .env.local
+```
+
+Then set:
+
+```env
+PGHOST=<neon_host>
+PGDATABASE=<database_name>
+PGUSER=<role_name>
+PGPASSWORD=<role_password>
+PGPORT=5432
+```
+
+### 2. Create tables in Neon
+
+Run the SQL in `db/neon-schema.sql` in Neon SQL Editor (or with your preferred Postgres client).
+
+### 3. Populate data
+
+Insert rows into:
+
+- `blog_posts`
+
+The `blog_posts` table should include a `views` column (`INTEGER NOT NULL DEFAULT 0`) so insight page views can be tracked.
+
+Use the static files in `src/lib/data/insights`, `src/lib/data/projects.ts`, and `src/lib/data/jobs.ts` as your reference source while migrating.
+
 ### Build
 
 To build the project for production:

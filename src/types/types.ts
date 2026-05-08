@@ -50,15 +50,4 @@ export interface Job {
   responsibilities: string[];
 }
 
-export interface BlogPost {
-  slug: string;
-  title: string;
-  date: ISODateString;
-  summary: string;
-  tags: string[];
-  coverImage?: string;
-  published: boolean;
-  content: string;
-}
-
-export type BlogPostSummary = Omit<BlogPost, 'content'>;
+export type { Insight, InsightSummary } from './insights';

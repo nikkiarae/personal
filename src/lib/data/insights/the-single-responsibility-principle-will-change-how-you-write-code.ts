@@ -1,6 +1,6 @@
-import type { BlogPost } from '@/types/types';
+import type { Insight } from '@/types/types';
 
-export const theSingleResponsibilityPrincipleWillChangeHowYouWriteCode: BlogPost =
+export const theSingleResponsibilityPrincipleWillChangeHowYouWriteCode: Insight =
   {
     slug: 'the-single-responsibility-principle-will-change-how-you-write-code',
     title: 'The Single Responsibility Principle Will Change How You Write Code',
@@ -15,6 +15,7 @@ export const theSingleResponsibilityPrincipleWillChangeHowYouWriteCode: BlogPost
       'Software Engineering',
     ],
     published: true,
+    views: 0,
     content: `The Single Responsibility Principle (SRP) is one of the most useful ideas in software engineering. It states that every function, class, or module should have exactly one reason to change.
 
 One job. One purpose. One reason to exist.

@@ -1,6 +1,6 @@
 import ProjectCard from './ProjectCard';
 import SkillCard from './SkillCard';
 import CardWrapper from './CardWrapper';
-import BlogCard from './BlogCard';
+import InsightCard from './InsightCard';
 
-export { ProjectCard, SkillCard, CardWrapper, BlogCard };
+export { ProjectCard, SkillCard, CardWrapper, InsightCard };

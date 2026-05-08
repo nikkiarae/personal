@@ -1,6 +1,6 @@
-import type { BlogPost } from '@/types/types';
+import type { Insight } from '@/types/types';
 
-export const loopsMakingYourComputerDoTheBoringStuff: BlogPost = {
+export const loopsMakingYourComputerDoTheBoringStuff: Insight = {
   slug: 'loops-making-your-computer-do-the-boring-stuff',
   title: 'Loops: Making Your Computer Do the Boring Stuff',
   date: '2026-02-28T13:00:00.000Z',
@@ -14,6 +14,7 @@ export const loopsMakingYourComputerDoTheBoringStuff: BlogPost = {
     'Learn to Code',
   ],
   published: true,
+  views: 0,
   content: `If you're doing the same thing more than twice, something else should be doing it. That something is a loop.
 
 Loops are how you make computers do what they're actually good at: repeating a task thousands of times without complaining, without getting tired, and without making mistakes.

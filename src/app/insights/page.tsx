@@ -1,10 +1,11 @@
 import { Page } from '@/components/layout';
 import { PageHeader } from '@/components/sections';
-import { BlogCard } from '@/components/cards';
-import { fetchBlogPosts } from '@/lib/api/blog';
+import { InsightCard } from '@/components/cards';
+import { fetchInsights } from '@/lib/api/insights';
+import { Surface } from '@/components/third-party';
 
 const InsightsPage = async () => {
-  const posts = await fetchBlogPosts();
+  const posts = await fetchInsights();
 
   return (
     <Page>
@@ -14,15 +15,13 @@ const InsightsPage = async () => {
       />
 
       {posts.length === 0 ? (
-        <p className="rounded-xl border border-slate-200 bg-white p-6 text-sm text-slate-600">
-          No insights found yet. Add entries in{' '}
-          <span className="font-semibold">src/lib/data/blogs/index.ts</span> to
-          publish your first insight.
-        </p>
+        <Surface className="rounded-xl border p-4">
+          <span className="text-sm text-slate-600">No insights found</span>
+        </Surface>
       ) : (
         <div className="grid gap-4 md:grid-cols-2">
           {posts.map((post) => (
-            <BlogCard key={post.slug} post={post} />
+            <InsightCard key={post.slug} post={post} />
           ))}
         </div>
       )}

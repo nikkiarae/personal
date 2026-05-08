@@ -1,12 +1,7 @@
 'use client';
 
 import type { IconType } from 'react-icons';
-import {
-  FaFacebookF,
-  FaInstagram,
-  FaLinkedinIn,
-  FaTwitter,
-} from 'react-icons/fa';
+import { FaFacebookF, FaInstagram, FaLinkedinIn } from 'react-icons/fa';
 import Link from 'next/link';
 import { NAV_ITEMS } from '@/lib/constants/navigation';
 
@@ -19,29 +14,29 @@ interface SocialLink {
 const SOCIAL_LINKS: SocialLink[] = [
   {
     name: 'Facebook',
-    href: 'https://facebook.com',
+    href: 'https://www.facebook.com/nikkirae26',
     Icon: FaFacebookF,
   },
-  {
-    name: 'Twitter',
-    href: 'https://twitter.com',
-    Icon: FaTwitter,
-  },
+  // {
+  //   name: 'Twitter',
+  //   href: 'https://twitter.com',
+  //   Icon: FaTwitter,
+  // },
   {
     name: 'Instagram',
-    href: 'https://instagram.com',
+    href: 'https://www.instagram.com/nikki.a.rae/',
     Icon: FaInstagram,
   },
   {
     name: 'LinkedIn',
-    href: 'https://linkedin.com',
+    href: 'https://www.linkedin.com/in/nikkirae27/',
     Icon: FaLinkedinIn,
   },
 ];
 
 const Footer = () => {
   return (
-    <footer className="mt-auto w-full border-t">
+    <footer className="mt-auto w-full border-t bg-background/90 backdrop-blur-lg">
       <div className="mx-auto flex w-full max-w-7xl flex-col items-center gap-4 px-4 py-6 text-center sm:px-6 lg:px-8">
         <div className="flex items-center gap-3">
           {SOCIAL_LINKS.map(({ name, href, Icon }) => (
