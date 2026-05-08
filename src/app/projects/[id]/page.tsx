@@ -5,8 +5,9 @@ import { Params, Project as ProjectType } from '@/types/types';
 import { LearningOutcomes, Skills, What } from '@/components/sections';
 import { Carousel } from '@/components/carousel';
 import { fetchProject } from '@/lib/api/projects';
+import { Separator } from '@heroui/react';
 
-const Project: FC<Params> = async ({ params }) => {
+const Project = async ({ params }: Params) => {
   const p = await params;
   const project: ProjectType | null = await fetchProject(p.id);
 
@@ -29,15 +30,15 @@ const Project: FC<Params> = async ({ params }) => {
       <div className="space-y-6">
         <Links live={project.liveLink} repo={project.repositoryLink} />
         <Carousel images={project.images} />
-        <hr className="border-slate-200/80" />
+        <Separator variant="tertiary" />
         <What content={project.detailedDescription} />
-        <hr className="border-slate-200/80" />
+        <Separator variant="tertiary" />
         <Skills
           technologies={project.technologiesUsed}
           libraries={project.librariesAndTools}
           softSkills={project.softSkills}
         />
-        <hr className="border-slate-200/80" />
+        <Separator variant="tertiary" />
         <LearningOutcomes content={project.learningOutcomes} />
       </div>
     </Page>

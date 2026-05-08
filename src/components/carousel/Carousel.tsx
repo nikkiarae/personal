@@ -1,11 +1,8 @@
 'use client';
 
-import React from 'react';
 import { Carousel } from 'react-responsive-carousel';
-import { borderRadius } from '@/styles/globalStyle';
 import Image from 'next/image';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
-import { useTheme } from '@/hooks/useTheme';
 
 interface CarouselProps {
   images: string[];
@@ -15,19 +12,13 @@ const THUMBNAIL_WIDTH = 96;
 const THUMBNAIL_HEIGHT = 72;
 
 const CarouselComponent: React.FC<CarouselProps> = ({ images }) => {
-  const { theme } = useTheme();
 
   if (images.length === 0) {
     return (
       <div
-        className="flex min-h-[320px] items-center justify-center px-3 text-center"
-        style={{
-          borderRadius,
-          border: `1px solid ${theme.palette.divider}`,
-          backgroundColor: theme.palette.grey[100],
-        }}
+        className="flex min-h-80 items-center justify-center px-3 text-center"
       >
-        <p style={{ color: theme.palette.text.secondary }}>
+        <p className="text-slate-500">
           Project screenshots coming soon.
         </p>
       </div>
@@ -85,12 +76,12 @@ const CarouselComponent: React.FC<CarouselProps> = ({ images }) => {
         }
 
         .thumbs .selected {
-          border-radius: ${borderRadius};
-          border: solid 3px ${theme.palette.primary.main};
+          border-radius: 0.5rem;
+          border: solid 3px var(--color-primary);
         }
 
         .thumb {
-          border-radius: ${borderRadius};
+          border-radius: 0.5rem;
           height: ${THUMBNAIL_HEIGHT}px;
           overflow: hidden;
           padding: 0;
@@ -98,8 +89,8 @@ const CarouselComponent: React.FC<CarouselProps> = ({ images }) => {
         }
 
         .thumb:hover {
-          border-radius: ${borderRadius};
-          border: solid 3px ${theme.palette.primary.main};
+          border-radius: 0.5rem;
+          border: solid 3px var(--color-primary);
         }
 
         .thumbs-wrapper {

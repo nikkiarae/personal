@@ -11,7 +11,7 @@ const What: FC<WhatProps> = ({ content }) => {
   return (
     <div>
       <SectionHeading text={'What'} />
-      <p>{content}</p>
+      <p className='text-lg'>{content}</p>
     </div>
   );
 };

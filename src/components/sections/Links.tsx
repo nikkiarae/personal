@@ -1,38 +1,44 @@
 'use client';
 
-import React, { FC } from 'react';
 import { ArrowRight, ExternalLink } from 'lucide-react';
+import { Button } from '@heroui/react';
 
 interface LinksProps {
   live?: string | null;
   repo?: string | null;
 }
 
-const Links: FC<LinksProps> = ({ live, repo }) => {
+const Links = ({ live, repo }: LinksProps) => {
+  const openInNewTab = (href?: string | null) => {
+    if (!href) {
+      return;
+    }
+
+    window.open(href, '_blank', 'noopener,noreferrer');
+  };
+
   return (
     <div className="flex flex-wrap gap-2">
       {live && (
-        <a
-          className="inline-flex items-center gap-2 rounded-lg bg-slate-900 px-4 py-2 text-sm font-semibold text-white transition hover:bg-slate-800"
-          href={live}
-          target="_blank"
-          rel="noopener noreferrer"
+        <Button
+          onPress={() => openInNewTab(live)}
+          variant="primary"
+          className="inline-flex items-center gap-2"
         >
           <ExternalLink size={16} />
           Live Demo
-        </a>
+        </Button>
       )}
 
       {repo && (
-        <a
-          className="inline-flex items-center gap-2 rounded-lg border border-slate-400 px-4 py-2 text-sm font-semibold transition hover:bg-slate-100"
-          href={repo}
-          target="_blank"
-          rel="noopener noreferrer"
+        <Button
+          onPress={() => openInNewTab(repo)}
+          variant="outline"
+          className="inline-flex items-center gap-2"
         >
           <ArrowRight size={16} />
           GitHub Repo
-        </a>
+        </Button>
       )}
     </div>
   );

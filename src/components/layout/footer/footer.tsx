@@ -1,6 +1,5 @@
 'use client';
 
-import React, { FC } from 'react';
 import type { IconType } from 'react-icons';
 import {
   FaFacebookF,
@@ -10,7 +9,6 @@ import {
 } from 'react-icons/fa';
 import Link from 'next/link';
 import { NAV_ITEMS } from '@/lib/constants/navigation';
-import { useTheme } from '@/hooks/useTheme';
 
 interface SocialLink {
   name: string;
@@ -41,16 +39,11 @@ const SOCIAL_LINKS: SocialLink[] = [
   },
 ];
 
-const Footer: FC = () => {
-  const { theme } = useTheme();
+const Footer = () => {
 
   return (
     <footer
       className="mt-auto w-full border-t"
-      style={{
-        backgroundColor: theme.palette.background.paper,
-        borderColor: theme.palette.divider,
-      }}
     >
       <div className="mx-auto flex w-full max-w-7xl flex-col items-center gap-4 px-4 py-6 text-center sm:px-6 lg:px-8">
         <div className="flex items-center gap-3">
@@ -62,17 +55,6 @@ const Footer: FC = () => {
               rel="noopener noreferrer"
               aria-label={name}
               className="rounded-md p-2 transition-colors"
-              style={{
-                color: theme.palette.text.secondary,
-                backgroundColor: 'transparent',
-              }}
-              onMouseEnter={(event) => {
-                event.currentTarget.style.backgroundColor =
-                  theme.palette.action.hover;
-              }}
-              onMouseLeave={(event) => {
-                event.currentTarget.style.backgroundColor = 'transparent';
-              }}
             >
               <Icon size={18} />
             </a>
@@ -85,14 +67,13 @@ const Footer: FC = () => {
               key={item}
               href={`/${item.toLowerCase()}`}
               className="transition-colors hover:opacity-80"
-              style={{ color: theme.palette.text.primary }}
             >
               {item}
             </Link>
           ))}
         </nav>
 
-        <p className="text-sm" style={{ color: theme.palette.text.secondary }}>
+        <p className="text-sm">
           &copy; {new Date().getFullYear()} Nikki Rae. All rights reserved.
         </p>
       </div>

@@ -46,10 +46,6 @@ const BlogCard: FC<BlogCardProps> = ({
           'h-full rounded-xl border transition-transform duration-150 ease-out group-hover:-translate-y-0.5 group-hover:shadow-lg',
           className,
         )}
-        style={{
-          backgroundColor: 'var(--color-background-secondary)',
-          borderColor: 'var(--separator)',
-        }}
       >
         <Card.Content className="space-y-3 p-4">
           <p className="text-xs font-semibold uppercase tracking-wide text-accent">
