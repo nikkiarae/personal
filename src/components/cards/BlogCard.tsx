@@ -37,8 +37,8 @@ const BlogCard: FC<BlogCardProps> = ({
 
   return (
     <Link
-      href={`/blog/${post.slug}`}
-      aria-label={`Open post: ${post.title}`}
+      href={`/insights/${post.slug}`}
+      aria-label={`Open insight: ${post.title}`}
       className="group block rounded-xl"
     >
       <Card

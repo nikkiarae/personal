@@ -56,7 +56,7 @@ const Navbar = ({
   return (
     <nav
       className={cn(
-        'z-40 w-full border-b backdrop-blur-lg',
+        'z-40 w-full border-b border-border/80 bg-background/90 backdrop-blur-lg',
         position === 'sticky' && 'sticky top-0',
         position === 'fixed' && 'fixed top-0',
         className,
@@ -70,7 +70,7 @@ const Navbar = ({
       >
         <div className="flex items-center gap-4">
           <button
-            className="rounded-md p-2 text-(--nav-fg) transition-colors hover:bg-(--nav-hover-bg) md:hidden"
+            className="rounded-lg p-2 text-foreground transition-colors hover:bg-default md:hidden"
             onClick={() => setIsMenuOpen((open) => !open)}
             aria-label="Toggle menu"
             aria-expanded={isMenuOpen}
@@ -82,18 +82,17 @@ const Navbar = ({
           {brand}
         </div>
 
-        <ul className="hidden items-center gap-1 md:flex">
+        <ul className="hidden items-center gap-2 md:flex">
           {items.map((item) => (
             <li key={item.href}>
               <Link
                 href={item.href}
                 className={cn(
-                  'rounded-md px-3 py-2 text-sm font-medium transition-colors hover:bg-(--nav-hover-bg)',
-                  item.isActive && 'font-semibold',
+                  'inline-flex items-center rounded-xl border px-4 py-2 text-base font-semibold transition-all',
+                  item.isActive
+                    ? 'border-border bg-default text-foreground shadow-sm'
+                    : 'border-transparent text-muted hover:border-border hover:bg-default hover:text-foreground',
                 )}
-                style={{
-                  color: item.isActive ? 'var(--nav-active)' : 'var(--nav-fg)',
-                }}
                 aria-current={item.isActive ? 'page' : undefined}
               >
                 {item.label}
@@ -110,7 +109,7 @@ const Navbar = ({
       </header>
 
       {isMenuOpen && (
-        <div className="border-t border-(--nav-divider) md:hidden">
+        <div className="border-t border-border md:hidden">
           <ul className="flex flex-col gap-2 p-4">
             {items.map((item) => (
               <li key={item.href}>
@@ -118,14 +117,11 @@ const Navbar = ({
                   href={item.href}
                   onClick={() => setIsMenuOpen(false)}
                   className={cn(
-                    'block rounded-md px-3 py-2 text-base font-medium transition-colors hover:bg-(--nav-hover-bg)',
-                    item.isActive && 'font-semibold',
+                    'block rounded-xl border px-4 py-2.5 text-base font-semibold transition-all',
+                    item.isActive
+                      ? 'border-border bg-default text-foreground shadow-sm'
+                      : 'border-transparent text-muted hover:border-border hover:bg-default hover:text-foreground',
                   )}
-                  style={{
-                    color: item.isActive
-                      ? 'var(--nav-active)'
-                      : 'var(--nav-fg)',
-                  }}
                   aria-current={item.isActive ? 'page' : undefined}
                 >
                   {item.label}
@@ -134,7 +130,7 @@ const Navbar = ({
             ))}
 
             {rightContent && (
-              <li className="mt-2 flex flex-col gap-2 border-t border-(--nav-divider) pt-4">
+              <li className="mt-2 flex flex-col gap-2 border-t border-border pt-4">
                 {renderRightSlot()}
               </li>
             )}
@@ -145,18 +141,25 @@ const Navbar = ({
   );
 };
 
-const Header = () => {
+interface HeaderProps {
+  isUkVisitor: boolean;
+}
+
+const Header = ({ isUkVisitor }: HeaderProps) => {
   const { toggleTheme } = useTheme();
   const pathname = usePathname();
 
-  const items = NAV_ITEMS.map((label) => {
-    const href = `/${label.toLowerCase()}`;
+  const items = NAV_ITEMS.map((item) => {
     const isActive =
-      pathname === href || (href !== '/' && pathname.startsWith(`${href}/`));
+      pathname === item.href ||
+      (item.href !== '/' && pathname.startsWith(`${item.href}/`));
+
+    const label =
+      item.href === '/resume' ? (isUkVisitor ? 'CV' : 'Resume') : item.label;
 
     return {
       label,
-      href,
+      href: item.href,
       isActive,
     };
   });

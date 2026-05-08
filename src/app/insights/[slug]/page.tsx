@@ -8,7 +8,7 @@ import { Chip, Surface } from '@/components/third-party';
 import { formatPublishedDate } from '@/lib/date';
 import { formatReadingTime } from '@/lib/utils';
 
-const BlogPostPage = async ({ params }: SlugParams) => {
+const InsightPostPage = async ({ params }: SlugParams) => {
   const { slug } = await params;
   const post = await fetchBlogPost(slug);
 
@@ -67,4 +67,4 @@ const BlogPostPage = async ({ params }: SlugParams) => {
   );
 };
 
-export default BlogPostPage;
+export default InsightPostPage;

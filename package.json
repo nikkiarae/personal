@@ -11,8 +11,9 @@
     "format:check": "prettier --check ."
   },
   "dependencies": {
-    "@formspree/react": "^2.5.1",
+    "@formspree/react": "^3.0.0",
     "@heroui/react": "3.0.3",
+    "@react-spectrum/provider": "^3.0.0",
     "formik": "^2.4.6",
     "lucide-react": "^1.14.0",
     "mapbox-gl": "^3.4.0",

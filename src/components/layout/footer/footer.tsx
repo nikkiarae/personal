@@ -61,11 +61,11 @@ const Footer = () => {
         <nav className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-sm font-medium">
           {NAV_ITEMS.map((item) => (
             <Link
-              key={item}
-              href={`/${item.toLowerCase()}`}
+              key={item.href}
+              href={item.href}
               className="transition-colors hover:opacity-80"
             >
-              {item}
+              {item.label}
             </Link>
           ))}
         </nav>
