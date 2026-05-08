@@ -58,8 +58,6 @@ const getCountryFromAcceptLanguage = (
 export const getVisitorRegion = async (): Promise<VisitorRegionResult> => {
   const requestHeaders = await headers();
 
-  console.log('Request headers:', Object.fromEntries(requestHeaders.entries()));
-
   const countryCodeFromGeoHeaders = GEO_COUNTRY_HEADER_NAMES.map((headerName) =>
     requestHeaders.get(headerName),
   )
@@ -71,10 +69,6 @@ export const getVisitorRegion = async (): Promise<VisitorRegionResult> => {
     getCountryFromAcceptLanguage(requestHeaders.get('accept-language'));
 
   const isUkVisitor = countryCode === 'GB' || countryCode === 'UK';
-
-  console.log(
-    `Determined visitor region: ${countryCode} (isUkVisitor: ${isUkVisitor})`,
-  );
 
   return {
     isUkVisitor,

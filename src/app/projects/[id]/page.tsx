@@ -1,15 +1,14 @@
-import React, { FC } from 'react';
 import { Page } from '@/components/layout';
 import { Links, PageHeader } from '@/components/sections';
-import { Params, Project as ProjectType } from '@/types/types';
+import { Params } from '@/types/types';
 import { LearningOutcomes, Skills, What } from '@/components/sections';
 import { Carousel } from '@/components/carousel';
 import { fetchProject } from '@/lib/api/projects';
-import { Separator } from '@heroui/react';
+import { Separator } from '@/components/third-party';
 
 const Project = async ({ params }: Params) => {
   const p = await params;
-  const project: ProjectType | null = await fetchProject(p.id);
+  const project = await fetchProject(p.id);
 
   if (!project) {
     return (

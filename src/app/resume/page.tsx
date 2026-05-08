@@ -9,11 +9,9 @@ import {
 import { Page } from '@/components/layout';
 import { Map } from '@/components/map';
 import { fetchJobs } from '@/lib/api/jobs';
-import { Separator } from '@heroui/react';
+import { Separator } from '@/components/third-party';
 import { getVisitorRegion } from '@/hooks/useVisitorRegion';
 
-export const dynamic = 'force-dynamic';
-export const revalidate = 0;
 
 const About = async () => {
   const jobs = await fetchJobs();
@@ -27,7 +25,7 @@ const About = async () => {
           'Passionate about designing and building seamless, efficient, and visually compelling web applications.'
         }
       />
-      <div className="flex flex-col gap-6 md:gap-10">
+      <div className="flex flex-col gap-6 md:gap-12">
         <Download isUkVisitor={isUkVisitor} />
         <Map
           longitude={coordinates.longitude}
