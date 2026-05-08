@@ -12,15 +12,10 @@ const THUMBNAIL_WIDTH = 96;
 const THUMBNAIL_HEIGHT = 72;
 
 const CarouselComponent: React.FC<CarouselProps> = ({ images }) => {
-
   if (images.length === 0) {
     return (
-      <div
-        className="flex min-h-80 items-center justify-center px-3 text-center"
-      >
-        <p className="text-slate-500">
-          Project screenshots coming soon.
-        </p>
+      <div className="flex min-h-80 items-center justify-center px-3 text-center">
+        <p className="text-slate-500">Project screenshots coming soon.</p>
       </div>
     );
   }

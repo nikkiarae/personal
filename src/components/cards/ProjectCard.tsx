@@ -19,9 +19,7 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
       aria-label={`Open project: ${project.title}`}
       className="group block h-full rounded-2xl focus:outline-none"
     >
-      <Card
-        className="h-full rounded-2xl border p-0 transition-all duration-200 ease-out group-hover:-translate-y-1 group-hover:shadow-xl group-active:translate-y-0 group-active:scale-[0.99] group-focus-visible:ring-2 group-focus-visible:ring-accent/60 group-focus-visible:ring-offset-2"
-      >
+      <Card className="h-full rounded-2xl border p-0 transition-all duration-200 ease-out group-hover:-translate-y-1 group-hover:shadow-xl group-active:translate-y-0 group-active:scale-[0.99] group-focus-visible:ring-2 group-focus-visible:ring-accent/60 group-focus-visible:ring-offset-2">
         <Card.Header className="p-0">
           {previewImage ? (
             <div className="relative h-57.5 overflow-hidden rounded-t-2xl border-b-[5px] sm:h-75">

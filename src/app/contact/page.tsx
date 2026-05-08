@@ -140,7 +140,11 @@ const Contact: FC = () => {
                 </Card.Content>
 
                 <Card.Footer className="mt-4 flex flex-col gap-2">
-                  <Button className="w-full" type="submit" isDisabled={isSubmitting}>
+                  <Button
+                    className="w-full"
+                    type="submit"
+                    isDisabled={isSubmitting}
+                  >
                     {isSubmitting ? 'Sending...' : 'Send Message'}
                   </Button>
 

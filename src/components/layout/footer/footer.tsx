@@ -40,11 +40,8 @@ const SOCIAL_LINKS: SocialLink[] = [
 ];
 
 const Footer = () => {
-
   return (
-    <footer
-      className="mt-auto w-full border-t"
-    >
+    <footer className="mt-auto w-full border-t">
       <div className="mx-auto flex w-full max-w-7xl flex-col items-center gap-4 px-4 py-6 text-center sm:px-6 lg:px-8">
         <div className="flex items-center gap-3">
           {SOCIAL_LINKS.map(({ name, href, Icon }) => (

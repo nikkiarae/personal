@@ -12,7 +12,6 @@ import { fetchJobs } from '@/lib/api/jobs';
 import { Separator } from '@/components/third-party';
 import { getVisitorRegion } from '@/hooks/useVisitorRegion';
 
-
 const About = async () => {
   const jobs = await fetchJobs();
   const { isUkVisitor, coordinates } = await getVisitorRegion();

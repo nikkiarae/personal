@@ -16,7 +16,7 @@ const LearningOutcomes: FC<LearningOutcomesProps> = ({ content }) => {
         {content.map((outcome: string, idx: React.Key) => (
           <li key={idx} className="flex items-start gap-2">
             <ArrowRight className="mt-1 shrink-0" size={18} />
-            <span className='text-lg'>{outcome}</span>
+            <span className="text-lg">{outcome}</span>
           </li>
         ))}
       </ul>

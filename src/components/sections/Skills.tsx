@@ -17,7 +17,7 @@ const Skills = ({ technologies, libraries, softSkills }: SkillsProps) => {
           <ListHeading text={'Technologies'} />
           <div className="space-y-1">
             {technologies.map((tech: string, idx: React.Key) => (
-              <ListItem key={idx} text={tech} className='text-lg' />
+              <ListItem key={idx} text={tech} className="text-lg" />
             ))}
           </div>
         </div>
@@ -26,7 +26,7 @@ const Skills = ({ technologies, libraries, softSkills }: SkillsProps) => {
           <ListHeading text={'Libraries'} />
           <div className="space-y-1">
             {libraries.map((library: string, idx: React.Key) => (
-              <ListItem key={idx} text={library} className='text-lg' />
+              <ListItem key={idx} text={library} className="text-lg" />
             ))}
           </div>
         </div>
@@ -35,7 +35,7 @@ const Skills = ({ technologies, libraries, softSkills }: SkillsProps) => {
           <ListHeading text={'Soft Skills'} />
           <div className="space-y-1">
             {softSkills.map((soft: string, idx: React.Key) => (
-              <ListItem key={idx} text={soft} className='text-lg' />
+              <ListItem key={idx} text={soft} className="text-lg" />
             ))}
           </div>
         </div>
