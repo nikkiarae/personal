@@ -10,6 +10,7 @@ import Introduction from './Introduction';
 import Experience from './Experience';
 import Education from './Education';
 import Download from './Download';
+import RecentBlogs from './RecentBlogs';
 
 export {
   PageHeader,
@@ -24,4 +25,5 @@ export {
   Experience,
   Education,
   Download,
+  RecentBlogs,
 };

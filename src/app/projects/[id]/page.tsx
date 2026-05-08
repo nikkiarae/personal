@@ -1,7 +1,6 @@
 import React, { FC } from 'react';
 import { Page } from '@/components/layout';
 import { Links, PageHeader } from '@/components/sections';
-import { Divider, Stack, Typography } from '@mui/material';
 import { Params, Project as ProjectType } from '@/types/types';
 import { LearningOutcomes, Skills, What } from '@/components/sections';
 import { Carousel } from '@/components/carousel';
@@ -14,9 +13,9 @@ const Project: FC<Params> = async ({ params }) => {
   if (!project) {
     return (
       <Page>
-        <Typography variant="h6" color="textSecondary" align="center">
+        <p className="text-center text-lg font-medium text-slate-500">
           Project not found
-        </Typography>
+        </p>
       </Page>
     );
   }
@@ -27,20 +26,20 @@ const Project: FC<Params> = async ({ params }) => {
         heading={project.title}
         subHeading={project.briefDescription}
       />
-      <Stack spacing={6}>
+      <div className="space-y-6">
         <Links live={project.liveLink} repo={project.repositoryLink} />
         <Carousel images={project.images} />
-        <Divider />
+        <hr className="border-slate-200/80" />
         <What content={project.detailedDescription} />
-        <Divider />
+        <hr className="border-slate-200/80" />
         <Skills
           technologies={project.technologiesUsed}
           libraries={project.librariesAndTools}
           softSkills={project.softSkills}
         />
-        <Divider />
+        <hr className="border-slate-200/80" />
         <LearningOutcomes content={project.learningOutcomes} />
-      </Stack>
+      </div>
     </Page>
   );
 };

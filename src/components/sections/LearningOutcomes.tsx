@@ -1,9 +1,8 @@
 'use client';
 
 import React, { FC } from 'react';
-import { Box, List, ListItem, ListItemIcon, ListItemText } from '@mui/material';
 import { SectionHeading } from '@/components/typography';
-import ArrowRightIcon from '@mui/icons-material/ArrowRight';
+import { ArrowRight } from 'lucide-react';
 
 interface LearningOutcomesProps {
   content: string[];
@@ -11,19 +10,17 @@ interface LearningOutcomesProps {
 
 const LearningOutcomes: FC<LearningOutcomesProps> = ({ content }) => {
   return (
-    <Box>
+    <div>
       <SectionHeading text={'Learning Outcomes'} />
-      <List>
+      <ul className="space-y-2">
         {content.map((outcome: string, idx: React.Key) => (
-          <ListItem key={idx} sx={{ alignItems: 'start' }}>
-            <ListItemIcon sx={{ mt: 1 }}>
-              <ArrowRightIcon />
-            </ListItemIcon>
-            <ListItemText primary={outcome} />
-          </ListItem>
+          <li key={idx} className="flex items-start gap-2">
+            <ArrowRight className="mt-1 shrink-0" size={18} />
+            <span>{outcome}</span>
+          </li>
         ))}
-      </List>
-    </Box>
+      </ul>
+    </div>
   );
 };
 

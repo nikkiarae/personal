@@ -1,90 +1,70 @@
 'use client';
 
-import React, { FC } from 'react';
-import {
-  Box,
-  Typography,
-  Button,
-  Avatar,
-  Stack,
-  useTheme,
-} from '@mui/material';
-import Link from 'next/link';
+import Image from 'next/image';
 import { PROJECTS, RESUME } from '@/lib/constants/navigation';
+import { useRouter } from 'next/navigation';
+import { Button } from '@heroui/react';
 
-const Intro: FC = () => {
-  const theme = useTheme();
+const Intro = () => {
+  const router = useRouter();
+
   return (
-    <Stack
-      spacing={{ xs: 6, md: 10 }}
-      direction={{ xs: 'column', md: 'row' }}
-      sx={{ mb: { xs: 6, md: 10 } }}
-    >
-      <Stack
-        direction={'column'}
-        spacing={3}
-        sx={{ textAlign: { xs: 'center', md: 'left' } }}
-      >
-        <Typography variant="h5" color="textSecondary">
+    <section className="grid gap-10 pt-3 md:grid-cols-[1fr_370px] md:items-center md:gap-14 md:pt-8">
+      <div className="text-center md:text-left">
+        <p className="mb-4 text-[1.9rem] font-medium text-[#aab4cc]">
           Hey, I&apos;m Nikki 👋
-        </Typography>
-        <Box>
-          <Typography variant="h1" color="primary">
-            Full Stack
-          </Typography>
-          <Typography variant="h1">Developer</Typography>
-        </Box>
-        <Typography variant="h5" color="textSecondary" gutterBottom>
-          Specializing in full-stack development, with a focus on building
-          robust, scalable, and user-friendly applications.
-        </Typography>
-        <Stack
-          direction={'row'}
-          spacing={2}
-          display={'flex'}
-          justifyContent={{ xs: 'center', md: 'start' }}
-        >
-          <Link href={RESUME.toLowerCase()} passHref>
-            <Button variant="contained" color="primary" size="large">
-              View Resume
-            </Button>
-          </Link>
-          <Link href={PROJECTS.toLowerCase()} passHref>
-            <Button variant="outlined" color="primary" size="large">
-              Browse Projects
-            </Button>
-          </Link>
-        </Stack>
-      </Stack>
-      <Box
-        sx={{
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-        }}
-      >
-        <Box
-          sx={{
-            p: 3,
-            borderRadius: '50%',
-            border: `4px solid ${theme.palette.primary.main}`,
-          }}
-        >
-          <Avatar
-            alt="Nikki Rae"
-            src="/assets/images/profile.jpeg"
-            sx={{
-              width: { xs: 280, md: 320, lg: 350 },
-              height: { xs: 280, md: 320, lg: 350 },
-              '.MuiAvatar-img': {
-                objectFit: 'cover',
-                objectPosition: 'top',
-              },
-            }}
-          />
-        </Box>
-      </Box>
-    </Stack>
+        </p>
+
+        <div className="space-y-0.5">
+          <h1 className="text-[3.3rem] font-semibold leading-[0.95] tracking-[-0.02em] text-accent sm:text-[4.1rem]">
+            Business-Focused
+          </h1>
+          <h1 className="text-[3.3rem] font-semibold leading-[0.95] tracking-[-0.02em] sm:text-[4.1rem]">
+            Full Stack Engineer
+          </h1>
+        </div>
+
+        <p className="mt-6 max-w-160 text-[2rem] leading-tight text-[#b8c2d8]">
+          Delivering secure, scalable web platforms aligned to business goals,
+          accelerating delivery, improving operational efficiency, and creating
+          measurable results.
+        </p>
+
+        <div className="mt-7 flex flex-wrap justify-center gap-3 md:justify-start">
+          <Button
+            onPress={() => router.push(`/${RESUME.toLowerCase()}`)}
+            variant="primary"
+            size="lg"
+            className="bg-primary text-white hover:bg-primary/90"
+          >
+            View Resume
+          </Button>
+
+          <Button
+            onPress={() => router.push(`/${PROJECTS.toLowerCase()}`)}
+            variant="outline"
+            size="lg"
+          >
+            Browse Projects
+          </Button>
+        </div>
+      </div>
+
+      <div className="flex items-center justify-center md:justify-end">
+        <div className="rounded-full border-4 border-accent p-4.5">
+          <div className="rounded-full bg-[#4f5968] p-1">
+            <Image
+              src="/assets/images/profile.jpeg"
+              alt="Nikki Rae"
+              width={330}
+              height={330}
+              className="h-80.5 w-80.5 rounded-full object-cover object-top sm:h-80 sm:w-80"
+              priority
+            />
+          </div>
+        </div>
+      </div>
+    </section>
   );
 };
 

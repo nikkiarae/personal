@@ -1,11 +1,11 @@
 'use client';
 
 import React from 'react';
-import { Box, Typography, useTheme } from '@mui/material';
 import { Carousel } from 'react-responsive-carousel';
 import { borderRadius } from '@/styles/globalStyle';
 import Image from 'next/image';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
+import { useTheme } from '@/hooks/useTheme';
 
 interface CarouselProps {
   images: string[];
@@ -15,70 +15,37 @@ const THUMBNAIL_WIDTH = 96;
 const THUMBNAIL_HEIGHT = 72;
 
 const CarouselComponent: React.FC<CarouselProps> = ({ images }) => {
-  const theme = useTheme();
+  const { theme } = useTheme();
 
   if (images.length === 0) {
     return (
-      <Box
-        sx={{
-          minHeight: 320,
-          borderRadius: borderRadius,
+      <div
+        className="flex min-h-[320px] items-center justify-center px-3 text-center"
+        style={{
+          borderRadius,
           border: `1px solid ${theme.palette.divider}`,
           backgroundColor: theme.palette.grey[100],
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          px: 3,
-          textAlign: 'center',
         }}
       >
-        <Typography variant="body1" color="text.secondary">
+        <p style={{ color: theme.palette.text.secondary }}>
           Project screenshots coming soon.
-        </Typography>
-      </Box>
+        </p>
+      </div>
     );
   }
 
   return (
-    <Box
-      sx={{
-        '.thumbs': {
-          display: 'flex',
-          gap: 1,
-          m: 0,
-          p: 0,
-          '.selected': {
-            borderRadius: borderRadius,
-            border: `solid 3px ${theme.palette.primary.main}`,
-          },
-          '.thumb': {
-            borderRadius: borderRadius,
-            height: THUMBNAIL_HEIGHT,
-            overflow: 'hidden',
-            p: 0,
-            transition: 'none',
-            ':hover': {
-              borderRadius: borderRadius,
-              border: `solid 3px ${theme.palette.primary.main}`,
-            },
-          },
-        },
-        '.thumbs-wrapper': {
-          mx: 0,
-          mb: 0,
-        },
-      }}
-    >
+    <div>
       <Carousel
         dynamicHeight={true}
         renderThumbs={() =>
-          images.map((image: string, idx: React.Key) => (
-            <Box
+          images.map((image: string, idx: number) => (
+            <div
               key={`${image}-${idx}`}
-              sx={{
-                height: THUMBNAIL_HEIGHT,
+              style={{
+                height: `${THUMBNAIL_HEIGHT}px`,
                 position: 'relative',
-                width: THUMBNAIL_WIDTH,
+                width: `${THUMBNAIL_WIDTH}px`,
               }}
             >
               <Image
@@ -88,7 +55,7 @@ const CarouselComponent: React.FC<CarouselProps> = ({ images }) => {
                 sizes={`${THUMBNAIL_WIDTH}px`}
                 style={{ objectFit: 'cover' }}
               />
-            </Box>
+            </div>
           ))
         }
         showArrows={false}
@@ -97,19 +64,50 @@ const CarouselComponent: React.FC<CarouselProps> = ({ images }) => {
         showThumbs={images.length > 1}
         thumbWidth={THUMBNAIL_WIDTH}
       >
-        {images.map((image: string, idx: React.Key) => (
+        {images.map((image: string, idx: number) => (
           <div key={idx}>
             <Image
               src={image}
               alt={`Slide ${idx}`}
-              layout="responsive"
               width={800}
               height={600}
+              className="h-auto w-full"
             />
           </div>
         ))}
       </Carousel>
-    </Box>
+      <style jsx global>{`
+        .thumbs {
+          display: flex;
+          gap: 8px;
+          margin: 0;
+          padding: 0;
+        }
+
+        .thumbs .selected {
+          border-radius: ${borderRadius};
+          border: solid 3px ${theme.palette.primary.main};
+        }
+
+        .thumb {
+          border-radius: ${borderRadius};
+          height: ${THUMBNAIL_HEIGHT}px;
+          overflow: hidden;
+          padding: 0;
+          transition: none;
+        }
+
+        .thumb:hover {
+          border-radius: ${borderRadius};
+          border: solid 3px ${theme.palette.primary.main};
+        }
+
+        .thumbs-wrapper {
+          margin-inline: 0;
+          margin-bottom: 0;
+        }
+      `}</style>
+    </div>
   );
 };
 

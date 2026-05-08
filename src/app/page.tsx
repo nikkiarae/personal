@@ -1,17 +1,16 @@
-'use client';
-
-import { FC } from 'react';
 import { Page } from '@/components/layout';
-import { Stack } from '@mui/material';
-import { Intro, Strengths } from '@/components/sections';
+import { Intro, Strengths, RecentBlogs } from '@/components/sections';
+import { fetchBlogPosts } from '@/lib/api/blog';
 
-const Home: FC = () => {
+const Home = async () => {
+  const blogPosts = await fetchBlogPosts();
   return (
     <Page>
-      <Stack spacing={6}>
+      <div className="mx-auto max-w-6xl space-y-12 pb-8">
         <Intro />
         <Strengths />
-      </Stack>
+        <RecentBlogs blogPosts={blogPosts} />
+      </div>
     </Page>
   );
 };

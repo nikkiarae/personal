@@ -1,12 +1,10 @@
-import React, { FC } from 'react';
 import { Page } from '@/components/layout';
 import { PageHeader } from '@/components/sections';
-import { Grid } from '@mui/material';
 import { Project } from '@/types/types';
 import { ProjectCard } from '@/components/cards';
 import { fetchProjects } from '@/lib/api/projects';
 
-const Projects: FC = async () => {
+const Projects = async () => {
   const projects = await fetchProjects();
 
   return (
@@ -17,13 +15,13 @@ const Projects: FC = async () => {
           'Youll find a selection of my work below that has allowed me to develop my skills'
         }
       />
-      <Grid container spacing={{ xs: 1.5, sm: 3 }}>
-        {projects.map((project: Project, idx: React.Key) => (
-          <Grid key={idx} item xs={12} sm={6} md={4} lg={3}>
+      <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3 xl:grid-cols-4">
+        {projects.map((project: Project) => (
+          <div key={project.id} className="h-full">
             <ProjectCard project={project} />
-          </Grid>
+          </div>
         ))}
-      </Grid>
+      </div>
     </Page>
   );
 };

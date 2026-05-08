@@ -1,56 +1,102 @@
 'use client';
 
 import React, { FC } from 'react';
-import { Box, Typography, Link as MuiLink } from '@mui/material';
-import { Facebook, Twitter, Instagram, LinkedIn } from '@mui/icons-material';
+import type { IconType } from 'react-icons';
+import {
+  FaFacebookF,
+  FaInstagram,
+  FaLinkedinIn,
+  FaTwitter,
+} from 'react-icons/fa';
 import Link from 'next/link';
 import { NAV_ITEMS } from '@/lib/constants/navigation';
+import { useTheme } from '@/hooks/useTheme';
+
+interface SocialLink {
+  name: string;
+  href: string;
+  Icon: IconType;
+}
+
+const SOCIAL_LINKS: SocialLink[] = [
+  {
+    name: 'Facebook',
+    href: 'https://facebook.com',
+    Icon: FaFacebookF,
+  },
+  {
+    name: 'Twitter',
+    href: 'https://twitter.com',
+    Icon: FaTwitter,
+  },
+  {
+    name: 'Instagram',
+    href: 'https://instagram.com',
+    Icon: FaInstagram,
+  },
+  {
+    name: 'LinkedIn',
+    href: 'https://linkedin.com',
+    Icon: FaLinkedinIn,
+  },
+];
 
 const Footer: FC = () => {
+  const { theme } = useTheme();
+
   return (
-    <Box
-      component="footer"
-      sx={{
-        p: 2,
-        mt: 'auto',
-        backgroundColor: 'background.paper',
-        textAlign: 'center',
-        width: '100%',
+    <footer
+      className="mt-auto w-full border-t"
+      style={{
+        backgroundColor: theme.palette.background.paper,
+        borderColor: theme.palette.divider,
       }}
     >
-      <Box sx={{ mt: 2, display: 'flex', justifyContent: 'center', gap: 2 }}>
-        <MuiLink href="https://facebook.com" target="_blank" rel="noopener">
-          <Facebook />
-        </MuiLink>
-        <MuiLink href="https://twitter.com" target="_blank" rel="noopener">
-          <Twitter />
-        </MuiLink>
-        <MuiLink href="https://instagram.com" target="_blank" rel="noopener">
-          <Instagram />
-        </MuiLink>
-        <MuiLink href="https://linkedin.com" target="_blank" rel="noopener">
-          <LinkedIn />
-        </MuiLink>
-      </Box>
-      <Box sx={{ mb: 2 }}>
-        {NAV_ITEMS.map((item) => (
-          <Link
-            key={item}
-            href={`/${item.toLowerCase()}`}
-            style={{
-              marginInline: '8px',
-              textDecoration: 'none',
-              color: 'inherit',
-            }}
-          >
-            {item}
-          </Link>
-        ))}
-      </Box>
-      <Typography variant="body2" color="textSecondary">
-        &copy; {new Date().getFullYear()} Nikki Rae. All rights reserved.
-      </Typography>
-    </Box>
+      <div className="mx-auto flex w-full max-w-7xl flex-col items-center gap-4 px-4 py-6 text-center sm:px-6 lg:px-8">
+        <div className="flex items-center gap-3">
+          {SOCIAL_LINKS.map(({ name, href, Icon }) => (
+            <a
+              key={name}
+              href={href}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={name}
+              className="rounded-md p-2 transition-colors"
+              style={{
+                color: theme.palette.text.secondary,
+                backgroundColor: 'transparent',
+              }}
+              onMouseEnter={(event) => {
+                event.currentTarget.style.backgroundColor =
+                  theme.palette.action.hover;
+              }}
+              onMouseLeave={(event) => {
+                event.currentTarget.style.backgroundColor = 'transparent';
+              }}
+            >
+              <Icon size={18} />
+            </a>
+          ))}
+        </div>
+
+        <nav className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-sm font-medium">
+          {NAV_ITEMS.map((item) => (
+            <Link
+              key={item}
+              href={`/${item.toLowerCase()}`}
+              className="transition-colors hover:opacity-80"
+              style={{ color: theme.palette.text.primary }}
+            >
+              {item}
+            </Link>
+          ))}
+        </nav>
+
+        <p className="text-sm" style={{ color: theme.palette.text.secondary }}>
+          &copy; {new Date().getFullYear()} Nikki Rae. All rights reserved.
+        </p>
+      </div>
+    </footer>
   );
 };
 

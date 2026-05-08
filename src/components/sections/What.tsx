@@ -1,7 +1,6 @@
 'use client';
 
 import React, { FC } from 'react';
-import { Box, Typography } from '@mui/material';
 import { SectionHeading } from '@/components/typography';
 
 interface WhatProps {
@@ -10,10 +9,10 @@ interface WhatProps {
 
 const What: FC<WhatProps> = ({ content }) => {
   return (
-    <Box>
+    <div>
       <SectionHeading text={'What'} />
-      <Typography variant="body1">{content}</Typography>
-    </Box>
+      <p>{content}</p>
+    </div>
   );
 };
 

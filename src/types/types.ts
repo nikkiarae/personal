@@ -4,6 +4,12 @@ export interface Params {
   }>;
 }
 
+export interface SlugParams {
+  params: Promise<{
+    slug: string;
+  }>;
+}
+
 export type EntityId = string;
 export type ISODateString = string;
 
@@ -37,8 +43,22 @@ export interface Job {
   company: string;
   title: string;
   location: string;
+  workStyle: 'Remote' | 'Office' | 'Hybrid';
   dateLabel?: string;
   startDate: ISODateString;
   endDate: ISODateString | null;
   responsibilities: string[];
 }
+
+export interface BlogPost {
+  slug: string;
+  title: string;
+  date: ISODateString;
+  summary: string;
+  tags: string[];
+  coverImage?: string;
+  published: boolean;
+  content: string;
+}
+
+export type BlogPostSummary = Omit<BlogPost, 'content'>;

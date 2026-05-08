@@ -3,14 +3,6 @@
 import React, { FC, useState } from 'react';
 import { Formik, Form, Field, FormikHelpers } from 'formik';
 import * as Yup from 'yup';
-import {
-  Button,
-  TextField,
-  Stack,
-  Container,
-  Alert,
-  AlertTitle,
-} from '@mui/material';
 import { useForm } from '@formspree/react';
 import { Page } from '@/components/layout';
 import { PageHeader } from '@/components/sections';
@@ -26,6 +18,9 @@ interface ContactFormValues {
   email: string;
   message: string;
 }
+
+const inputClassName =
+  'w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 shadow-sm outline-none transition focus:border-slate-500 focus:ring-2 focus:ring-slate-300';
 
 const Contact: FC = () => {
   const [, handleSubmit] = useForm('mzzzyjry');
@@ -53,7 +48,7 @@ const Contact: FC = () => {
         heading={'Contact Me'}
         subHeading={'Looking to partner or work together? Reach out'}
       />
-      <Container maxWidth={'md'} sx={{ pt: 6 }}>
+      <div className="mx-auto max-w-3xl pt-6">
         <Formik
           initialValues={{
             name: '',
@@ -63,60 +58,92 @@ const Contact: FC = () => {
           validationSchema={ContactSchema}
           onSubmit={onSubmit}
         >
-          {({ errors, touched }) => (
-            <Form>
-              <Stack spacing={2}>
+          {({ errors, touched, isSubmitting }) => (
+            <Form className="space-y-4">
+              <div className="space-y-1.5">
+                <label
+                  htmlFor="name"
+                  className="block text-sm font-medium text-slate-700"
+                >
+                  Name
+                </label>
                 <Field
-                  as={TextField}
+                  id="name"
                   name="name"
-                  label="Name"
-                  variant="outlined"
-                  fullWidth
-                  error={touched.name && !!errors.name}
-                  helperText={touched.name && errors.name}
+                  type="text"
+                  className={inputClassName}
                 />
-                <Field
-                  as={TextField}
-                  name="email"
-                  label="Email"
-                  variant="outlined"
-                  fullWidth
-                  error={touched.email && !!errors.email}
-                  helperText={touched.email && errors.email}
-                />
-                <Field
-                  as={TextField}
-                  name="message"
-                  label="Message"
-                  variant="outlined"
-                  fullWidth
-                  multiline
-                  rows={4}
-                  error={touched.message && !!errors.message}
-                  helperText={touched.message && errors.message}
-                />
-                <Button type="submit" variant="contained" color="primary">
-                  Send Message
-                </Button>
+                {touched.name && errors.name && (
+                  <p className="text-sm text-red-600">{errors.name}</p>
+                )}
+              </div>
 
-                {/* Alert Section */}
-                {formStatus === 'success' && (
-                  <Alert severity="success">
-                    <AlertTitle>Success</AlertTitle>
+              <div className="space-y-1.5">
+                <label
+                  htmlFor="email"
+                  className="block text-sm font-medium text-slate-700"
+                >
+                  Email
+                </label>
+                <Field
+                  id="email"
+                  name="email"
+                  type="email"
+                  className={inputClassName}
+                />
+                {touched.email && errors.email && (
+                  <p className="text-sm text-red-600">{errors.email}</p>
+                )}
+              </div>
+
+              <div className="space-y-1.5">
+                <label
+                  htmlFor="message"
+                  className="block text-sm font-medium text-slate-700"
+                >
+                  Message
+                </label>
+                <Field
+                  as="textarea"
+                  id="message"
+                  name="message"
+                  rows={4}
+                  className={`${inputClassName} min-h-28 resize-y`}
+                />
+                {touched.message && errors.message && (
+                  <p className="text-sm text-red-600">{errors.message}</p>
+                )}
+              </div>
+
+              <button
+                type="submit"
+                disabled={isSubmitting}
+                className="inline-flex items-center rounded-lg bg-slate-900 px-4 py-2 text-sm font-semibold text-white transition hover:bg-slate-800 disabled:cursor-not-allowed disabled:opacity-60"
+              >
+                Send Message
+              </button>
+
+              {formStatus === 'success' && (
+                <div className="rounded-lg border border-emerald-300 bg-emerald-50 px-4 py-3 text-emerald-900">
+                  <p className="font-semibold">Success</p>
+                  <p className="text-sm">
                     Your message has been sent successfully!
-                  </Alert>
-                )}
-                {formStatus === 'error' && (
-                  <Alert severity="error">
-                    <AlertTitle>Error</AlertTitle>
+                  </p>
+                </div>
+              )}
+
+              {formStatus === 'error' && (
+                <div className="rounded-lg border border-red-300 bg-red-50 px-4 py-3 text-red-900">
+                  <p className="font-semibold">Error</p>
+                  <p className="text-sm">
                     Something went wrong. Please try again later.
-                  </Alert>
-                )}
-              </Stack>
+                  </p>
+                </div>
+              )}
             </Form>
           )}
         </Formik>
-      </Container>
+      </div>
     </Page>
   );
 };

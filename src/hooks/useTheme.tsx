@@ -1,112 +1,113 @@
 'use client';
 
-import {
-  FC,
-  ReactNode,
-  useEffect,
-  useState,
-  createContext,
-  useContext,
-  useMemo,
-  useCallback,
-} from 'react';
-import {
-  ThemeProvider as MuiThemeProvider,
-  CssBaseline,
-  Theme,
-  PaletteMode,
-  createTheme,
-  responsiveFontSizes,
-  PaletteOptions,
-} from '@mui/material';
-import { baseThemeOptions } from '../styles/theme';
+import { useMemo } from 'react';
+import { useTheme as useNextTheme } from 'next-themes';
+export type PaletteMode = 'light' | 'dark';
 
-const THEME_MODE_STORAGE_KEY = 'portfolio-theme-mode';
+export interface AppPalette {
+  mode: PaletteMode;
+  background: {
+    default: string;
+    paper: string;
+  };
+  primary: {
+    main: string;
+  };
+  secondary: {
+    main: string;
+  };
+  text: {
+    primary: string;
+    secondary: string;
+  };
+  divider: string;
+  grey: {
+    [key: number]: string;
+  };
+  action: {
+    hover: string;
+    selected: string;
+  };
+}
+
+interface AppTheme {
+  palette: AppPalette;
+}
 
 interface ThemeContextProps {
   mode: PaletteMode;
   toggleTheme: () => void;
-  theme: Theme;
+  theme: AppTheme;
+  palette: AppPalette;
+  currentTheme: PaletteMode;
+  setTheme: (nextTheme: PaletteMode | 'system') => void;
 }
 
-const ThemeContext = createContext<ThemeContextProps | undefined>(undefined);
+const normalizeThemeName = (themeName: string | undefined): PaletteMode => {
+  return themeName === 'dark' ? 'dark' : 'light';
+};
+
+const buildPalette = (mode: PaletteMode): AppPalette => {
+  return {
+    mode,
+    background: {
+      default: 'var(--color-background)',
+      paper: 'var(--color-background-secondary)',
+    },
+    primary: {
+      main: 'var(--color-accent)',
+    },
+    secondary: {
+      main: 'var(--color-accent)',
+    },
+    text: {
+      primary: 'var(--foreground)',
+      secondary: 'var(--muted)',
+    },
+    divider: 'var(--separator)',
+    grey: {
+      100: 'var(--color-default)',
+      200: 'var(--color-background-secondary)',
+      300: 'var(--color-background-tertiary)',
+    },
+    action: {
+      hover: 'var(--color-default-hover)',
+      selected: 'var(--color-accent-soft)',
+    },
+  };
+};
 
 export const useTheme = (): ThemeContextProps => {
-  const context = useContext(ThemeContext);
-  if (!context) {
-    throw new Error('useThemeMode must be used within a ThemeProvider');
-  }
-  return context;
-};
+  const {
+    theme: selectedTheme,
+    resolvedTheme,
+    setTheme: setNextTheme,
+  } = useNextTheme();
 
-interface ThemeProviderProps {
-  children: ReactNode;
-  palette: {
-    dark: PaletteOptions;
-    light: PaletteOptions;
-  };
-}
-
-const ThemeProvider: FC<ThemeProviderProps> = ({ children, palette }) => {
-  const [mode, setMode] = useState<PaletteMode>('light');
-
-  const createThemeWithMode = useCallback(
-    (mode: PaletteMode): Theme => {
-      return createTheme({
-        palette: {
-          ...(mode === 'dark' ? palette.dark : palette.light),
-          mode,
-        },
-        ...baseThemeOptions.components,
-        ...baseThemeOptions.typography,
-      });
-    },
-    [palette], // Ensure the function updates when the palette changes
+  const currentTheme = useMemo(
+    () => normalizeThemeName(resolvedTheme ?? selectedTheme),
+    [resolvedTheme, selectedTheme],
   );
 
-  // Use `useMemo` to optimize theme creation
-  const theme = useMemo(() => {
-    return responsiveFontSizes(createThemeWithMode(mode));
-  }, [mode, createThemeWithMode]);
+  const palette = useMemo(() => buildPalette(currentTheme), [currentTheme]);
+  const mode = currentTheme;
 
   const toggleTheme = () => {
-    const newMode = mode === 'light' ? 'dark' : 'light';
-    window.localStorage.setItem(THEME_MODE_STORAGE_KEY, newMode);
-    setMode(newMode);
+    setNextTheme(mode === 'dark' ? 'light' : 'dark');
   };
 
-  useEffect(() => {
-    const matchMedia = window.matchMedia('(prefers-color-scheme: dark)');
-    const storedMode = window.localStorage.getItem(THEME_MODE_STORAGE_KEY);
+  const setTheme = (nextThemeName: PaletteMode | 'system') => {
+    setNextTheme(nextThemeName);
+  };
 
-    if (storedMode === 'light' || storedMode === 'dark') {
-      setMode(storedMode);
-      return;
-    }
-
-    setMode(matchMedia.matches ? 'dark' : 'light');
-
-    const handleChange = (e: MediaQueryListEvent) => {
-      const newMode = e.matches ? 'dark' : 'light';
-      setMode(newMode);
-    };
-
-    matchMedia.addEventListener('change', handleChange);
-    return () => matchMedia.removeEventListener('change', handleChange);
-  }, []);
-
-  useEffect(() => {
-    document.documentElement.style.colorScheme = mode;
-  }, [mode]);
-
-  return (
-    <ThemeContext.Provider value={{ mode, toggleTheme, theme }}>
-      <MuiThemeProvider theme={theme}>
-        <CssBaseline />
-        {children}
-      </MuiThemeProvider>
-    </ThemeContext.Provider>
-  );
+  return {
+    mode,
+    toggleTheme,
+    theme: {
+      palette,
+    },
+    palette,
+    currentTheme,
+    setTheme,
+  };
 };
-
-export default ThemeProvider;

@@ -1,35 +1,33 @@
 'use client';
 
 import React, { FC } from 'react';
-import { Box, Typography, useTheme } from '@mui/material';
+import { MapPin } from 'lucide-react';
 import { SectionHeading } from '@/components/typography';
-import PlaceIcon from '@mui/icons-material/Place';
+import { useTheme } from '@/hooks/useTheme';
 
 const Education: FC = () => {
   const theme = useTheme();
+
   return (
-    <Box>
+    <div>
       <SectionHeading text={'Education'} />
-      <Box>
-        <Typography variant="h5">
+      <div>
+        <h3 className="text-2xl font-semibold">
           {`Bachelors of Science, Information Technology`}
-        </Typography>
-        <Typography variant="body1" color="textSecondary" gutterBottom>
+        </h3>
+        <p className="mb-1" style={{ color: theme.palette.text.secondary }}>
           {`Brigham Young University`}
-        </Typography>
-        <Box display="flex" mb={1}>
-          <PlaceIcon
-            sx={{
-              color: theme.palette.primary.main,
-              fontSize: '1.7rem',
-              mr: 1,
-              mt: 0.5,
-            }}
+        </p>
+        <div className="flex items-start gap-2">
+          <MapPin
+            className="mt-1 shrink-0"
+            size={18}
+            style={{ color: theme.palette.primary.main }}
           />
-          <Typography variant="body1">{`Provo, UT, USA`}</Typography>
-        </Box>
-      </Box>
-    </Box>
+          <p>{`Provo, UT, USA`}</p>
+        </div>
+      </div>
+    </div>
   );
 };
 

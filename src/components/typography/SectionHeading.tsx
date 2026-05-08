@@ -1,7 +1,6 @@
 'use client';
 
 import React, { FC } from 'react';
-import { Typography, Box } from '@mui/material';
 
 interface SectionHeadingProps {
   text: string;
@@ -9,12 +8,12 @@ interface SectionHeadingProps {
 
 const SectionHeading: FC<SectionHeadingProps> = ({ text }) => {
   return (
-    <Box sx={{ marginBottom: 2 }}>
-      <Typography variant="h3">
+    <div className="mb-2">
+      <h2 className="text-3xl font-semibold">
         {text}
         <span style={{ color: '#6A0DAD' }}>.</span>
-      </Typography>
-    </Box>
+      </h2>
+    </div>
   );
 };
 

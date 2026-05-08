@@ -1,9 +1,7 @@
 'use client';
 
 import React, { FC } from 'react';
-import { Stack, Button } from '@mui/material';
-import LaunchIcon from '@mui/icons-material/Launch'; // Icon for live link
-import GitHubIcon from '@mui/icons-material/GitHub'; // Icon for GitHub repo
+import { ArrowRight, ExternalLink } from 'lucide-react';
 
 interface LinksProps {
   live?: string | null;
@@ -12,35 +10,31 @@ interface LinksProps {
 
 const Links: FC<LinksProps> = ({ live, repo }) => {
   return (
-    <Stack direction="row" spacing={2}>
-      {/* Live Link Button */}
+    <div className="flex flex-wrap gap-2">
       {live && (
-        <Button
-          variant="contained"
-          color="primary"
-          startIcon={<LaunchIcon />}
+        <a
+          className="inline-flex items-center gap-2 rounded-lg bg-slate-900 px-4 py-2 text-sm font-semibold text-white transition hover:bg-slate-800"
           href={live}
           target="_blank"
           rel="noopener noreferrer"
         >
+          <ExternalLink size={16} />
           Live Demo
-        </Button>
+        </a>
       )}
 
-      {/* GitHub Repo Button */}
       {repo && (
-        <Button
-          variant="outlined"
-          color="secondary"
-          startIcon={<GitHubIcon />}
+        <a
+          className="inline-flex items-center gap-2 rounded-lg border border-slate-400 px-4 py-2 text-sm font-semibold transition hover:bg-slate-100"
           href={repo}
           target="_blank"
           rel="noopener noreferrer"
         >
+          <ArrowRight size={16} />
           GitHub Repo
-        </Button>
+        </a>
       )}
-    </Stack>
+    </div>
   );
 };
 

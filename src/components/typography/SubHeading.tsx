@@ -1,28 +1,23 @@
 'use client';
 
 import React, { FC } from 'react';
-import { Typography, Box, useTheme } from '@mui/material';
+import { useTheme } from '@/hooks/useTheme';
 
 interface SubHeadingProps {
   text: string;
 }
 
 const SubHeading: FC<SubHeadingProps> = ({ text }) => {
-  const theme = useTheme();
+  const { theme } = useTheme();
 
   return (
-    <Box sx={{ display: 'flex', flexDirection: 'row' }}>
-      <Box
-        sx={{
-          width: '6px',
-          height: 'auto',
-          backgroundColor: theme.palette.primary.main,
-          mr: 2,
-          my: 1,
-        }}
+    <div className="flex flex-row">
+      <div
+        className="my-1 mr-2 w-1.5"
+        style={{ backgroundColor: theme.palette.primary.main }}
       />
-      <Typography variant="h5">{text}</Typography>
-    </Box>
+      <h3 className="text-2xl font-semibold">{text}</h3>
+    </div>
   );
 };
 

@@ -1,16 +1,12 @@
 'use client';
 
-import React, { PropsWithChildren } from 'react';
-import { Container } from '@mui/material';
+import { PropsWithChildren } from 'react';
 
-const Page: React.FC<PropsWithChildren> = ({ children }) => {
+const Page = ({ children }: PropsWithChildren) => {
   return (
-    <Container
-      disableGutters
-      sx={{ mt: { xs: 2, md: 4 }, mb: { xs: 8, md: 14 } }}
-    >
+    <div className="flex flex-col gap-6 mb-8 mt-2 md:mb-14 md:mt-4">
       {children}
-    </Container>
+    </div>
   );
 };
 

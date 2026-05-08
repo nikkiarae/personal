@@ -1,14 +1,11 @@
-'use client =';
-
-import React, { FC } from 'react';
-import { Typography } from '@mui/material';
-
+'use client';
 interface ListItemProps {
   text: string;
+  className?: string;
 }
 
-const ListItem: FC<ListItemProps> = ({ text }) => {
-  return <Typography variant="body1">{text}</Typography>;
+const ListItem = ({ text, className }: ListItemProps) => {
+  return <p className={className}>{text}</p>;
 };
 
 export default ListItem;

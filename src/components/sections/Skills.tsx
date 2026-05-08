@@ -1,7 +1,5 @@
 'use client';
 
-import React, { FC } from 'react';
-import { Grid, Box, Stack } from '@mui/material';
 import { ListHeading, ListItem, SectionHeading } from '@/components/typography';
 
 interface SkillsProps {
@@ -10,37 +8,39 @@ interface SkillsProps {
   softSkills: string[];
 }
 
-const Skills: FC<SkillsProps> = ({ technologies, libraries, softSkills }) => {
+const Skills = ({ technologies, libraries, softSkills }: SkillsProps) => {
   return (
-    <Box>
+    <div>
       <SectionHeading text={'Skills'} />
-      <Grid container spacing={4}>
-        <Grid item xs={12} sm={6} md={4}>
+      <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3">
+        <div>
           <ListHeading text={'Technologies'} />
-          <Stack spacing={1}>
+          <div className="space-y-1">
             {technologies.map((tech: string, idx: React.Key) => (
               <ListItem key={idx} text={tech} />
             ))}
-          </Stack>
-        </Grid>
-        <Grid item xs={12} sm={6} md={4}>
+          </div>
+        </div>
+
+        <div>
           <ListHeading text={'Libraries'} />
-          <Stack spacing={1}>
+          <div className="space-y-1">
             {libraries.map((library: string, idx: React.Key) => (
               <ListItem key={idx} text={library} />
             ))}
-          </Stack>
-        </Grid>
-        <Grid item xs={12} sm={6} md={4}>
+          </div>
+        </div>
+
+        <div>
           <ListHeading text={'Soft Skills'} />
-          <Stack spacing={1}>
+          <div className="space-y-1">
             {softSkills.map((soft: string, idx: React.Key) => (
               <ListItem key={idx} text={soft} />
             ))}
-          </Stack>
-        </Grid>
-      </Grid>
-    </Box>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 };
 

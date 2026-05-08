@@ -1,17 +1,17 @@
 'use client';
 
-import React, { FC } from 'react';
-import { Typography } from '@mui/material';
+import { twMerge } from 'tailwind-merge';
 
 interface ListHeadingProps {
   text: string;
+  className?: string;
 }
 
-const ListHeading: FC<ListHeadingProps> = ({ text }) => {
+const ListHeading = ({ text, className }: ListHeadingProps) => {
   return (
-    <Typography variant="h5" gutterBottom>
+    <h3 className={twMerge('mb-1 text-2xl font-semibold', className)}>
       {text}
-    </Typography>
+    </h3>
   );
 };
 

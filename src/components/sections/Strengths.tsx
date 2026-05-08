@@ -1,23 +1,25 @@
 'use client';
 
-import React, { FC } from 'react';
-import { Box, Grid } from '@mui/material';
-import { SectionHeading } from '@/components/typography';
 import { SkillsData } from '@/lib/data/skills';
-import SkillCard from '@/components/cards/SkillCard';
+import { SkillCard } from '@/components/cards';
+import { Heading } from '@/components/typography';
 
-const Skills: FC = () => {
+const Skills = () => {
   return (
-    <Box>
-      <SectionHeading text={'Skills'} />
-      <Grid container justifyContent="center" spacing={3}>
-        {SkillsData.map((skill, idx) => (
-          <Grid item key={idx} xs={4} sm={3} md={2} lg={2}>
-            <SkillCard key={idx} skill={skill} />
-          </Grid>
+    <section className="space-y-5">
+      <Heading
+        text={'Skills'}
+        subtext="I am currently working with the following technologies"
+      />
+
+      <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6">
+        {SkillsData.map((skill) => (
+          <div key={skill.name}>
+            <SkillCard skill={skill} />
+          </div>
         ))}
-      </Grid>
-    </Box>
+      </div>
+    </section>
   );
 };
 

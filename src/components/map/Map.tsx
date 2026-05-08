@@ -2,9 +2,9 @@
 
 import React, { FC, useEffect, useRef } from 'react';
 import Map, { MapProvider, MapRef, Marker } from 'react-map-gl';
-import PlaceIcon from '@mui/icons-material/Place';
+import { MapPin } from 'lucide-react';
 import 'mapbox-gl/dist/mapbox-gl.css';
-import { useTheme } from '@mui/material';
+import { useTheme } from '@/hooks/useTheme';
 import { MAPBOX_TOKEN } from '@/lib/constants/config';
 
 interface MapProps {
@@ -13,7 +13,7 @@ interface MapProps {
 }
 
 const MapComponent: FC<MapProps> = ({ longitude, latitude }) => {
-  const theme = useTheme();
+  const { theme } = useTheme();
   const viewport = {
     latitude: 37.7751,
     longitude: -122.4193,
@@ -54,7 +54,7 @@ const MapComponent: FC<MapProps> = ({ longitude, latitude }) => {
         touchZoomRotate={false}
       >
         <Marker longitude={longitude} latitude={latitude}>
-          <PlaceIcon fontSize="large" sx={{ color: 'red' }} />
+          <MapPin size={30} color="red" />
         </Marker>
       </Map>
     </MapProvider>

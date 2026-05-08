@@ -1,21 +1,13 @@
 'use client';
 
 import React, { FC } from 'react';
-import {
-  CardMedia,
-  Typography,
-  Box,
-  Stack,
-  IconButton,
-  Chip,
-} from '@mui/material';
-import Link from 'next/link'; // Importing Next.js Link
-import LaunchIcon from '@mui/icons-material/Launch'; // Icon for live link
-import GitHubIcon from '@mui/icons-material/GitHub'; // Icon for GitHub repo
-import InfoIcon from '@mui/icons-material/Info'; // Icon for project details
+import Image from 'next/image';
+import Link from 'next/link';
+import { ArrowRight, ExternalLink, Info } from 'lucide-react';
 import { Project } from '@/types/types';
 import CardWrapper from './CardWrapper';
 import { PROJECTS } from '@/lib/constants/navigation';
+import { useTheme } from '@/hooks/useTheme';
 
 interface ProjectCardProps {
   project: Project;
@@ -23,120 +15,99 @@ interface ProjectCardProps {
 
 const ProjectCard: FC<ProjectCardProps> = ({ project }) => {
   const previewImage = project.images[0];
+  const { theme } = useTheme();
 
   return (
     <CardWrapper>
       {previewImage ? (
-        <CardMedia
-          component="img"
-          image={previewImage}
-          alt={project.title}
-          sx={{
-            borderBottom: '5px solid #6A0DAD',
-            objectFit: 'cover',
-            objectPosition: 'top',
-            height: { xs: 230, sm: 300 },
-          }}
-        />
+        <div
+          className="relative h-[230px] overflow-hidden rounded-t-[16px] border-b-[5px] sm:h-[300px]"
+          style={{ borderBottomColor: theme.palette.primary.main }}
+        >
+          <Image
+            src={previewImage}
+            alt={project.title}
+            fill
+            sizes="(max-width: 640px) 100vw, 33vw"
+            className="object-cover object-top"
+          />
+        </div>
       ) : (
-        <Box
-          sx={{
-            borderBottom: '5px solid #6A0DAD',
-            backgroundColor: 'grey.100',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            height: { xs: 230, sm: 300 },
-            px: 2,
-            textAlign: 'center',
+        <div
+          className="flex h-[230px] items-center justify-center border-b-[5px] px-2 text-center sm:h-[300px]"
+          style={{
+            borderBottomColor: theme.palette.primary.main,
+            backgroundColor: theme.palette.grey[100],
           }}
         >
-          <Typography variant="body2" color="text.secondary">
-            Preview coming soon
-          </Typography>
-        </Box>
-      )}
-      {/* Content */}
-      <Box
-        sx={{
-          display: 'flex',
-          flexDirection: 'column',
-          flexGrow: 1, // Allows content to grow and fill the space
-          justifyContent: 'space-between', // Pushes buttons to the bottom
-          p: 1,
-        }}
-      >
-        <Stack spacing={2}>
-          <Typography variant="h5">{project.title}</Typography>
-          {/* Technologies Used */}
-          <Stack
-            direction="row"
-            flexWrap="wrap"
-            sx={{
-              gap: 1,
-            }}
+          <p
+            className="text-sm"
+            style={{ color: theme.palette.text.secondary }}
           >
+            Preview coming soon
+          </p>
+        </div>
+      )}
+
+      <div className="flex h-full flex-col justify-between p-2">
+        <div className="space-y-2">
+          <h3 className="text-2xl font-semibold">{project.title}</h3>
+          <div className="flex flex-wrap gap-1">
             {project.technologiesUsed?.map((tech, index) => (
-              <Chip
+              <span
                 key={index}
-                label={tech}
-                variant="outlined"
-                color="secondary"
-                size="small"
-              />
+                className="rounded-full border px-2 py-1 text-xs font-medium"
+                style={{
+                  borderColor: theme.palette.secondary.main,
+                  color: theme.palette.secondary.main,
+                }}
+              >
+                {tech}
+              </span>
             ))}
-          </Stack>
-          <Typography variant="body2" color="text.secondary">
+          </div>
+
+          <p
+            className="text-sm"
+            style={{ color: theme.palette.text.secondary }}
+          >
             {project.briefDescription}
-          </Typography>
-        </Stack>
+          </p>
+        </div>
 
-        {/* Buttons */}
-        <Stack
-          direction="row"
-          spacing={2}
-          alignItems="center"
-          justifyContent="space-between"
-          mt={{ xs: 1, sm: 2 }}
-        >
-          {/* Demo Button */}
-          {project.liveLink && (
-            <IconButton
-              color="secondary"
-              href={project.liveLink}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <LaunchIcon />
-            </IconButton>
-          )}
+        <div className="mt-2 flex items-center justify-between gap-2">
+          <div className="flex items-center gap-2">
+            {project.liveLink && (
+              <a
+                className="rounded-md p-2 transition-colors hover:bg-slate-100"
+                href={project.liveLink}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <ExternalLink size={18} />
+              </a>
+            )}
 
-          {/* Repo Button */}
-          {project.repositoryLink && (
-            <IconButton
-              color="secondary"
-              href={project.repositoryLink}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <GitHubIcon />
-            </IconButton>
-          )}
+            {project.repositoryLink && (
+              <a
+                className="rounded-md p-2 transition-colors hover:bg-slate-100"
+                href={project.repositoryLink}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <ArrowRight size={18} />
+              </a>
+            )}
+          </div>
 
-          {/* Info Button */}
-          <Link href={`/${PROJECTS.toLowerCase()}/${project.id}`} passHref>
-            <IconButton
-              color="secondary"
-              sx={{
-                textTransform: 'none',
-                textDecoration: 'none',
-              }}
-            >
-              <InfoIcon />
-            </IconButton>
+          <Link
+            href={`/${PROJECTS.toLowerCase()}/${project.id}`}
+            className="rounded-md p-2 transition-colors hover:bg-slate-100"
+          >
+            <Info size={18} />
           </Link>
-        </Stack>
-      </Box>
+        </div>
+      </div>
     </CardWrapper>
   );
 };
