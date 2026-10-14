@@ -10,7 +10,7 @@ const Projects = ({ projects }: ProjectsProps) => {
   return (
     <Section
       id="projects"
-      index="03"
+      index="04"
       eyebrow="Projects"
       title="Selected work."
       description="Products I've designed, built and shipped. Open one for the full story."

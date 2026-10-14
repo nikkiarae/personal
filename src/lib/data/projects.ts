@@ -2,24 +2,51 @@ import type { Project } from '@/types/types';
 
 export const projects: Project[] = [
   {
-    // TODO: fill in the details, and add screenshots under
-    // /public/assets/images/projects/AIHealthCoach/. With no images the card
-    // shows a generated cover instead.
     id: 'ai-health-coach',
     show: true,
     order: -1,
     title: 'AI Health Coach',
     category: 'AI',
-    briefDescription: 'An AI-powered health coach.',
-    detailedDescription: 'An AI-powered health coach.',
+    briefDescription:
+      'A personal multi-agent health coach that plans training and meals each week and checks in through messaging throughout the day.',
+    detailedDescription:
+      'AI Health Coach is a personal coaching agent that works through messaging rather than a dedicated app. ' +
+      'An orchestrator agent coordinates two specialist sub-agents, a personal trainer and a nutritionist, which share context so workouts and meals are planned together rather than in isolation. ' +
+      'Each week starts with a planning session, followed by scheduled morning, midday and dinner check-ins and an evening recap. ' +
+      'The recap feeds back into the plan, so the coach adapts to what actually happened that day instead of repeating a fixed program. ' +
+      'Meal planning is designed for the whole family, not just one person. ' +
+      'The backend is a NestJS API with a PostgreSQL database managed through Prisma, using the SubQ long-context model through its OpenAI-compatible API with tool calling. ' +
+      'Daily jobs run on a scheduled cron, and a web search tool, scoped to the nutritionist, lets the coach look up recipes and food information while keeping token and API costs low.',
     liveLink: null,
     repositoryLink: null,
     images: [],
-    applications: [],
-    technologiesUsed: [],
-    librariesAndTools: [],
-    softSkills: [],
-    learningOutcomes: [],
+    applications: [
+      'Personal fitness and training planning',
+      'Family meal planning',
+      'Daily habit coaching and accountability',
+      'Adaptive weekly planning based on daily feedback',
+    ],
+    technologiesUsed: ['TypeScript', 'Node.js', 'NestJS', 'PostgreSQL'],
+    librariesAndTools: [
+      'Prisma',
+      'SubQ API (OpenAI-compatible)',
+      'LLM tool calling',
+      'Railway Hosting',
+      'Web search API',
+    ],
+    softSkills: [
+      'Product thinking',
+      'Scoping a project to a single user',
+      'Cost-aware design',
+      'Self-directed learning',
+    ],
+    learningOutcomes: [
+      'Designing a multi-agent system with an orchestrator and specialist sub-agents sharing context',
+      'Building scheduled, proactive AI interactions with cron jobs instead of only responding to requests',
+      'Implementing custom tools for an LLM, including a web search tool with trimmed and cached results',
+      'Managing LLM token and API costs by limiting tool access to the agents that need it',
+      'Deploying a NestJS and Prisma backend to serverless hosting, handling connection pooling and time zones',
+    ],
   },
   {
     id: 'wavio',

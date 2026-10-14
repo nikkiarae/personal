@@ -13,7 +13,7 @@ const Contact = ({ resume, alternateResume }: ContactProps) => {
   return (
     <Section
       id="contact"
-      index="05"
+      index="06"
       eyebrow="Contact"
       title={
         <>
@@ -28,7 +28,7 @@ const Contact = ({ resume, alternateResume }: ContactProps) => {
           <div>
             <h3 className="text-lg font-semibold">Grab a copy</h3>
             <p className="mt-1 mb-5 text-sm text-muted">
-              My full {resume.label === 'CV' ? 'CV' : 'resume'} as a PDF.
+              My full {resume.noun} as a PDF.
             </p>
             <ResumeDownload resume={resume} alternate={alternateResume} />
           </div>

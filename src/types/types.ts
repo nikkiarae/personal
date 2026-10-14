@@ -72,8 +72,19 @@ export interface RegionalLocation {
 export interface ResumeFile {
   /** What UK / US visitors call the document. */
   label: 'CV' | 'Resume';
+  /** Mid-sentence form, e.g. "my full CV" / "my full resume". */
+  noun: 'CV' | 'resume';
   href: string;
   fileName: string;
+}
+
+export interface AiUseCase {
+  tool: 'Claude' | 'ChatGPT' | 'AWS Bedrock';
+  /** Where the AI sits: in the product, the team's tooling, or my own workflow. */
+  scope: string;
+  context: string;
+  summary: string;
+  highlights: string[];
 }
 
 export interface SocialLink {

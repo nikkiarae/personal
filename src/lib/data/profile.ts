@@ -18,7 +18,7 @@ export const profile = {
   highlights: [
     { value: '8+', label: 'Years shipping production software' },
     { value: 'UK & US', label: 'Teams across both markets' },
-    { value: 'AI', label: 'Bedrock & Gemini features in production' },
+    { value: 'AI', label: 'In the product, the team and my workflow' },
   ],
 };
 
@@ -53,11 +53,13 @@ export const locations: Record<Region, RegionalLocation> = {
 export const resumes: Record<Region, ResumeFile> = {
   uk: {
     label: 'CV',
+    noun: 'CV',
     href: '/assets/CV_Nikki_Rae_2026.pdf',
     fileName: 'Nikki_Rae_UK_CV_2026.pdf',
   },
   us: {
     label: 'Resume',
+    noun: 'resume',
     href: '/assets/Resume_Nikki_Rae_2026.pdf',
     fileName: 'Nikki_Rae_US_Resume_2026.pdf',
   },

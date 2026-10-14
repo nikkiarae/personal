@@ -2,6 +2,7 @@ import { ViewTransition } from 'react';
 import Hero from '@/components/resume/Hero';
 import About from '@/components/resume/About';
 import Experience from '@/components/resume/Experience';
+import AiExperience from '@/components/resume/AiExperience';
 import Projects from '@/components/resume/Projects';
 import Skills from '@/components/resume/Skills';
 import Contact from '@/components/resume/Contact';
@@ -25,6 +26,7 @@ const Home = async () => {
         />
         <About location={location} />
         <Experience jobs={jobs} />
+        <AiExperience />
         <Projects projects={projects} />
         <Skills />
         <Contact resume={resume} alternateResume={alternateResume} />

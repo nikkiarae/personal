@@ -9,7 +9,7 @@ const Skills = () => {
   return (
     <Section
       id="skills"
-      index="04"
+      index="05"
       eyebrow="Skills"
       title="The toolkit."
       description={

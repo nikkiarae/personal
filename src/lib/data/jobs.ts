@@ -2,15 +2,32 @@ import type { Job } from '@/types/types';
 
 export const jobs: Job[] = [
   {
-    id: 'cook',
+    id: 'simplycook',
     show: true,
     order: 0,
-    company: 'Cook',
+    company: 'SimplyCook',
     title: 'Senior Full Stack Developer',
+    location: 'London, UK',
+    workStyle: 'Remote',
+    startDate: '2026-06-01T00:00:00.000Z',
+    endDate: null,
+    responsibilities: [
+      'Owned subscription onboarding end to end, from AWS API Gateway and NestJS endpoints through to the UI, delivering allergen-conflict detection, a redesigned recipe box builder and an accessible cart drawer.',
+      'Hardened authentication and access control across the platform, replacing scattered, conflicting checks with a single derived “journey state” model and fixing a Cognito token-refresh race in the shared auth package.',
+      'Prepared both apps to run under one shared domain, covering path-prefix-aware routing, build-time config validation, Turborepo cache keying and code-enforced indexing controls, and migrated legacy marketing pages to the App Router.',
+      'Founded the company\'s internal Claude Code plugin marketplace, standardising AI-assisted development for developers and designers in the Product Team across its repositories, including backend and mobile, with convention guides, scaffolding skills and review agents for frontend, API, accessibility, test planning and SEO.',
+    ],
+  },
+  {
+    id: 'powdr',
+    show: true,
+    order: 1,
+    company: 'Powdr',
+    title: 'Full Stack Developer',
     location: 'Manchester, UK',
     workStyle: 'Hybrid',
     startDate: '2025-04-01T00:00:00.000Z',
-    endDate: null,
+    endDate: '2026-06-01T00:00:00.000Z',
     responsibilities: [
       'Owned delivery of the Scenario Dashboard, building the frontend data-management and model-comparison experience that improved how finance teams evaluate options and make decisions.',
       'Built a new consolidation modal to combine multiple financial models under a single umbrella view, giving teams clearer visibility into overall company health across multiple business units.',
@@ -26,7 +43,7 @@ export const jobs: Job[] = [
   {
     id: '67900068501fb5d5e777b945',
     show: true,
-    order: 1,
+    order: 2,
     company: 'SRC UK',
     title: 'Full Stack Developer',
     location: 'Lincoln, UK',
@@ -45,7 +62,7 @@ export const jobs: Job[] = [
   {
     id: '67900081501fb5d5e777b946',
     show: true,
-    order: 2,
+    order: 3,
     company: 'PassiveLogic',
     title: 'Software Developer',
     location: 'UT, USA',
@@ -63,7 +80,7 @@ export const jobs: Job[] = [
   {
     id: '67900091501fb5d5e777b947',
     show: true,
-    order: 3,
+    order: 4,
     company: 'Travis Perkins Group',
     title: 'Web Developer',
     location: 'Northampton, UK',
@@ -78,7 +95,7 @@ export const jobs: Job[] = [
   {
     id: '679000a0501fb5d5e777b948',
     show: true,
-    order: 4,
+    order: 5,
     company: 'Travis Perkins Group',
     title: 'IT Analyst',
     location: 'Northampton, UK',
@@ -93,7 +110,7 @@ export const jobs: Job[] = [
   {
     id: '679000b9501fb5d5e777b949',
     show: false,
-    order: 5,
+    order: 6,
     company: 'PassiveLogic',
     title: 'Junior Software Engineer',
     location: 'UT, USA',
