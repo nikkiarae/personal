@@ -49,6 +49,55 @@ export const projects: Project[] = [
     ],
   },
   {
+    id: 'dinkerly',
+    show: true,
+    order: 2,
+    title: 'Dinkerly',
+    category: 'Vibe Coded',
+    briefDescription:
+      'A set of free pickleball tools for clubs and organisers, built entirely through natural language with ChatGPT.',
+    detailedDescription:
+      'Dinkerly is a set of free pickleball tools I built for my club to use during its sessions. ' +
+      'Dink & Mix plans fair doubles rotations so everyone shares playing time with different partners and opponents, with courts, timed rounds, scores and a leaderboard. ' +
+      'The Tournament Organiser turns a player list into a round robin schedule or knockout draw, runs matches courtside and gives players a shareable link to follow results. ' +
+      'Find Your Game is a doubles skills assessment that leaves players with three practice priorities. ' +
+      'The tools need no account and work on phone or laptop. Dinkerly is a Progressive Web App (PWA), so each tool can be installed to the home screen with its own app icon and use mobile device APIs like a native app. ' +
+      'Stripe handles optional paid PDF packs for printing schedules, scores and standings. ' +
+      'I vibe coded the whole app with ChatGPT Astra, developing and hosting it using only natural language, to get familiar with the tool and see the pros and cons of building this way.',
+    liveLink: 'https://dinkerly.com',
+    repositoryLink: null,
+    images: [
+      '/assets/images/projects/Dinkerly/home.png',
+      '/assets/images/projects/Dinkerly/dink-and-mix-overview.png',
+      '/assets/images/projects/Dinkerly/dink-and-mix.png',
+      '/assets/images/projects/Dinkerly/tournaments.png',
+      '/assets/images/projects/Dinkerly/tournaments-new.png',
+      '/assets/images/projects/Dinkerly/skills-overview.png',
+      '/assets/images/projects/Dinkerly/skills.png',
+    ],
+    applications: [
+      'Fair doubles rotations for club nights and social play',
+      'Round robin and knockout tournaments',
+      'Doubles skills self-assessment',
+      'Printable PDF packs of schedules, scores and standings',
+    ],
+    technologiesUsed: ['ChatGPT Astra', 'Natural-language development'],
+    librariesAndTools: ['Stripe', 'PWA'],
+    softSkills: [
+      'Product thinking',
+      'Prompting and iteration',
+      'Building for a real community',
+    ],
+    // TODO: add your own take on the pros and cons of vibe coding.
+    learningOutcomes: [
+      'Building, iterating on and hosting a complete app using only natural-language prompts',
+      'Weighing the pros and cons of vibe coding against hands-on engineering',
+      'Integrating Stripe payments for optional paid PDF packs',
+      'Making the app a PWA, installable with its own home-screen icon and access to mobile device APIs',
+      'Designing tools around how a real club runs its sessions',
+    ],
+  },
+  {
     id: 'wavio',
     show: true,
     order: 0,

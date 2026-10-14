@@ -18,7 +18,7 @@ export const profile = {
   highlights: [
     { value: '8+', label: 'Years shipping production software' },
     { value: 'UK & US', label: 'Teams across both markets' },
-    { value: 'AI', label: 'In the product, the team and my workflow' },
+    { value: 'AI Enabled', label: 'Full stack engineering' },
   ],
 };
 
