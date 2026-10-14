@@ -1,16 +1,13 @@
 export interface NavItem {
   label: string;
-  href: string;
+  /** Matches the `id` of a section on the home page. */
+  id: string;
 }
 
-export const PROJECTS = 'Projects';
-export const RESUME = 'Resume';
-export const INSIGHTS = 'Insights';
-export const CONTACT = 'Contact';
-
 export const NAV_ITEMS: NavItem[] = [
-  { label: PROJECTS, href: '/projects' },
-  { label: RESUME, href: '/resume' },
-  { label: INSIGHTS, href: '/insights' },
-  { label: CONTACT, href: '/contact' },
+  { label: 'About', id: 'about' },
+  { label: 'Experience', id: 'experience' },
+  { label: 'Projects', id: 'projects' },
+  { label: 'Skills', id: 'skills' },
+  { label: 'Contact', id: 'contact' },
 ];

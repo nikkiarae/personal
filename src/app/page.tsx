@@ -1,17 +1,35 @@
-import { Page } from '@/components/layout';
-import { Intro, Strengths, RecentInsights } from '@/components/sections';
-import { fetchInsights } from '@/lib/api/insights';
+import { ViewTransition } from 'react';
+import Hero from '@/components/resume/Hero';
+import About from '@/components/resume/About';
+import Experience from '@/components/resume/Experience';
+import Projects from '@/components/resume/Projects';
+import Skills from '@/components/resume/Skills';
+import Contact from '@/components/resume/Contact';
+import { fetchJobs } from '@/lib/api/jobs';
+import { fetchProjects } from '@/lib/api/projects';
+import { getVisitorRegion } from '@/lib/server/visitor-region';
 
 const Home = async () => {
-  const insightPosts = await fetchInsights();
+  const [jobs, projects, { location, resume, alternateResume }] =
+    await Promise.all([fetchJobs(), fetchProjects(), getVisitorRegion()]);
+
+  const currentJob = jobs.find((job) => job.endDate === null);
+
   return (
-    <Page>
-      <div className="mx-auto max-w-6xl space-y-12 pb-8">
-        <Intro />
-        <Strengths />
-        <RecentInsights insightPosts={insightPosts} />
+    <ViewTransition enter="page-enter" exit="page-exit" default="none">
+      <div>
+        <Hero
+          currentJob={currentJob}
+          resume={resume}
+          alternateResume={alternateResume}
+        />
+        <About location={location} />
+        <Experience jobs={jobs} />
+        <Projects projects={projects} />
+        <Skills />
+        <Contact resume={resume} alternateResume={alternateResume} />
       </div>
-    </Page>
+    </ViewTransition>
   );
 };
 

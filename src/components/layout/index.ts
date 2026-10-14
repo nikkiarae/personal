@@ -1,7 +1,2 @@
-import Header from './header';
-import Main from './main';
-import Footer from './footer';
-import Page from './page';
-import Wrapper from './wrapper';
-
-export { Header, Main, Footer, Page, Wrapper };
+export { default as Header } from './Header';
+export { default as Footer } from './Footer';

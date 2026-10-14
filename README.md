@@ -1,105 +1,34 @@
-# My Personal Website
+# Nikki Rae — Resume Site
 
-This project is my personal portfolio website, showcasing my professional projects, skills, and experiences in web development. It is built using React, TypeScript, and Vite for fast and efficient development.
+A single-page resume built with Next.js 16, React 19 and HeroUI, with a detail page for each project.
 
-## Getting Started
-
-### Installation
-
-1. Clone the repository:
-
-   ```sh
-   git clone https://github.com/yourusername/personal-website.git
-   cd personal-website
-   ```
-
-2. Install dependencies:
-   ```sh
-   npm install
-   ```
-
-### Development
-
-To start the development server with hot module replacement:
+## Getting started
 
 ```sh
-npm run dev
+yarn install
+cp .env.example .env.local   # add your MAPBOX_TOKEN
+yarn dev
 ```
 
-## Neon Database (Primary Data Source)
+`yarn build` creates a production build, `yarn lint` runs ESLint, and `yarn format` runs Prettier.
 
-The app now reads `insights` from Neon PostgreSQL.
+## Editing content
 
-- If `PGHOST`, `PGDATABASE`, `PGUSER`, and `PGPASSWORD` are set and queries succeed, DB data is used.
-- If the database is unavailable (or schema is missing), insights fall back to static files in `src/lib/data/insights/**`.
-- Projects and jobs are static-only and are always read from `src/lib/data/projects.ts` and `src/lib/data/jobs.ts`.
+All content lives in `src/lib/data/`:
 
-### 1. Configure environment
+| File          | What it holds                                                          |
+| ------------- | ---------------------------------------------------------------------- |
+| `profile.ts`  | Name, headline, summary, highlights, education, socials, map pins, CV/resume files |
+| `jobs.ts`     | Experience. Jobs with `endDate: null` are shown as current; `show: false` hides one |
+| `projects.ts` | Projects, sorted by `order`. Images live in `public/assets/images/projects/` |
+| `skills.ts`   | Skill groups (`isCurrent` highlights a skill) and the logo strip in the hero |
 
-Create `.env.local` from `.env.example` and set your Neon connection string:
+## UK vs US visitors
 
-```sh
-cp .env.example .env.local
-```
+`src/lib/server/visitor-region.ts` reads the geo-IP headers (`x-vercel-ip-country` and others, falling back to `Accept-Language`). UK visitors get the CV (`public/assets/CV_Nikki_Rae_2026.pdf`) and a UK map pin; everyone else gets the US resume and a Utah pin. The other document is always offered as a secondary link.
 
-Then set:
+## Motion
 
-```env
-PGHOST=<neon_host>
-PGDATABASE=<database_name>
-PGUSER=<role_name>
-PGPASSWORD=<role_password>
-PGPORT=5432
-```
-
-### 2. Create tables in Neon
-
-Run the SQL in `db/neon-schema.sql` in Neon SQL Editor (or with your preferred Postgres client).
-
-### 3. Populate data
-
-Insert rows into:
-
-- `blog_posts`
-
-The `blog_posts` table should include a `views` column (`INTEGER NOT NULL DEFAULT 0`) so insight page views can be tracked.
-
-Use the static files in `src/lib/data/insights`, `src/lib/data/projects.ts`, and `src/lib/data/jobs.ts` as your reference source while migrating.
-
-### Build
-
-To build the project for production:
-
-```sh
-npm run build
-```
-
-### Preview
-
-To preview the production build:
-
-```sh
-npm run preview
-```
-
-## Expanding the ESLint Configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-};
-```
-
-- Replace `plugin:@typescript-eslint/recommended` with `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+- **Page transitions** use React's `<ViewTransition>`. Project covers and titles morph between the list and the detail page, and the gallery slides in the direction you navigate (`addTransitionType`).
+- **Scroll effects** (section reveals, the scroll-progress bar, the header background and the experience timeline) use CSS scroll-driven animations in `src/styles/globals.css`. They need no JavaScript and are skipped in browsers that don't support them.
+- Everything respects `prefers-reduced-motion`.

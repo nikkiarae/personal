@@ -2,6 +2,26 @@ import type { Project } from '@/types/types';
 
 export const projects: Project[] = [
   {
+    // TODO: fill in the details, and add screenshots under
+    // /public/assets/images/projects/AIHealthCoach/. With no images the card
+    // shows a generated cover instead.
+    id: 'ai-health-coach',
+    show: true,
+    order: -1,
+    title: 'AI Health Coach',
+    category: 'AI',
+    briefDescription: 'An AI-powered health coach.',
+    detailedDescription: 'An AI-powered health coach.',
+    liveLink: null,
+    repositoryLink: null,
+    images: [],
+    applications: [],
+    technologiesUsed: [],
+    librariesAndTools: [],
+    softSkills: [],
+    learningOutcomes: [],
+  },
+  {
     id: 'wavio',
     show: true,
     order: 0,
