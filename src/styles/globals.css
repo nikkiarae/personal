@@ -2,28 +2,18 @@
 @import 'tailwindcss';
 @import '@heroui/styles';
 
-@font-face {
-  font-family: 'Open Sans';
-  src: url('/assets/fonts/OpenSans-VariableFont.ttf') format('truetype');
-  font-style: normal;
-  font-weight: 100 900;
-  font-display: swap;
-}
+@custom-variant dark (&:where(.dark, .dark *));
 
-@font-face {
-  font-family: 'Roboto Flex';
-  src: url('/assets/fonts/RobotoFlex-VariableFont.ttf') format('truetype');
-  font-style: normal;
-  font-weight: 100 1000;
-  font-display: swap;
+@theme inline {
+  --font-sans: var(--font-geist), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, monospace;
+  --color-accent-2: var(--accent-2);
 }
 
 @layer base {
-  /* HeroUI Default Theme */
+  /* HeroUI theme tokens */
   :root {
     color-scheme: light;
-
-    /* == Common Variables == */
 
     /* Primitive Colors (Do not change between light and dark) */
     --white: oklch(100% 0 0);
@@ -31,143 +21,433 @@
     --snow: oklch(0.9911 0 0);
     --eclipse: oklch(0.2103 0.0059 285.89);
 
-    /* Spacing scale */
     --spacing: 0.25rem;
 
-    /* Border */
     --border-width: 1px;
-    --field-border-width: 0px;
+    --field-border-width: 1px;
     --disabled-opacity: 0.5;
-
-    /* Ring offset - Used for focus ring */
     --ring-offset-width: 2px;
 
-    /* Cursor */
     --cursor-interactive: pointer;
     --cursor-disabled: not-allowed;
 
-    /* Radius */
-    --radius: 0.5rem;
-    --field-radius: calc(var(--radius) * 1.5);
+    --radius: 0.75rem;
+    --field-radius: var(--radius);
 
-    /* == Light Theme Variables == */
-
-    /* Base Colors */
-    --background: oklch(0.9702 0 0);
+    /* == Light Theme == */
+    --background: oklch(0.985 0.003 325);
     --foreground: var(--eclipse);
 
-    /* Surface: Used for non-overlay components (cards, accordions, disclosure groups) */
     --surface: var(--white);
     --surface-foreground: var(--foreground);
 
-    /* Overlay: Used for floating/overlay components (tooltips, popovers, modals, menus) */
     --overlay: var(--white);
     --overlay-foreground: var(--foreground);
 
-    --muted: oklch(0.5517 0.0138 285.94);
+    --muted: oklch(0.52 0.014 286);
     --scrollbar: oklch(87.1% 0.006 286.286);
 
-    --default: oklch(94% 0.001 286.375);
+    --default: oklch(0.955 0.004 325);
     --default-foreground: var(--eclipse);
 
-    --accent: oklch(42.806% 0.19272 325.041);
+    --accent: oklch(0.5 0.2 322);
     --accent-foreground: var(--snow);
 
-    /* Form Field Defaults - Colors */
     --field-background: var(--white);
-    --field-foreground: oklch(0.2103 0.0059 285.89);
+    --field-foreground: var(--eclipse);
     --field-placeholder: var(--muted);
-    --field-border: transparent; /* no border by default on form fields */
+    --field-border: oklch(0.91 0.006 300);
 
-    /* Status Colors */
-    --success: oklch(0.7329 0.1935 150.81);
-    --success-foreground: var(--eclipse);
+    --success: oklch(0.6 0.16 150);
+    --success-foreground: var(--snow);
 
     --warning: oklch(0.7819 0.1585 72.33);
     --warning-foreground: var(--eclipse);
 
-    --danger: oklch(0.6532 0.2328 25.74);
+    --danger: oklch(0.58 0.22 25);
     --danger-foreground: var(--snow);
 
-    /* Component Colors */
     --segment: var(--white);
     --segment-foreground: var(--eclipse);
 
-    /* Misc Colors */
-    --border: oklch(92% 0.004 286.32);
-    --separator: oklch(92% 0.004 286.32);
+    --border: oklch(0.92 0.006 300);
+    --separator: oklch(0.92 0.006 300);
     --focus: var(--accent);
     --link: var(--foreground);
 
-    /* Backdrop */
     --backdrop: rgba(0, 0, 0, 0.5);
 
-    /* Shadows */
     --surface-shadow:
-      0 2px 4px 0 rgba(0, 0, 0, 0.04), 0 1px 2px 0 rgba(0, 0, 0, 0.06),
-      0 0 1px 0 rgba(0, 0, 0, 0.06);
-    /* Overlay shadow */
+      0 1px 2px 0 rgba(24, 24, 27, 0.04),
+      0 8px 24px -12px rgba(24, 24, 27, 0.12);
     --overlay-shadow:
       0 4px 16px 0 rgba(24, 24, 27, 0.08), 0 8px 24px 0 rgba(24, 24, 27, 0.09);
-    --field-shadow:
-      0 2px 4px 0 rgba(0, 0, 0, 0.04), 0 1px 2px 0 rgba(0, 0, 0, 0.06),
-      0 0 1px 0 rgba(0, 0, 0, 0.06);
-    /* Skeleton Default Global Animation */
-    --skeleton-animation: shimmer; /* shimmer, pulse, none */
+    --field-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.04);
+    --skeleton-animation: shimmer;
+
+    /* Site-specific */
+    --glow: oklch(0.5 0.2 322 / 0.12);
+    --accent-2: oklch(0.62 0.16 265);
   }
 
   .dark,
   [data-theme='dark'] {
     color-scheme: dark;
-    /* == Dark Theme Variables == */
 
-    /* Base Colors */
-    --background: oklch(12% 0.005 285.823);
+    --background: oklch(0.145 0.008 300);
     --foreground: var(--snow);
 
-    /* Surface: Used for non-overlay components (cards, accordions, disclosure groups) */
-    --surface: oklch(0.2103 0.0059 285.89);
+    --surface: oklch(0.19 0.01 300);
     --surface-foreground: var(--foreground);
 
-    /* Overlay: Used for floating/overlay components (tooltips, popovers, modals, menus) - lighter for contrast */
-    --overlay: oklch(
-      0.22 0.0059 285.89
-    ); /* A bit lighter than surface for visibility in dark mode */
+    --overlay: oklch(0.22 0.01 300);
     --overlay-foreground: var(--foreground);
 
-    --muted: oklch(70.5% 0.015 286.067);
-    --scrollbar: oklch(70.5% 0.015 286.067);
+    --muted: oklch(0.72 0.014 300);
+    --scrollbar: oklch(0.45 0.015 300);
 
-    --default: oklch(27.4% 0.006 286.033);
+    --default: oklch(0.24 0.01 300);
     --default-foreground: var(--snow);
 
-    /* Form Field Defaults - Colors (only the ones that are different from light theme) */
+    --accent: oklch(0.76 0.15 322);
+    --accent-foreground: oklch(0.18 0.03 322);
+
     --field-background: var(--default);
     --field-foreground: var(--foreground);
+    --field-border: oklch(0.3 0.01 300);
 
-    /* Status Colors */
+    --success: oklch(0.75 0.16 150);
+    --success-foreground: var(--eclipse);
+
     --warning: oklch(0.8203 0.1388 76.34);
     --warning-foreground: var(--eclipse);
 
-    --danger: oklch(0.594 0.1967 24.63);
+    --danger: oklch(0.68 0.19 24.63);
     --danger-foreground: var(--snow);
 
-    /* Component Colors */
     --segment: oklch(0.3964 0.01 285.93);
     --segment-foreground: var(--foreground);
 
-    /* Misc Colors */
-    --border: oklch(22% 0.006 286.033);
-    --separator: oklch(22% 0.006 286.033);
+    --border: oklch(0.26 0.01 300);
+    --separator: oklch(0.26 0.01 300);
     --focus: var(--accent);
     --link: var(--foreground);
 
-    /* Backdrop */
     --backdrop: rgba(0, 0, 0, 0.6);
 
-    /* Shadows */
-    --surface-shadow: 0 0 0 0 transparent inset; /* No shadow on dark mode */
-    --overlay-shadow: 0 0 0 0 transparent inset; /* No shadow on dark mode */
-    --field-shadow: 0 0 0 0 transparent inset; /* Transparent shadow to allow ring utilities to work */
+    --surface-shadow: 0 0 0 0 transparent inset;
+    --overlay-shadow: 0 0 0 0 transparent inset;
+    --field-shadow: 0 0 0 0 transparent inset;
+
+    --glow: oklch(0.76 0.15 322 / 0.1);
+    --accent-2: oklch(0.72 0.13 265);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Clear the fixed header when jumping to a section. */
+  section[id] {
+    scroll-margin-top: 5.5rem;
+  }
+
+  ::selection {
+    background: color-mix(in oklch, var(--accent) 30%, transparent);
+  }
+}
+
+@layer components {
+  /* Soft brand glow behind the top of the page */
+  .page-glow {
+    background:
+      radial-gradient(60rem 30rem at 85% -10%, var(--glow), transparent 70%),
+      radial-gradient(
+        40rem 24rem at 0% 10%,
+        color-mix(in oklch, var(--accent-2) 10%, transparent),
+        transparent 70%
+      );
+  }
+
+  .eyebrow {
+    @apply font-mono text-xs font-medium tracking-[0.2em] text-accent uppercase;
+  }
+
+  .text-gradient {
+    background: linear-gradient(100deg, var(--accent), var(--accent-2));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .card-surface {
+    @apply rounded-3xl border border-border bg-surface;
+    box-shadow: var(--surface-shadow);
+  }
+
+  .marquee-mask {
+    mask-image: linear-gradient(
+      90deg,
+      transparent,
+      black 12%,
+      black 88%,
+      transparent
+    );
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/* Motion                                                              */
+/* Scroll effects use CSS scroll-driven animations, so they cost no JS */
+/* and simply don't run in browsers without support.                  */
+/* ------------------------------------------------------------------ */
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+    filter: blur(6px);
+  }
+}
+
+@keyframes reveal {
+  from {
+    opacity: 0;
+    transform: translateY(48px) scale(0.98);
+  }
+}
+
+@keyframes hero-out {
+  to {
+    opacity: 0.15;
+    transform: translateY(-6vh) scale(0.97);
+  }
+}
+
+@keyframes grow-x {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes grow-y {
+  from {
+    transform: scaleY(0);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
+
+@keyframes header-solid {
+  to {
+    background-color: color-mix(in oklch, var(--background) 78%, transparent);
+    border-color: var(--border);
+    backdrop-filter: blur(16px) saturate(1.4);
+  }
+}
+
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes ping {
+  75%,
+  100% {
+    transform: scale(2.4);
+    opacity: 0;
+  }
+}
+
+.scroll-progress {
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+}
+
+.timeline-fill {
+  transform-origin: top;
+}
+
+.ping {
+  animation: ping 1.8s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  /* Staggered entrance on first paint; set --i on each element. */
+  .rise {
+    animation: rise 800ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
+    animation-delay: calc(var(--i, 0) * 90ms + 60ms);
+  }
+
+  .marquee-track {
+    animation: marquee 40s linear infinite;
+  }
+
+  .marquee-mask:hover .marquee-track {
+    animation-play-state: paused;
+  }
+
+  @supports (animation-timeline: view()) {
+    .reveal {
+      animation: reveal linear both;
+      animation-timeline: view();
+      animation-range: entry 0% cover 28%;
+    }
+
+    .hero-parallax {
+      animation: hero-out linear both;
+      animation-timeline: scroll(root block);
+      animation-range: 0 85vh;
+    }
+
+    .scroll-progress {
+      animation: grow-x linear both;
+      animation-timeline: scroll(root block);
+    }
+
+    .header-surface {
+      animation: header-solid linear both;
+      animation-timeline: scroll(root block);
+      animation-range: 0 96px;
+    }
+
+    .timeline-fill {
+      animation: grow-y linear both;
+      animation-timeline: view();
+      animation-range: cover 0% cover 65%;
+    }
+  }
+}
+
+/* Without scroll timelines, keep the header solid and the timeline drawn. */
+@supports not (animation-timeline: scroll()) {
+  .header-surface {
+    background-color: color-mix(in oklch, var(--background) 85%, transparent);
+    border-color: var(--border);
+    backdrop-filter: blur(16px);
+  }
+
+  .timeline-fill {
+    transform: scaleY(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .timeline-fill {
+    transform: scaleY(1);
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/* View transitions (React <ViewTransition> classes)                  */
+/* ------------------------------------------------------------------ */
+
+@keyframes vt-fade-out {
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes vt-page-in {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+}
+
+@keyframes vt-slide-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(8%);
+  }
+}
+
+@keyframes vt-slide-in-left {
+  from {
+    opacity: 0;
+    transform: translateX(-8%);
+  }
+}
+
+@keyframes vt-slide-out-left {
+  to {
+    opacity: 0;
+    transform: translateX(-8%);
+  }
+}
+
+@keyframes vt-slide-out-right {
+  to {
+    opacity: 0;
+    transform: translateX(8%);
+  }
+}
+
+::view-transition-old(.page-exit) {
+  animation: 180ms ease-in both vt-fade-out;
+}
+
+::view-transition-new(.page-enter) {
+  animation: 520ms cubic-bezier(0.2, 0.8, 0.2, 1) 100ms both vt-page-in;
+}
+
+/* Shared elements (project cover + title) morph between list and detail. */
+::view-transition-group(.morph) {
+  animation-duration: 560ms;
+  animation-timing-function: cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+::view-transition-old(.morph),
+::view-transition-new(.morph) {
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+}
+
+::view-transition-new(.slide-from-right) {
+  animation: 360ms cubic-bezier(0.2, 0.8, 0.2, 1) both vt-slide-in-right;
+}
+
+::view-transition-old(.slide-to-left) {
+  animation: 240ms ease-in both vt-slide-out-left;
+}
+
+::view-transition-new(.slide-from-left) {
+  animation: 360ms cubic-bezier(0.2, 0.8, 0.2, 1) both vt-slide-in-left;
+}
+
+::view-transition-old(.slide-to-right) {
+  animation: 240ms ease-in both vt-slide-out-right;
+}
+
+/* Theme switch: reveal the new theme in a circle from the toggle button. */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
   }
 }

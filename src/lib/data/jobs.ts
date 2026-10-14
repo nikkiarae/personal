@@ -2,11 +2,11 @@ import type { Job } from '@/types/types';
 
 export const jobs: Job[] = [
   {
-    id: 'powdr',
+    id: 'cook',
     show: true,
     order: 0,
-    company: 'Powdr',
-    title: 'Full Stack Engineer',
+    company: 'Cook',
+    title: 'Senior Full Stack Developer',
     location: 'Manchester, UK',
     workStyle: 'Hybrid',
     startDate: '2025-04-01T00:00:00.000Z',

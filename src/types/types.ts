@@ -4,14 +4,9 @@ export interface Params {
   }>;
 }
 
-export interface SlugParams {
-  params: Promise<{
-    slug: string;
-  }>;
-}
-
 export type EntityId = string;
 export type ISODateString = string;
+export type Region = 'uk' | 'us';
 
 export interface Project {
   id: EntityId;
@@ -36,6 +31,14 @@ export interface Skill {
   icon: string;
 }
 
+export interface SkillGroup {
+  heading: string;
+  items: {
+    text: string;
+    isCurrent: boolean;
+  }[];
+}
+
 export interface Job {
   id: EntityId;
   show: boolean;
@@ -50,4 +53,30 @@ export interface Job {
   responsibilities: string[];
 }
 
-export type { Insight, InsightSummary } from './insights';
+export interface Education {
+  degree: string;
+  school: string;
+  location: string;
+}
+
+export interface Coordinates {
+  longitude: number;
+  latitude: number;
+}
+
+export interface RegionalLocation {
+  label: string;
+  coordinates: Coordinates;
+}
+
+export interface ResumeFile {
+  /** What UK / US visitors call the document. */
+  label: 'CV' | 'Resume';
+  href: string;
+  fileName: string;
+}
+
+export interface SocialLink {
+  name: 'LinkedIn' | 'GitHub' | 'Instagram' | 'Facebook';
+  href: string;
+}

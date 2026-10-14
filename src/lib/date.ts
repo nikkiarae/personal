@@ -1,21 +1,21 @@
-const DEFAULT_DATE_FORMAT_OPTIONS: Intl.DateTimeFormatOptions = {
-  month: 'long',
-  year: 'numeric',
-};
+import type { Job } from '@/types/types';
 
-const PUBLISHED_DATE_FORMAT_OPTIONS: Intl.DateTimeFormatOptions = {
-  month: 'long',
-  day: 'numeric',
+const DEFAULT_DATE_FORMAT_OPTIONS: Intl.DateTimeFormatOptions = {
+  month: 'short',
   year: 'numeric',
+  timeZone: 'UTC',
 };
 
 export const formatDate = (
   date: Date | string,
   options: Intl.DateTimeFormatOptions = DEFAULT_DATE_FORMAT_OPTIONS,
 ): string => {
-  return new Intl.DateTimeFormat('en-US', options).format(new Date(date));
+  return new Intl.DateTimeFormat('en-GB', options).format(new Date(date));
 };
 
-export const formatPublishedDate = (date: Date | string): string => {
-  return formatDate(date, PUBLISHED_DATE_FORMAT_OPTIONS);
+export const formatJobDates = (job: Job): string => {
+  return (
+    job.dateLabel ??
+    `${formatDate(job.startDate)} – ${job.endDate ? formatDate(job.endDate) : 'Present'}`
+  );
 };
