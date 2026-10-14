@@ -15,7 +15,7 @@ export const jobs: Job[] = [
       'Owned subscription onboarding end to end, from AWS API Gateway and NestJS endpoints through to the UI, delivering allergen-conflict detection, a redesigned recipe box builder and an accessible cart drawer.',
       'Hardened authentication and access control across the platform, replacing scattered, conflicting checks with a single derived “journey state” model and fixing a Cognito token-refresh race in the shared auth package.',
       'Prepared both apps to run under one shared domain, covering path-prefix-aware routing, build-time config validation, Turborepo cache keying and code-enforced indexing controls, and migrated legacy marketing pages to the App Router.',
-      'Founded the company\'s internal Claude Code plugin marketplace, standardising AI-assisted development for developers and designers in the Product Team across its repositories, including backend and mobile, with convention guides, scaffolding skills and review agents for frontend, API, accessibility, test planning and SEO.',
+      "Founded the company's internal Claude Code plugin marketplace, standardising AI-assisted development for developers and designers in the Product Team across its repositories, including backend and mobile, with convention guides, scaffolding skills and review agents for frontend, API, accessibility, test planning and SEO.",
     ],
   },
   {

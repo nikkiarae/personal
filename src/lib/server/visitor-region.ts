@@ -10,8 +10,6 @@ interface VisitorRegion {
   countryCode?: string;
   location: RegionalLocation;
   resume: ResumeFile;
-  /** The document for the other region, offered as a secondary download. */
-  alternateResume: ResumeFile;
 }
 
 const GEO_COUNTRY_HEADER_NAMES = [
@@ -61,13 +59,11 @@ export const getVisitorRegion = cache(async (): Promise<VisitorRegion> => {
 
   const region: Region =
     countryCode === 'GB' || countryCode === 'UK' ? 'uk' : 'us';
-  const otherRegion: Region = region === 'uk' ? 'us' : 'uk';
 
   return {
     region,
     countryCode,
     location: locations[region],
     resume: resumes[region],
-    alternateResume: resumes[otherRegion],
   };
 });

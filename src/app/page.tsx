@@ -11,25 +11,24 @@ import { fetchProjects } from '@/lib/api/projects';
 import { getVisitorRegion } from '@/lib/server/visitor-region';
 
 const Home = async () => {
-  const [jobs, projects, { location, resume, alternateResume }] =
-    await Promise.all([fetchJobs(), fetchProjects(), getVisitorRegion()]);
+  const [jobs, projects, { location, resume }] = await Promise.all([
+    fetchJobs(),
+    fetchProjects(),
+    getVisitorRegion(),
+  ]);
 
   const currentJob = jobs.find((job) => job.endDate === null);
 
   return (
     <ViewTransition enter="page-enter" exit="page-exit" default="none">
       <div>
-        <Hero
-          currentJob={currentJob}
-          resume={resume}
-          alternateResume={alternateResume}
-        />
+        <Hero currentJob={currentJob} resume={resume} />
         <About location={location} />
         <Experience jobs={jobs} />
         <AiExperience />
         <Projects projects={projects} />
         <Skills />
-        <Contact resume={resume} alternateResume={alternateResume} />
+        <Contact resume={resume} />
       </div>
     </ViewTransition>
   );

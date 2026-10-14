@@ -12,10 +12,9 @@ const stagger = (i: number) => ({ '--i': i }) as CSSProperties;
 interface HeroProps {
   currentJob?: Job;
   resume: ResumeFile;
-  alternateResume: ResumeFile;
 }
 
-const Hero = ({ currentJob, resume, alternateResume }: HeroProps) => {
+const Hero = ({ currentJob, resume }: HeroProps) => {
   return (
     <section
       id="top"
@@ -61,11 +60,7 @@ const Hero = ({ currentJob, resume, alternateResume }: HeroProps) => {
             className="rise mt-10 flex flex-wrap items-start gap-3"
             style={stagger(3)}
           >
-            <ResumeDownload
-              resume={resume}
-              alternate={alternateResume}
-              size="lg"
-            />
+            <ResumeDownload resume={resume} size="lg" />
             <a href="#contact" className="button button--outline button--lg">
               Get in touch
             </a>

@@ -6,10 +6,9 @@ import ContactForm from './ContactForm';
 
 interface ContactProps {
   resume: ResumeFile;
-  alternateResume: ResumeFile;
 }
 
-const Contact = ({ resume, alternateResume }: ContactProps) => {
+const Contact = ({ resume }: ContactProps) => {
   return (
     <Section
       id="contact"
@@ -30,7 +29,7 @@ const Contact = ({ resume, alternateResume }: ContactProps) => {
             <p className="mt-1 mb-5 text-sm text-muted">
               My full {resume.noun} as a PDF.
             </p>
-            <ResumeDownload resume={resume} alternate={alternateResume} />
+            <ResumeDownload resume={resume} />
           </div>
           <div className="mt-auto">
             <h3 className="mb-4 text-lg font-semibold">Find me online</h3>
