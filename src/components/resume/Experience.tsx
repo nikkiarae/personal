@@ -31,8 +31,8 @@ const JobCard = ({ job }: { job: Job }) => {
       {/* Timeline dot */}
       <span
         className={cn(
-          'absolute top-2 left-0 size-3.5 -translate-x-[calc(50%-0.5px)] rounded-full border-2 border-background md:left-[calc(13rem+2rem)]',
-          isCurrent ? 'bg-accent ring-4 ring-accent/20' : 'bg-muted/60',
+          'absolute top-2 left-0 size-3.5 -translate-x-[calc(50%-0.5px)] rounded-full border-2 border-background md:left-60',
+          isCurrent ? 'bg-accent ring-4 ring-accent-soft-hover' : 'bg-muted/60',
         )}
         aria-hidden="true"
       />
@@ -105,7 +105,7 @@ const Experience = ({ jobs }: ExperienceProps) => {
       <div className="relative">
         {/* Timeline rail, drawn in as you scroll */}
         <div
-          className="absolute top-2 bottom-0 left-0 w-px bg-border md:left-[calc(13rem+2rem)]"
+          className="absolute top-2 bottom-0 left-0 w-px bg-border md:left-60"
           aria-hidden="true"
         >
           <div className="timeline-fill size-full bg-linear-to-b from-accent to-accent-2" />
